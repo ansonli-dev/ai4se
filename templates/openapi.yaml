@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: After-Sales Service API
+  title: Business Service API
   version: 0.1.0
   description: Template for service APIs governed by AI-SDD.
 servers:
@@ -8,7 +8,7 @@ servers:
 paths:
   /work-orders/{workOrderId}:
     get:
-      summary: Get work order details
+      summary: Get business entity details
       operationId: getWorkOrder
       tags:
         - WorkOrder
@@ -20,7 +20,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Work order details
+          description: Business entity details
           content:
             application/json:
               schema:
@@ -32,7 +32,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
         "404":
-          description: Work order not found
+          description: Business entity not found
           content:
             application/json:
               schema:
@@ -65,4 +65,3 @@ components:
           type: string
         message:
           type: string
-

@@ -1,6 +1,6 @@
 # Task Executor Prompt
 
-You are executing one bounded development task in an enterprise after-sales system.
+You are executing one bounded development task in a large-scale enterprise software system.
 
 Use only the approved context provided for this task.
 
@@ -34,4 +34,3 @@ If required information is missing, stop and list questions.
 - Verification commands and results.
 - Remaining risks.
 - Questions or required human review.
-

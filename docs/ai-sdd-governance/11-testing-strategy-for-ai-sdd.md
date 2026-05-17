@@ -58,13 +58,13 @@ In service-oriented and microservice systems, many failures happen at boundaries
 
 Contract tests reduce this risk by making provider and consumer expectations executable.
 
-For after-sales systems, contract tests are important for:
+For large-scale enterprise systems, contract tests are important for:
 
-- Work order services.
-- Dispatch services.
-- Parts or inventory services.
-- Fee or settlement services.
-- Customer notification services.
+- Core business services.
+- Workflow and approval services.
+- Inventory or resource services.
+- Billing, fee, or settlement services.
+- Notification services.
 - External enterprise integrations.
 
 ## 5. Test Doubles Are Useful, But Dangerous When Overused
@@ -430,4 +430,3 @@ Phase 3:
 - Martin Fowler, Eradicating Non-Determinism in Tests: https://martinfowler.com/articles/nonDeterminism.html
 - Martin Fowler, Test Coverage: https://martinfowler.com/bliki/TestCoverage.html
 - Martin Fowler, Testing Strategies in a Microservice Architecture: https://martinfowler.com/articles/microservice-testing/
-

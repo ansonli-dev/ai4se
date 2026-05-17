@@ -4,7 +4,7 @@
 
 Scope:
 
-- Select one medium-complexity after-sales domain, such as work order flow or service dispatch.
+- Select one medium-complexity business domain, such as account management, workflow processing, approval flows, or service integration.
 - Include one internal team for Superpowers workflow adoption.
 - Include outsourced work only as deliverable-based acceptance if supplier output is part of the pilot domain.
 

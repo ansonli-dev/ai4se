@@ -1,10 +1,12 @@
 # AI-SDD Governance Handbook
 
-This repository is a practical handbook for adopting AI-assisted development with Spec-Driven Development (SDD) in a multi-team after-sales system delivery program.
+This repository is a practical handbook for adopting AI-assisted development with Spec-Driven Development (SDD) in large-scale agile software delivery programs.
 
 It is written for delivery owners, architects, tech leads, QA, security leads, internal developers, AI champions, and supplier managers who need both speed and consistency while keeping delivery quality, ownership, and auditability under control.
 
 ## How To Read This Handbook
+
+Chinese version: [README.zh.md](README.zh.md)
 
 Read this repository like a book first, then use it like a reference library.
 

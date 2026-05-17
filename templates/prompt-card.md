@@ -24,7 +24,7 @@ Describe what this prompt is allowed to help with.
 ## Prompt Template
 
 ```text
-You are assisting with an enterprise after-sales system.
+You are assisting with a large-scale enterprise software system.
 
 Use only the approved context below.
 Do not invent business rules, data fields, APIs, permissions, or error codes.
@@ -64,4 +64,3 @@ Review checklist:
 - Are tests meaningful?
 - Are security and permission rules correct?
 - Is the output maintainable by the team?
-

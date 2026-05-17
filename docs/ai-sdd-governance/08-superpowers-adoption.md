@@ -68,7 +68,7 @@ Required flow:
 
 Use for:
 
-- Core after-sales flows.
+- Core business workflows.
 - Permission, customer data, fee, settlement, or audit logic.
 - Production-risk changes.
 - Architectural decisions.
@@ -129,4 +129,3 @@ Exception handling:
 
 - Emergency hotfixes may fix first and complete traceability within 24-48 hours.
 - Core business, permission, sensitive data, and security changes cannot skip Owner approval or quality gates.
-

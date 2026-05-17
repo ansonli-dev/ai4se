@@ -1,0 +1,80 @@
+# 工具链
+
+English version: [../03-toolchain.md](../03-toolchain.md)
+
+## 工具链原则
+
+- 默认企业私有。
+- 可审计性优先于便利性。
+- 标准接口优先于工具偏好。
+- 自动化让治理成为默认行为。
+- 工具选择必须支持内部 Superpowers 工作流和基于交付物的供应商验收。
+
+## 推荐栈
+
+需求和迭代：
+
+- Jira、ONES 或 ZenTao。
+- 需要 Epic、Feature、Story、Task、workflow、自定义字段、dashboard 和导出 API。
+
+知识库和规格：
+
+- Confluence、Notion Enterprise、Feishu Wiki 或 Git 中的 Markdown。
+- 需要版本历史、访问控制、模板支持，以及到需求和 MR 的反向链接。
+
+代码和 CI/CD：
+
+- 默认推荐 GitLab Self-Managed。
+- 使用分支保护、MR approvals、CI templates、protected variables 和 audit logs。
+- 可评估 GitLab Duo Self-Hosted 作为企业私有 AI 选项。
+
+内部 AI-SDD 工作流：
+
+- Superpowers 是内部团队默认 workflow kernel。
+- 用于标准化 brainstorming、planning、TDD、review 和 verification。
+- 除非供应商合同明确约定，不要求供应商团队使用 Superpowers。
+
+代码质量：
+
+- SonarQube Server。
+- 对新代码使用 Clean as You Code 和 Quality Gate policy。
+
+API 契约：
+
+- 同步服务 API 使用 OpenAPI 3.1。
+- 事件和异步消息使用 JSON Schema。
+
+Developer Portal：
+
+- Backstage 或同等内部开发者门户。
+- 用于 service catalog、ownership、documentation、API、runtime links 和 dependency map。
+
+安全和供应链：
+
+- SAST、SCA、Secret Scan、container image scan、SBOM 和 dependency risk review。
+- 以 OWASP SAMM 作为成熟度参考。
+- 以 OpenSSF Scorecard 概念评估开源依赖。
+
+## AI 平台架构
+
+模型层：
+
+- 使用私有或企业托管模型，支持代码生成、测试生成、文档总结和缺陷分析。
+- 按角色和风险区分模型访问 profile。
+
+上下文层：
+
+- 检索源只包含批准的需求、架构文档、API 契约、代码标准、历史缺陷和测试资产。
+- 生产数据和客户信息在索引前必须脱敏。
+
+Prompt 层：
+
+- 内部团队版本化管理标准 Prompt Card。
+- Prompt Card 定义输入类型、输出结构、禁止内容和评审清单。
+- 供应商团队不要求使用内部 Prompt Card；其交付物按验收工件和质量证据评估。
+
+审计层：
+
+- 记录用户、时间、工具、Prompt Card 版本、引用上下文、相关需求 ID 和相关 MR。
+- 审计记录必须可查询，用于内部缺陷分析和流程改进。
+

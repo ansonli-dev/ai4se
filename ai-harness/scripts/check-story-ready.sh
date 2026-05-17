@@ -15,7 +15,7 @@ fi
 
 missing=0
 
-for pattern in "Acceptance Criteria" "验收" "AI Context Boundary" "Traceability" "Story ID"; do
+for pattern in "Acceptance Criteria" "AI Context Boundary" "Traceability" "Story ID"; do
   if ! grep -qi "$pattern" "$file"; then
     echo "Missing required section or marker: $pattern"
     missing=1

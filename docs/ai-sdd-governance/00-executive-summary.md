@@ -1,60 +1,61 @@
-# AI-Assisted Agile Delivery and SDD Governance
+# AI-Assisted Agile Delivery And SDD Governance
 
 ## Purpose
 
-This方案面向交付负责人，用于在大型企业售后系统项目中建立一套可执行、可审计、可度量的 AI 辅助研发机制。
+This governance kit helps delivery leaders establish an executable, auditable, and measurable AI-assisted development model for large-scale agile software delivery programs.
 
-对内部团队，目标不是让每位开发者自由使用 AI，而是通过 SDD 规格驱动、Superpowers 工作流、工程护栏、平台化工具链和分层治理，让 AI 产出进入标准化输入、可验证输出、自动化质量门禁和审计留痕的闭环。
+For internal teams, the goal is not to let every developer use AI freely. The goal is to bring AI-assisted output into a controlled delivery loop through SDD specifications, Superpowers workflow, engineering guardrails, platform-enabled toolchains, and layered governance.
 
-外包团队不纳入内部 AI 工作方式约束。外包交付主要按交付物、测试证据、质量门禁和验收结果管理。
+External supplier teams are not governed by the internal AI working method by default. Supplier delivery is managed primarily through deliverables, test evidence, quality gates, and acceptance results.
 
 ## Delivery Context
 
-- 项目类型：大型企业一条业务线的售后系统。
-- 交付模式：敏捷迭代。
-- 团队结构：两个自有员工团队和一个纯外包团队。
-- 人员结构：老员工、新招员工、毕业生、合同工、外包开发者并存。
-- 技术策略：内部团队使用 AI 辅助开发提升效率，优先推广 Superpowers 作为 AI-SDD 执行工作流。
-- 方法论策略：采用 Spec-Driven Development。
+- Project type: large-scale enterprise software delivery program.
+- Delivery mode: agile and iterative delivery.
+- Team structure: multiple internal teams, mixed-seniority developers, contractors, and one or more external supplier teams.
+- People structure: experienced employees, new hires, graduates, contractors, and supplier developers may work together.
+- AI strategy: internal teams use AI-assisted development to improve delivery flow while keeping human ownership explicit.
+- Workflow strategy: internal teams adopt Superpowers as the preferred AI-SDD execution workflow.
+- Methodology strategy: the delivery program adopts Spec-Driven Development.
 
 ## Recommended Approach
 
-采用“集中治理、团队自治、平台强约束”的模式。
+Use a model of centralized governance, team autonomy, and platform-enforced controls.
 
-集中治理：
+Centralized governance:
 
-- 建立 AI-SDD 交付委员会。
-- 统一 SDD 模板、技术模板、质量门禁、指标口径和审计规则。
-- 统一 AI 使用边界、提示词资产和知识库准入标准。
+- Establish an AI-SDD delivery governance committee.
+- Standardize SDD templates, technical templates, quality gates, metric definitions, and audit rules.
+- Standardize AI usage boundaries, prompt assets, and approved knowledge-source rules.
 
-团队自治：
+Team autonomy:
 
-- 每个敏捷团队保留迭代节奏、任务拆分和日常工程实践的灵活性。
-- 内部团队设置 AI Champion，负责 Superpowers 工作流落地、问题反馈和经验复用。
+- Each agile team keeps flexibility over sprint rhythm, task breakdown, and day-to-day engineering practices.
+- Internal teams appoint AI Champions to support Superpowers adoption, collect feedback, and reuse examples.
 
-平台强约束：
+Platform-enforced controls:
 
-- 通过需求模板、代码仓库、CI/CD、评审规则、SonarQube、测试覆盖率、依赖安全扫描和制品库固化一致性。
-- 外包团队不强制接入内部 AI 工作流；如需合入内部仓库，必须满足统一交付物、质量门禁和 Owner Review。
+- Use requirement templates, repositories, CI/CD, review rules, SonarQube, test coverage, dependency security scanning, and artifact repositories to make consistency the default.
+- Supplier teams are not required to use the internal AI workflow. If their work is merged into internal repositories, it must satisfy the same deliverable expectations, quality gates, and Owner Review rules.
 
 ## What This Governance Prevents
 
-- 不同团队产物结构不一致。
-- AI 根据模糊需求生成错误实现。
-- 外包交付物质量不稳定或验收标准不一致。
-- 新员工和毕业生因经验不足造成隐性返工。
-- AI 生成代码缺少测试、审计和责任归属。
-- 需求、设计、代码、测试、发布无法追溯。
+- Different teams producing inconsistent artifacts.
+- AI generating incorrect implementations from vague requirements.
+- Supplier output being accepted with unstable quality standards.
+- New hires and graduates creating hidden rework because expectations are implicit.
+- AI-generated code lacking tests, audit trails, or clear accountability.
+- Requirements, design, code, tests, release, and acceptance becoming untraceable.
 
 ## Default Policy
 
-- 企业私有 AI 优先。
-- 核心代码不得直接由 AI 输出后合入主干。
-- 所有 AI 生成内容必须经过人工评审和自动化门禁。
-- 核心模块必须由自有员工担任 Owner。
-- 内部团队默认按 Superpowers 分层流程执行 AI-SDD。
-- 外包团队不要求使用 Superpowers、Prompt Card 或内部 AI 上下文。
-- 所有新增服务接口必须有 OpenAPI 契约。
-- 所有跨团队数据对象必须有数据字典。
-- 所有异步事件必须有事件 Schema。
-- 所有错误码必须归档到统一错误码中心。
+- Enterprise-private AI is preferred by default.
+- Core production code must not be merged only because AI generated it.
+- All AI-generated or AI-assisted output must pass human review and automated quality gates.
+- Core modules must have accountable internal owners.
+- Internal teams follow the agreed Superpowers workflow tiers by default.
+- Supplier teams are not required to use Superpowers, Prompt Cards, or internal AI context unless explicitly agreed.
+- New service APIs must have OpenAPI contracts.
+- Cross-team data objects must have data dictionary entries.
+- Asynchronous events must have event schemas.
+- Error codes must be recorded in a shared error-code registry.

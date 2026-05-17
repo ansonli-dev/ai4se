@@ -1,0 +1,90 @@
+# 运行模型
+
+English version: [../01-operating-model.md](../01-operating-model.md)
+
+## 治理层级
+
+交付项目使用四层治理。
+
+## 1. Project AI-SDD Governance Committee
+
+成员：
+
+- Delivery Owner。
+- Chief Architect 或 Architecture Lead。
+- QA Lead。
+- Security Lead。
+- 每个内部团队的 Tech Lead。
+- 当供应商交付物进入评审时，供应商交付负责人参与。
+
+职责：
+
+- 负责内部 AI-SDD 流程和整体质量标准。
+- 批准标准模板和模板变更。
+- 定义质量门禁和指标口径。
+- 每周评审 AI-SDD 交付指标。
+- 仲裁架构、安全和核心业务行为争议。
+
+节奏：
+
+- 每周 60 分钟 AI-SDD 质量复盘。
+- 每两周模板和工具链改进复盘。
+- 每月供应商交付质量复盘。
+
+## 2. Team AI Champion
+
+每个内部团队任命 1 到 2 名 AI Champion。
+
+职责：
+
+- 辅导团队成员使用 SDD 和 AI。
+- 维护团队级 Superpowers 示例和 Prompt Card。
+- 收集 AI 失败案例并提交治理委员会。
+- 帮助新员工、毕业生和承包商使用内部 Superpowers 工作流。
+
+## 3. Code Owner Model
+
+每个关键模块都有 Owner。
+
+规则：
+
+- 核心业务模块必须由内部员工担任 Owner。
+- 供应商开发者可以交付代码或组件，但不能成为内部仓库合入或验收的最终审批人。
+- 模块 Owner 审批影响领域行为、数据模型、接口契约、权限或生产风险的变更。
+- 所有权应记录在 service catalog 和仓库 `CODEOWNERS` 中。
+
+## 4. Quality Arbitration
+
+当团队无法自行解决争议时，由治理委员会仲裁。
+
+常见仲裁主题：
+
+- 变更是否影响架构。
+- AI 生成方案是否可接受。
+- 质量门禁例外是否合理。
+- 缺陷是由需求模糊、AI 误用、测试缺失还是评审遗漏导致。
+- 供应商交付物是否满足验收标准。
+
+## 团队规则
+
+资深员工：
+
+- 担任模块 Owner 和 Reviewer。
+- 维护高质量 SDD Spec 示例。
+- 评审核心业务流程中的 AI 生成设计。
+
+新员工、毕业生和承包商：
+
+- 使用标准模板，不做本地变体。
+- 前两个迭代与 AI Champion 配对。
+- 从低风险 Story 开始，直到交付质量稳定。
+- 根据变更风险使用轻量或标准 Superpowers 流程。
+
+供应商团队：
+
+- 不受内部 Superpowers 工作流约束。
+- 按批准的 SDD Spec、接口契约、测试期望和验收标准交付。
+- 提供约定交付物、测试证据、部署说明、回滚说明和变更说明。
+- 验收或内部合入前必须通过约定质量门禁。
+- 不能成为核心模块或生产影响变更的最终审批人。
+
