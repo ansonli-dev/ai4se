@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: After-Sales Service API
+  version: 0.1.0
+  description: Template for service APIs governed by AI-SDD.
+servers:
+  - url: https://api.example.com
+paths:
+  /work-orders/{workOrderId}:
+    get:
+      summary: Get work order details
+      operationId: getWorkOrder
+      tags:
+        - WorkOrder
+      parameters:
+        - name: workOrderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Work order details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkOrder"
+        "403":
+          description: Permission denied
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Work order not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    WorkOrder:
+      type: object
+      required:
+        - id
+        - status
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+            - created
+            - assigned
+            - in_progress
+            - completed
+            - cancelled
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+

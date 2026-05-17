@@ -1,0 +1,27 @@
+default_mode: bounded_task
+
+allowed_by_default:
+  - read_project_files
+  - search_project_files
+  - edit_declared_scope
+  - run_local_tests
+  - run_static_checks
+
+requires_human_confirmation:
+  - run_database_migrations
+  - change_dependency_versions
+  - change_ci_configuration
+  - change_quality_gate_thresholds
+  - change_security_policy
+  - edit_outside_declared_scope
+  - delete_files
+  - call_external_systems
+
+forbidden:
+  - access_production_systems
+  - use_production_credentials
+  - upload_unapproved_source_or_data
+  - disable_tests_to_pass_ci
+  - commit_secrets
+  - rewrite_git_history_without_approval
+

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/work-order-status-changed.json",
+  "title": "WorkOrderStatusChanged",
+  "type": "object",
+  "required": ["eventId", "eventType", "occurredAt", "data"],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "description": "Unique event identifier."
+    },
+    "eventType": {
+      "const": "WorkOrderStatusChanged"
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "data": {
+      "type": "object",
+      "required": ["workOrderId", "oldStatus", "newStatus"],
+      "properties": {
+        "workOrderId": {
+          "type": "string"
+        },
+        "oldStatus": {
+          "type": "string"
+        },
+        "newStatus": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

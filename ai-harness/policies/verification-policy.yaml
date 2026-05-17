@@ -1,0 +1,33 @@
+required:
+  build: true
+  unit_tests: true
+  static_analysis: true
+  secret_scan: true
+  meaningful_test_evidence: true
+
+required_when_api_changes:
+  - openapi_update
+  - contract_tests
+  - backward_compatibility_check
+
+required_when_event_changes:
+  - event_schema_update
+  - producer_consumer_compatibility_check
+
+required_when_data_model_changes:
+  - migration_review
+  - rollback_or_recovery_strategy
+
+required_when_permission_or_audit_changes:
+  - permission_tests
+  - audit_log_validation
+
+required_when_bug_fix:
+  - regression_test_at_narrowest_useful_level
+
+flaky_test_policy:
+  - quarantine_to_protect_main_signal
+  - create_fix_ticket_with_owner_and_due_date
+  - do_not_treat_quarantine_as_permanent
+
+completion_rule: completion_requires_fresh_verification_evidence

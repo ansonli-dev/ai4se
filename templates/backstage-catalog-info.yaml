@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: after-sales-service
+  description: Example service catalog entry for an AI-SDD governed service.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    gitlab.com/project-slug: group/after-sales-service
+spec:
+  type: service
+  lifecycle: experimental
+  owner: internal-delivery/team-leads
+  system: after-sales
+  providesApis:
+    - after-sales-service-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: after-sales-service-api
+  description: OpenAPI contract for after-sales service APIs.
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: internal-architecture/owners
+  system: after-sales
+  definition:
+    $text: ./docs/api/openapi.yaml
+

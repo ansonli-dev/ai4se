@@ -1,0 +1,31 @@
+required_for_tier_b:
+  - story_card
+  - acceptance_criteria
+  - relevant_code_entry_points
+  - relevant_tests
+  - verification_commands
+
+required_for_tier_c:
+  - story_card
+  - sdd_story_spec
+  - technical_spec
+  - acceptance_criteria
+  - api_contracts_if_applicable
+  - event_schemas_if_applicable
+  - data_dictionary_if_applicable
+  - error_code_registry_if_applicable
+  - relevant_code_entry_points
+  - relevant_tests
+  - verification_commands
+  - rollback_or_recovery_notes
+
+forbidden_context:
+  - unmasked_production_customer_data
+  - credentials
+  - tokens
+  - private_keys
+  - unapproved_production_logs
+  - documents_outside_task_scope_without_approval
+
+rule: use_minimum_sufficient_context
+

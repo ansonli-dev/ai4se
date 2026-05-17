@@ -1,0 +1,26 @@
+# CODEOWNERS template for AI-SDD governed repositories.
+#
+# Core modules must be owned by internal employees.
+# Outsourced team members may contribute but must not be the only approver
+# for core business, data, permission, or production-impacting changes.
+
+# Default owner
+* @internal-delivery/team-leads
+
+# Architecture decisions
+/docs/adrs/ @internal-architecture/owners
+
+# API contracts
+/docs/api/ @internal-architecture/owners @internal-qa/contract-testing
+
+# Data dictionary and error codes
+/docs/data-dictionary.md @internal-domain/owners
+/docs/error-code-registry.md @internal-domain/owners @internal-qa/owners
+
+# Core work-order domain example
+/src/work-order/ @internal-domain/work-order-owners
+
+# Security-sensitive configuration
+/.gitlab-ci.yml @internal-devops/owners @internal-security/owners
+/deploy/ @internal-devops/owners @internal-security/owners
+
