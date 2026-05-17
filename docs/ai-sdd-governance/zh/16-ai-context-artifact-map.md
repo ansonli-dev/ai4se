@@ -69,11 +69,11 @@ flowchart LR
 - [Testing Policy](../../../ai/testing-policy.md)
 - [Backstage Catalog Template](../../../templates/backstage-catalog-info.yaml)
 
-模板缺口：
+可用模板：
 
-- Project Brief template。
-- Iteration Brief template。
-- Team Working Agreement template。
+- [Project Brief](../../../templates/project-brief.md)
+- [Iteration Brief](../../../templates/iteration-brief.md)
+- [Team Working Agreement](../../../templates/team-working-agreement.md)
 
 AI readiness check：
 
@@ -107,12 +107,12 @@ AI readiness check：
 - [Data Dictionary](../../../templates/data-dictionary.md)
 - [Error Code Registry](../../../templates/error-code-registry.md)
 
-模板缺口：
+可用模板：
 
-- Architecture Overview template。
-- Architecture Constraints template。
-- Permission Model template。
-- Observability Plan template。
+- [Architecture Overview](../../../templates/architecture-overview.md)
+- [Architecture Constraints](../../../templates/architecture-constraints.md)
+- [Permission Model](../../../templates/permission-model.md)
+- [Observability Plan](../../../templates/observability-plan.md)
 
 AI readiness check：
 
@@ -138,14 +138,14 @@ AI readiness check：
 
 - [Story Package Checklist](../../../templates/story-package-checklist.md)
 
-模板缺口：
+可用模板：
 
-- Epic Brief template。
-- Feature Spec template。
-- Story Breakdown template。
-- Dependency Map template。
-- Risk List template。
-- Acceptance Strategy template。
+- [Epic Brief](../../../templates/epic-brief.md)
+- [Feature Spec](../../../templates/feature-spec.md)
+- [Story Breakdown](../../../templates/story-breakdown.md)
+- [Dependency Map](../../../templates/dependency-map.md)
+- [Risk List](../../../templates/risk-list.md)
+- [Acceptance Strategy](../../../templates/acceptance-strategy.md)
 
 AI readiness check：
 
@@ -177,10 +177,10 @@ AI readiness check：
 - [Prompt Card](../../../templates/prompt-card.md)
 - [Story Package Checklist](../../../templates/story-package-checklist.md)
 
-模板缺口：
+可用模板：
 
-- 如果 issue tracker 没有 Story Card 模板，需要补一个。
-- Story Context Package checklist，用一个地方聚合所有必需链接。
+- [Story Card](../../../templates/story-card.md)
+- [Story Context Package](../../../templates/story-context-package.md)
 
 AI readiness check：
 
@@ -210,10 +210,10 @@ AI readiness check：
 - [Verification Script](../../../ai-harness/scripts/run-verification.sh)
 - [Execution Report Script](../../../ai-harness/scripts/generate-execution-report.sh)
 
-模板缺口：
+可用模板：
 
-- Implementation Plan template。
-- 如果 MR 工具不能完整保留 review comments，需要 Review Findings template。
+- [Implementation Plan](../../../templates/implementation-plan.md)
+- [Review Findings](../../../templates/review-findings.md)
 
 AI readiness check：
 
@@ -240,11 +240,11 @@ AI readiness check：
 - [Story Package Checklist](../../../templates/story-package-checklist.md)
 - [Weekly AI-SDD Review](../../../templates/weekly-ai-sdd-review.md)
 
-模板缺口：
+可用模板：
 
-- Acceptance Evidence template。
-- Story Acceptance Record template。
-- Defect Attribution template。
+- [Acceptance Evidence](../../../templates/acceptance-evidence.md)
+- [Story Acceptance Record](../../../templates/story-acceptance-record.md)
+- [Defect Attribution](../../../templates/defect-attribution.md)
 
 AI readiness check：
 
@@ -275,15 +275,15 @@ AI readiness check：
 - [CI Gate Policy](../../../quality-gates/ci-gate-policy.md)
 - [Technical Spec](../../../templates/technical-spec.md)
 
-模板缺口：
+可用模板：
 
-- Integration Plan template。
-- Release Notes template。
-- Deployment Notes template。
-- Rollback Plan template。
-- Migration Plan template。
-- Observability Checklist template。
-- Quality Gate Report template。
+- [Integration Plan](../../../templates/integration-plan.md)
+- [Release Notes](../../../templates/release-notes.md)
+- [Deployment Notes](../../../templates/deployment-notes.md)
+- [Rollback Plan](../../../templates/rollback-plan.md)
+- [Migration Plan](../../../templates/migration-plan.md)
+- [Observability Checklist](../../../templates/observability-checklist.md)
+- [Quality Gate Report](../../../templates/quality-gate-report.md)
 
 AI readiness check：
 
@@ -311,13 +311,13 @@ AI readiness check：
 - [Metrics](../05-metrics.md)
 - [Weekly AI-SDD Review](../../../templates/weekly-ai-sdd-review.md)
 
-模板缺口：
+可用模板：
 
-- UAT Plan template。
-- UAT Evidence template。
-- Release Acceptance Record template。
-- Change Request template。
-- Knowledge Base Update template。
+- [UAT Plan](../../../templates/uat-plan.md)
+- [UAT Evidence](../../../templates/uat-evidence.md)
+- [Release Acceptance Record](../../../templates/release-acceptance-record.md)
+- [Change Request](../../../templates/change-request.md)
+- [Knowledge Base Update](../../../templates/knowledge-base-update.md)
 
 AI readiness check：
 
