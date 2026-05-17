@@ -190,6 +190,14 @@ Read:
 
 - [15-glossary.md](./15-glossary.md)
 
+### 1.10 Map Stage Artifacts To AI Context
+
+Each stage must produce enough documents and evidence for the next AI-assisted stage. The artifact map shows the end-to-end flow from project preparation to user acceptance.
+
+Read:
+
+- [16-ai-context-artifact-map.md](./16-ai-context-artifact-map.md)
+
 ## 2. Preparation Work
 
 ### 2.1 Organization
@@ -278,3 +286,4 @@ Read:
 - [13-agent-tools.md](./13-agent-tools.md): Claude Code, Codex, Cursor, agent capabilities, and tool governance.
 - [14-team-ai-sdlc.md](./14-team-ai-sdlc.md): Team AI SDLC architecture and document map by layer.
 - [15-glossary.md](./15-glossary.md): abbreviations and terms used across the handbook.
+- [16-ai-context-artifact-map.md](./16-ai-context-artifact-map.md): stage-by-stage artifact map for AI context handoff.

@@ -38,6 +38,7 @@ English version: [../README.md](../README.md)
 7. 明确 Agent 工具：说明 Claude Code、Codex、Cursor、skills、MCP、plugins、memory 和 hooks 如何纳入治理模型。
 8. 按团队级 AI SDLC 组织文档：用 Spec / Plan、Execution、Verification、Governance 四层重新串联现有内容。
 9. 解释缩写：将 SDLC、SDD、CI/CD、MR、ADR、MCP、SAST、SCA 等集中说明。
+10. 映射阶段工件到 AI 上下文：说明每个阶段必须留下哪些文档和证据，才能支撑下一阶段 AI 工作。
 
 ## 前期准备
 
@@ -99,3 +100,4 @@ English version: [../README.md](../README.md)
 - [13-agent-tools.md](./13-agent-tools.md)：Claude Code、Codex、Cursor、agent 能力和工具治理。
 - [14-team-ai-sdlc.md](./14-team-ai-sdlc.md)：团队级 AI SDLC 架构和分层文档地图。
 - [15-glossary.md](./15-glossary.md)：手册中使用的缩写和术语。
+- [16-ai-context-artifact-map.md](./16-ai-context-artifact-map.md)：按阶段说明 AI 上下文交接所需工件。

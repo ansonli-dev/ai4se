@@ -43,6 +43,8 @@ AI 辅助开发不应该从自由 prompt 开始。
 
 如果遇到不熟悉的缩写，查看：[术语表](docs/ai-sdd-governance/zh/15-glossary.md)。
 
+如果想看每个交付阶段必须产出哪些工件，才能支撑下一步 AI 辅助工作，阅读：[AI 上下文工件地图](docs/ai-sdd-governance/zh/16-ai-context-artifact-map.md)。
+
 ## 这本手册不是什么
 
 它不是单纯的 AI 工具指南。
@@ -241,3 +243,4 @@ AI 辅助开发不应该从自由 prompt 开始。
 - [Agent 工具](docs/ai-sdd-governance/zh/13-agent-tools.md)
 - [团队级 AI SDLC 架构](docs/ai-sdd-governance/zh/14-team-ai-sdlc.md)
 - [术语表](docs/ai-sdd-governance/zh/15-glossary.md)
+- [AI 上下文工件地图](docs/ai-sdd-governance/zh/16-ai-context-artifact-map.md)
