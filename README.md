@@ -43,6 +43,8 @@ The project uses five layers:
 - Quality Gates define what must pass before merge, release, or acceptance.
 - Metrics show whether speed, quality, and consistency are improving together.
 
+For the team-level architecture that connects these pieces, read [Team AI SDLC Architecture](docs/ai-sdd-governance/14-team-ai-sdlc.md).
+
 ## What This Handbook Is Not
 
 This is not only an AI tool guide.
@@ -214,6 +216,7 @@ Internal teams and outsourced teams can use different working methods, but they 
 
 Read this to understand what happens after a Story is assigned.
 
+- [Team AI SDLC Architecture](docs/ai-sdd-governance/14-team-ai-sdlc.md): maps SDD, Superpowers, GSD-style long-task execution, gstack-style QA, verification, and governance into one delivery architecture.
 - [Superpowers Adoption Strategy](docs/ai-sdd-governance/08-superpowers-adoption.md): Tier A/B/C workflow levels for internal teams.
 - [SDD And Superpowers Developer Guide](docs/ai-sdd-governance/09-sdd-and-superpowers-developer-guide.md): developer workflow from Story intake to verified MR.
 - [AI Engineering Constitution](ai/engineering-constitution.md): baseline AI-assisted development rules.
@@ -426,3 +429,4 @@ Invest in service catalog, dashboards, context service, tool gateway, trace stor
 - [Testing Strategy For AI-SDD](docs/ai-sdd-governance/11-testing-strategy-for-ai-sdd.md)
 - [Priorities And Roadmap](docs/ai-sdd-governance/12-priorities-and-roadmap.md)
 - [Agent Tooling](docs/ai-sdd-governance/13-agent-tools.md)
+- [Team AI SDLC Architecture](docs/ai-sdd-governance/14-team-ai-sdlc.md)

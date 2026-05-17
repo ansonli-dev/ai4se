@@ -39,6 +39,8 @@ AI 辅助开发不应该从自由 prompt 开始。
 - Quality Gates 定义合入、发布或验收前必须满足的条件。
 - Metrics 用于观察效率、质量和一致性是否同步改善。
 
+这些内容如何连接成团队级架构，阅读：[团队级 AI SDLC 架构](docs/ai-sdd-governance/zh/14-team-ai-sdlc.md)。
+
 ## 这本手册不是什么
 
 它不是单纯的 AI 工具指南。
@@ -235,3 +237,4 @@ AI 辅助开发不应该从自由 prompt 开始。
 - [AI-SDD 测试策略](docs/ai-sdd-governance/zh/11-testing-strategy-for-ai-sdd.md)
 - [优先级与路线图](docs/ai-sdd-governance/zh/12-priorities-and-roadmap.md)
 - [Agent 工具](docs/ai-sdd-governance/zh/13-agent-tools.md)
+- [团队级 AI SDLC 架构](docs/ai-sdd-governance/zh/14-team-ai-sdlc.md)
