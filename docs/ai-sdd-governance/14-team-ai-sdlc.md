@@ -4,7 +4,7 @@ Chinese version: [zh/14-team-ai-sdlc.md](./zh/14-team-ai-sdlc.md)
 
 ## Purpose
 
-This chapter reorganizes the handbook around a team-level AI SDLC. The existing articles remain valid, but readers need a clearer architecture for how SDD, Superpowers, GSD-style context engineering, gstack-style product and QA review, CI/CD, and governance fit together.
+This chapter reorganizes the handbook around a team-level AI SDLC. SDLC means Software Development Life Cycle: the full lifecycle of software work from idea and requirements through design, implementation, testing, release, operation, and improvement. The existing articles remain valid, but readers need a clearer architecture for how SDD, Superpowers, GSD-style context engineering, gstack-style product and QA review, CI/CD, and governance fit together.
 
 The recommended structure is:
 
@@ -328,4 +328,3 @@ Then return to Superpowers for implementation.
 - [Superpowers subagent-driven-development](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)
 - [gstack](https://gstack.lol/)
 - [GSD: Get Shit Done](https://github.com/gsd-build/get-shit-done)
-

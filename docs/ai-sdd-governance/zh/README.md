@@ -37,6 +37,7 @@ English version: [../README.md](../README.md)
 6. 明确优先级和路线图：区分 P0/P1/P2、可直接落实项和基础设施建设项。
 7. 明确 Agent 工具：说明 Claude Code、Codex、Cursor、skills、MCP、plugins、memory 和 hooks 如何纳入治理模型。
 8. 按团队级 AI SDLC 组织文档：用 Spec / Plan、Execution、Verification、Governance 四层重新串联现有内容。
+9. 解释缩写：将 SDLC、SDD、CI/CD、MR、ADR、MCP、SAST、SCA 等集中说明。
 
 ## 前期准备
 
@@ -97,3 +98,4 @@ English version: [../README.md](../README.md)
 - [12-priorities-and-roadmap.md](./12-priorities-and-roadmap.md)：优先级、可直接落实项、基础设施工作和路线图。
 - [13-agent-tools.md](./13-agent-tools.md)：Claude Code、Codex、Cursor、agent 能力和工具治理。
 - [14-team-ai-sdlc.md](./14-team-ai-sdlc.md)：团队级 AI SDLC 架构和分层文档地图。
+- [15-glossary.md](./15-glossary.md)：手册中使用的缩写和术语。

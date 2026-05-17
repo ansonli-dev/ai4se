@@ -45,6 +45,8 @@ The project uses five layers:
 
 For the team-level architecture that connects these pieces, read [Team AI SDLC Architecture](docs/ai-sdd-governance/14-team-ai-sdlc.md).
 
+If an abbreviation is unfamiliar, use the [Glossary](docs/ai-sdd-governance/15-glossary.md).
+
 ## What This Handbook Is Not
 
 This is not only an AI tool guide.
@@ -430,3 +432,4 @@ Invest in service catalog, dashboards, context service, tool gateway, trace stor
 - [Priorities And Roadmap](docs/ai-sdd-governance/12-priorities-and-roadmap.md)
 - [Agent Tooling](docs/ai-sdd-governance/13-agent-tools.md)
 - [Team AI SDLC Architecture](docs/ai-sdd-governance/14-team-ai-sdlc.md)
+- [Glossary](docs/ai-sdd-governance/15-glossary.md)

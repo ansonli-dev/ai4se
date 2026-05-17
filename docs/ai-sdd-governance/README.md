@@ -182,6 +182,14 @@ Core topics:
 - When to use Superpowers, GSD-style long-task execution, and gstack-style product or QA review.
 - How existing handbook articles map to the four-layer AI SDLC.
 
+### 1.9 Explain Abbreviations
+
+The handbook uses many common software delivery abbreviations. They should be explained in one shared place so articles can stay readable.
+
+Read:
+
+- [15-glossary.md](./15-glossary.md)
+
 ## 2. Preparation Work
 
 ### 2.1 Organization
@@ -269,3 +277,4 @@ Core topics:
 - [12-priorities-and-roadmap.md](./12-priorities-and-roadmap.md): priorities, directly actionable items, infrastructure work, and roadmap.
 - [13-agent-tools.md](./13-agent-tools.md): Claude Code, Codex, Cursor, agent capabilities, and tool governance.
 - [14-team-ai-sdlc.md](./14-team-ai-sdlc.md): Team AI SDLC architecture and document map by layer.
+- [15-glossary.md](./15-glossary.md): abbreviations and terms used across the handbook.

@@ -41,6 +41,8 @@ AI 辅助开发不应该从自由 prompt 开始。
 
 这些内容如何连接成团队级架构，阅读：[团队级 AI SDLC 架构](docs/ai-sdd-governance/zh/14-team-ai-sdlc.md)。
 
+如果遇到不熟悉的缩写，查看：[术语表](docs/ai-sdd-governance/zh/15-glossary.md)。
+
 ## 这本手册不是什么
 
 它不是单纯的 AI 工具指南。
@@ -238,3 +240,4 @@ AI 辅助开发不应该从自由 prompt 开始。
 - [优先级与路线图](docs/ai-sdd-governance/zh/12-priorities-and-roadmap.md)
 - [Agent 工具](docs/ai-sdd-governance/zh/13-agent-tools.md)
 - [团队级 AI SDLC 架构](docs/ai-sdd-governance/zh/14-team-ai-sdlc.md)
+- [术语表](docs/ai-sdd-governance/zh/15-glossary.md)

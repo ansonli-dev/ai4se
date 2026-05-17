@@ -4,7 +4,7 @@ English version: [../14-team-ai-sdlc.md](../14-team-ai-sdlc.md)
 
 ## 目的
 
-本章用团队级 AI SDLC 重新组织手册。现有文章内容仍然有效，但读者需要一套更清晰的架构，理解 SDD、Superpowers、GSD-style context engineering、gstack-style product/QA review、CI/CD 和治理之间的关系。
+本章用团队级 AI SDLC 重新组织手册。SDLC 是 Software Development Life Cycle，即软件开发生命周期，覆盖从想法、需求、设计、实现、测试、发布、运行到持续改进的全过程。现有文章内容仍然有效，但读者需要一套更清晰的架构，理解 SDD、Superpowers、GSD-style context engineering、gstack-style product/QA review、CI/CD 和治理之间的关系。
 
 推荐结构：
 
@@ -328,4 +328,3 @@ Superpowers 处理：
 - [Superpowers subagent-driven-development](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)
 - [gstack](https://gstack.lol/)
 - [GSD: Get Shit Done](https://github.com/gsd-build/get-shit-done)
-
