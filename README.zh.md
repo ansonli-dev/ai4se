@@ -77,6 +77,7 @@ AI 辅助开发不应该从自由 prompt 开始。
 - [质量门禁](docs/ai-sdd-governance/zh/04-quality-gates.md)
 - [Harness Engineering](docs/ai-sdd-governance/zh/10-harness-engineering.md)
 - [优先级与路线图](docs/ai-sdd-governance/zh/12-priorities-and-roadmap.md)
+- [Agent 工具](docs/ai-sdd-governance/zh/13-agent-tools.md)
 
 关注规格驱动交付、架构决策、仓库和 CI/CD 基线、Owner Review，以及 API、事件、数据和错误码契约。
 
@@ -233,3 +234,4 @@ AI 辅助开发不应该从自由 prompt 开始。
 - [Harness Engineering](docs/ai-sdd-governance/zh/10-harness-engineering.md)
 - [AI-SDD 测试策略](docs/ai-sdd-governance/zh/11-testing-strategy-for-ai-sdd.md)
 - [优先级与路线图](docs/ai-sdd-governance/zh/12-priorities-and-roadmap.md)
+- [Agent 工具](docs/ai-sdd-governance/zh/13-agent-tools.md)

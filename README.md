@@ -87,6 +87,7 @@ Read these first:
 - [Quality Gates](docs/ai-sdd-governance/04-quality-gates.md)
 - [Harness Engineering](docs/ai-sdd-governance/10-harness-engineering.md)
 - [Priorities And Roadmap](docs/ai-sdd-governance/12-priorities-and-roadmap.md)
+- [Agent Tooling](docs/ai-sdd-governance/13-agent-tools.md)
 
 Focus on:
 
@@ -230,6 +231,7 @@ Read this to understand which rules must become real engineering controls.
 - [Testing Strategy For AI-SDD](docs/ai-sdd-governance/11-testing-strategy-for-ai-sdd.md): testing strategy for AI-assisted SDD.
 - [Toolchain](docs/ai-sdd-governance/03-toolchain.md): recommended enterprise-first toolchain.
 - [Harness Engineering](docs/ai-sdd-governance/10-harness-engineering.md): execution-control layer for AI agents and coding agents.
+- [Agent Tooling](docs/ai-sdd-governance/13-agent-tools.md): Claude Code, Codex, Cursor, skills, MCP, plugins, memory, hooks, and tool governance.
 - [Quality Gate Checklist](quality-gates/checklist.md): practical checklist.
 - [CI Gate Policy](quality-gates/ci-gate-policy.md): CI/CD gate policy.
 
@@ -242,6 +244,7 @@ Quality gates cannot remain policy text. Build, tests, static analysis, security
 Read this before planning adoption.
 
 - [Priorities And Roadmap](docs/ai-sdd-governance/12-priorities-and-roadmap.md): must-have, should-have, nice-to-have, directly actionable items, infrastructure work, and rollout phases.
+- [Agent Tooling](docs/ai-sdd-governance/13-agent-tools.md): tool choices and governance for Claude Code, Codex, and Cursor.
 - [Rollout And Acceptance](docs/ai-sdd-governance/06-rollout-and-acceptance.md): 12-week rollout plan and acceptance scenarios.
 - [Metrics](docs/ai-sdd-governance/05-metrics.md): efficiency, quality, consistency, and review cadence.
 
@@ -422,3 +425,4 @@ Invest in service catalog, dashboards, context service, tool gateway, trace stor
 - [Harness Engineering](docs/ai-sdd-governance/10-harness-engineering.md)
 - [Testing Strategy For AI-SDD](docs/ai-sdd-governance/11-testing-strategy-for-ai-sdd.md)
 - [Priorities And Roadmap](docs/ai-sdd-governance/12-priorities-and-roadmap.md)
+- [Agent Tooling](docs/ai-sdd-governance/13-agent-tools.md)

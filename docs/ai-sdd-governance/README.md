@@ -153,6 +153,21 @@ Core distinctions:
 - Directly Actionable: can be adopted through process, templates, review, and enablement.
 - Infrastructure Required: requires CI/CD, repository configuration, hooks, scanners, scripts, dashboards, or platform work.
 
+### 1.7 Clarify Agent Tooling
+
+Agent tools such as Claude Code, Codex, and Cursor are execution environments. They should support the governance model rather than replace it.
+
+Read:
+
+- [13-agent-tools.md](./13-agent-tools.md)
+
+Core topics:
+
+- Claude Code CLI, app, IDE plugins, skills, MCP, plugins, memory, hooks, and subagents.
+- OpenAI Codex terminal-native coding workflow.
+- Cursor editor-native AI workflow.
+- Tool-neutral SDD, review, verification, and evidence rules.
+
 ## 2. Preparation Work
 
 ### 2.1 Organization
@@ -238,3 +253,4 @@ Core distinctions:
 - [10-harness-engineering.md](./10-harness-engineering.md): AI Harness control layer, maturity levels, and rollout.
 - [11-testing-strategy-for-ai-sdd.md](./11-testing-strategy-for-ai-sdd.md): AI-SDD testing strategy.
 - [12-priorities-and-roadmap.md](./12-priorities-and-roadmap.md): priorities, directly actionable items, infrastructure work, and roadmap.
+- [13-agent-tools.md](./13-agent-tools.md): Claude Code, Codex, Cursor, agent capabilities, and tool governance.
