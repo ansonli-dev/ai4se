@@ -1,103 +1,75 @@
 # AI-SDD 治理导航
 
-English version: [../README.md](../README.md)
+英文版：[../README.md](../README.md)
 
-本页是治理文章的中文入口，帮助读者快速理解：
+这是 AI-SDD 治理手册的中文主入口。手册分成两条路径：
 
-- 本项目要建立什么能力。
-- 前期需要准备哪些组织、流程、模板和工具。
-- 进入正常迭代后，开发人员日常如何工作。
-- 哪些内容可以直接通过流程落实，哪些需要 CI/CD、Git hooks、扫描器、dashboard 或平台建设。
+- **知识路径：** 按易于学习和理解的顺序掌握概念。
+- **实践路径：** 按开发流程、角色、工件和推广阶段执行工作。
+
+可执行资产保留在本目录之外：模板在 [../../../templates/](../../../templates/)，政策在 [../../../ai/](../../../ai/)，质量门禁在 [../../../quality-gates/](../../../quality-gates/)，harness 资产在 [../../../ai-harness/](../../../ai-harness/)。
 
 ## 一句话定位
 
-本项目是一套面向大型敏捷软件交付的 AI-SDD 治理手册。
+AI-SDD 是一种 AI 辅助软件交付治理模型：工作从经过评审的规格、受控上下文、明确人工责任、质量门禁和可验证验收证据开始。
 
-它不是单纯的 AI 工具说明，也不是单纯的编码规范。它的核心目标是让多团队、多经验层次、承包商和供应商参与的 AI 辅助交付过程保持一致、可审计、可度量、可验收。
-
-## 主流程
+## 主交付流程
 
 ```text
 业务目标
   -> SDD 规格和验收标准
   -> 内部 AI-SDD 执行流程
-  -> Harness 上下文、工具、权限和验证控制
+  -> 上下文、工具、权限和验证控制
   -> 代码、测试、契约和文档
   -> CI/CD、Owner Review 和质量门禁
   -> 验收、指标、复盘和持续改进
 ```
 
-## 项目级工作流
+## 知识路径
 
-1. 建立统一交付方法：从 Story、规格、验收标准和上下文边界开始，而不是从自由 prompt 开始。
-2. 建立治理和责任边界：明确谁制定规则、谁负责模块、谁审批高风险变更、供应商如何参与。
-3. 建立内部 AI 辅助开发工作流：内部团队使用 Superpowers，把 AI 使用放进澄清、计划、测试、实现、评审和验证节奏。
-4. 建立质量门禁和验收体系：内部合入和供应商验收都需要交付物、测试证据、质量门禁和人工审批。
-5. 建立指标和持续改进机制：同时观察效率、质量和一致性。
-6. 明确优先级和路线图：区分 P0/P1/P2、可直接落实项和基础设施建设项。
-7. 明确 Agent 工具：说明 Claude Code、Codex、Cursor、skills、MCP、plugins、memory 和 hooks 如何纳入治理模型。
-8. 按团队级 AI SDLC 组织文档：用 Spec / Plan、Execution、Verification、Governance 四层重新串联现有内容。
-9. 解释缩写：将 SDLC、SDD、CI/CD、MR、ADR、MCP、SAST、SCA 等集中说明。
-10. 映射阶段工件到 AI 上下文：说明每个阶段必须留下哪些文档和证据，才能支撑下一阶段 AI 工作。
+学习模型时建议按顺序阅读：
 
-## 前期准备
+1. [AI-SDD 总览](knowledge/01-ai-sdd总览.md)：交付背景、治理方式和默认政策。
+2. [SDD 方法论](knowledge/02-sdd方法论.md)：为什么 AI 辅助交付要从规格、就绪条件和验收开始。
+3. [运行模型](knowledge/03-运行模型.md)：治理层级、责任归属、仲裁和团队规则。
+4. [质量门禁](knowledge/04-质量门禁.md)：合入政策、人工评审、例外和供应商验收。
+5. [测试策略](knowledge/05-测试策略.md)：AI-SDD 工作的测试策略。
+6. [工具链](knowledge/06-工具链.md)：企业工具链和 AI 平台架构。
+7. [Agent 工具](knowledge/07-agent工具.md)：Claude Code、Codex、Cursor、skills、MCP、plugins、memory、hooks 和工具治理。
+8. [Harness 工程](knowledge/08-harness工程.md)：受控上下文、工具、权限、验证和证据。
+9. [指标](knowledge/09-指标.md)：效率、质量、一致性和复盘节奏。
+10. [术语表](knowledge/10-术语表.md)：手册中的术语和缩写。
 
-- 任命 AI-SDD Governance Committee。
-- 每个内部团队任命 AI Champion。
-- 选择试点领域和试点 Story。
-- 确认试点模块的 Module Owner。
-- 批准 SDD Story Spec、Technical Spec、Test Spec、ADR、Prompt Card 和 MR 模板。
-- 配置分支保护、MR 审批规则和基础 CI/CD。
-- 明确 AI Context Policy、Security Policy、Allowed Tools 和人工确认点。
-- 使用 `ai-harness` 作为轻量执行控制层。
+## 实践路径
 
-## 开发人员日常流程
+执行真实交付工作时使用：
 
-1. 做 Story Intake。
-2. 判断 Tier A、Tier B 或 Tier C。
-3. 确认 Definition of Ready 和实现计划。
-4. 按测试纪律开发。
-5. 更新必要的契约和交付物。
-6. 提交带证据的 MR。
-7. 验证后才声明完成。
+1. [团队级 AI SDLC](practice/01-团队级ai-sdlc.md)：连接 SDD、Superpowers、agent、验证和治理的团队级架构。
+2. [实施 Playbook](practice/02-实施playbook.md)：Week 0 准备、Kickoff、复盘节奏、供应商评审、最小仓库设置和 RACI。
+3. [Superpowers 采用策略](practice/03-superpowers采用策略.md)：内部 Tier A/B/C 工作流规则和采用边界。
+4. [开发者指南](practice/04-开发者指南.md)：从 Story 接收 到 已验证 MR 的开发者工作流。
+5. [AI 上下文工件地图](practice/05-ai上下文工件地图.md)：按阶段说明 AI 上下文交接所需工件。
+6. [优先级与路线图](practice/06-优先级与路线图.md)：必需、应具备、可选增强、可直接落实项和基础设施 待办列表。
+7. [推广与验收](practice/07-推广与验收.md)：12 周推广模型和验收场景。
 
-## 角色阅读路径
+## 角色路径
 
-- Delivery Owner：阅读 00、01、05、06、12。
-- 架构师或 Tech Lead：阅读 02、03、04、10、12。
-- 开发人员：阅读 08、09、`ai/engineering-constitution.md`、`ai/context-policy.md`。
-- QA：阅读 04、11、`ai/testing-policy.md`、`templates/test-spec.md`。
-- 安全负责人：阅读 03、04、`ai/security-policy.md`、`ai/context-policy.md`。
-- 供应商负责人：阅读 00、01、04、07、`templates/supplier-scorecard.md`。
+- 交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/03-运行模型.md)、[优先级与路线图](practice/06-优先级与路线图.md)、[推广与验收](practice/07-推广与验收.md)、[指标](knowledge/09-指标.md)。
+- 架构师或技术负责人：[SDD 方法论](knowledge/02-sdd方法论.md)、[质量门禁](knowledge/04-质量门禁.md)、[工具链](knowledge/06-工具链.md)、[Agent 工具](knowledge/07-agent工具.md)、[团队级 AI SDLC](practice/01-团队级ai-sdlc.md)。
+- 开发人员：[开发者指南](practice/04-开发者指南.md)、[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[AI 工程宪章](../../../ai/engineering-constitution.md)、[AI 上下文政策](../../../ai/context-policy.md)、[测试政策](../../../ai/testing-policy.md)。
+- QA：[测试策略](knowledge/05-测试策略.md)、[质量门禁](knowledge/04-质量门禁.md)、[测试政策](../../../ai/testing-policy.md)、[测试规格模板](../../../templates/test-spec.md)、[质量门禁检查清单](../../../quality-gates/checklist.md)。
+- 安全负责人：[工具链](knowledge/06-工具链.md)、[质量门禁](knowledge/04-质量门禁.md)、[安全政策](../../../ai/security-policy.md)、[AI 上下文政策](../../../ai/context-policy.md)、[允许工具](../../../ai/allowed-tools.md)。
+- AI Champion：[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[开发者指南](practice/04-开发者指南.md)、[Harness 工程](knowledge/08-harness工程.md)、[Prompt Card 模板](../../../templates/prompt-card.md)、[每周 AI-SDD 复盘](../../../templates/weekly-ai-sdd-review.md)。
+- 供应商交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/03-运行模型.md)、[质量门禁](knowledge/04-质量门禁.md)、[实施 Playbook](practice/02-实施playbook.md)、[供应商评分卡](../../../templates/supplier-scorecard.md)。
 
 ## 最小可执行清单
 
-- [ ] 已明确治理角色、AI Champion 和 Module Owner。
-- [ ] 已选择一个试点领域和一组试点 Story。
-- [ ] 已采用 SDD Story Spec、Technical Spec、Test Spec 和 MR 模板。
+- [ ] 已明确治理角色、AI Champion 和 模块负责人。
+- [ ] 已选择试点范围和试点 Story。
+- [ ] 已批准 SDD Story 规格、技术规格、测试规格 和 MR 模板。
 - [ ] 已批准 Tier A/B/C 规则。
 - [ ] 已定义基础 CI、测试、静态检查和安全扫描计划。
-- [ ] 已批准 AI Context Policy 和 Security Policy。
+- [ ] 已批准 AI 上下文政策 和 安全政策。
 - [ ] 一个内部团队已用 Superpowers 跑通完整 Story。
 - [ ] 供应商交付按交付物和测试证据验收。
 - [ ] 每周复盘质量门禁失败、AI 失败案例和模板改进点。
-
-## 文档索引
-
-- [00-executive-summary.md](./00-executive-summary.md)：项目目标和默认政策。
-- [01-operating-model.md](./01-operating-model.md)：治理层级、角色、节奏和团队规则。
-- [02-sdd-methodology.md](./02-sdd-methodology.md)：SDD 流程、DoR、DoD 和工件生命周期。
-- [03-toolchain.md](./03-toolchain.md)：企业工具链和 AI 平台架构。
-- [04-quality-gates.md](./04-quality-gates.md)：合入门禁、评审政策和供应商验收。
-- [05-metrics.md](./05-metrics.md)：效率、质量和一致性指标。
-- [06-rollout-and-acceptance.md](./06-rollout-and-acceptance.md)：12 周推广计划和验收场景。
-- [07-implementation-playbook.md](./07-implementation-playbook.md)：Week 0、Kickoff、复盘节奏、供应商 review 和 RACI。
-- [08-superpowers-adoption.md](./08-superpowers-adoption.md)：内部 Superpowers 采用策略。
-- [09-sdd-and-superpowers-developer-guide.md](./09-sdd-and-superpowers-developer-guide.md)：开发者执行指南。
-- [10-harness-engineering.md](./10-harness-engineering.md)：AI Harness 控制层、成熟度和推广路径。
-- [11-testing-strategy-for-ai-sdd.md](./11-testing-strategy-for-ai-sdd.md)：AI-SDD 测试策略。
-- [12-priorities-and-roadmap.md](./12-priorities-and-roadmap.md)：优先级、可直接落实项、基础设施工作和路线图。
-- [13-agent-tools.md](./13-agent-tools.md)：Claude Code、Codex、Cursor、agent 能力和工具治理。
-- [14-team-ai-sdlc.md](./14-team-ai-sdlc.md)：团队级 AI SDLC 架构和分层文档地图。
-- [15-glossary.md](./15-glossary.md)：手册中使用的缩写和术语。
-- [16-ai-context-artifact-map.md](./16-ai-context-artifact-map.md)：按阶段说明 AI 上下文交接所需工件。
