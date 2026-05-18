@@ -1,330 +1,166 @@
-# Team AI SDLC Architecture
+# Team AI SDLC
 
 Chinese version: [../zh/practice/01-团队级ai-sdlc.md](../zh/practice/01-团队级ai-sdlc.md)
 
 ## Purpose
 
-This chapter reorganizes the handbook around a team-level AI SDLC. SDLC means Software Development Life Cycle: the full lifecycle of software work from idea and requirements through design, implementation, testing, release, operation, and improvement. The existing articles remain valid, but readers need a clearer architecture for how SDD, Superpowers, GSD-style context engineering, gstack-style product and QA review, CI/CD, and governance fit together.
+This doc shows how the [four-layer Execution Stack](../knowledge/03-execution-stack.md) lands inside a team's real SDLC stages, and which AI-assisted execution framework — Superpowers, GSD, gstack, or BMAD — to reach for at each stage. It does not introduce a new layer model; it maps the existing one onto how delivery actually flows.
 
-The recommended structure is:
+SDLC means Software Development Life Cycle: the full lifecycle of software work from idea and requirements through design, implementation, testing, release, operation, and improvement.
 
-```text
-Team AI SDLC
-├── Spec / Plan Layer
-│   ├── Requirements
-│   ├── ADR
-│   ├── Architecture Constraints
-│   └── Implementation Plan
-│
-├── Execution Layer
-│   ├── Superpowers: TDD / subagent / review
-│   └── GSD: long-running phase execution
-│
-├── Verification Layer
-│   ├── Unit / Integration / Contract Test
-│   ├── Architecture Fitness Function
-│   ├── Security Scan
-│   └── gstack-style Browser QA
-│
-└── Governance Layer
-    ├── Human approval gate
-    ├── PR review
-    ├── CI quality gate
-    ├── Dependency policy
-    └── Release checklist
-```
+If you have not read [Execution Stack](../knowledge/03-execution-stack.md), do that first — this doc assumes the four layers (SDD / Superpowers / Harness / CI/Review) and the bottom-up diagnosis pattern are familiar.
 
-## Main Recommendation
+## The Stack On The SDLC
 
-For agile delivery teams that receive ready Story cards, use Superpowers as the default AI-assisted development workflow.
-
-Use GSD-style practices for large, long-running, multi-phase work where context rot is the main risk.
-
-Use gstack-style practices selectively for product clarification, design review, browser QA, release checklist, and sprint reflection.
-
-In short:
+A team SDLC has roughly these stages: requirements → architecture → story breakdown → story ready → development → review and merge → integration → release → operation → feedback. The execution stack does not replace any stage; it specifies how AI participates in each one.
 
 ```text
-Story is clear -> Superpowers
-Story is large -> GSD decomposes and preserves state, then Superpowers executes tasks
-Story is unclear -> gstack-style discovery clarifies it, then Superpowers executes
+SDLC stage              Layer that owns it           Practice doc that operationalises it
+─────────────────────   ──────────────────────────   ─────────────────────────────────────
+Requirements            SDD (1)                       02 Artifact Map S0-S2
+Architecture            SDD (1)                       02 Artifact Map S1
+Story breakdown         SDD (1)                       02 Artifact Map S2
+Story ready             SDD (1)                       02 Artifact Map S3, 03 Tier rules
+Development             Superpowers (2) + Harness (3) 03 Tier rules, 04 Developer Guide
+Review and merge        CI/Review (4)                 05 Quality Gates (knowledge), 04 Step 6-8
+Integration             CI/Review (4)                 02 Artifact Map S6
+Release                 CI/Review (4) + cross-cutting 02 Artifact Map S6, 05 Implementation Playbook
+Operation               Cross-cutting                 10 Metrics (knowledge)
+Feedback                Cross-cutting                 10 Metrics (knowledge), 06 Roadmap
 ```
 
-## Why Superpowers Is The Default For Story Delivery
+The Operating Model (knowledge/04), Testing Strategy (knowledge/06), Toolchain (knowledge/07), and Metrics (knowledge/10) are cross-cutting — they apply across every stage rather than to one.
 
-Once a Story card is ready, product discovery should already be mostly complete. The delivery team needs to:
+## Where Superpowers, GSD, And gstack Each Fit
 
-1. Understand acceptance criteria.
-2. Analyze impact.
-3. Write an implementation plan.
-4. Add or update tests.
-5. Implement within scope.
-6. Review against the spec.
-7. Review code quality.
-8. Package the MR with evidence.
+Superpowers is the **default** internal developer workflow once a Story card is ready (this is established in the Execution Stack as layer 2). GSD and gstack are **specialised tools** for situations where Superpowers alone is not enough. BMAD is referenced for the most ambiguous, high-stakes upstream work.
 
-This is where Superpowers fits best. It is an AI development skill set rather than a full project-management system. Its strengths are planning, TDD, subagent execution, code review, Git worktrees, verification, and finishing a branch.
+This section gives you proper definitions of GSD and gstack — they are not assumed elsewhere in the handbook — plus a decision rule for when to use which.
 
-Superpowers' `subagent-driven-development` skill is especially relevant: it uses a fresh subagent per task and a two-stage review loop, with spec compliance review before code quality review.
+### Superpowers (Default)
 
-## Where GSD Fits
+What it is: a composable skills framework and software development methodology for coding agents. Skills include `brainstorming`, `writing-plans`, `test-driven-development`, `subagent-driven-development`, `requesting-code-review`, `receiving-code-review`, `systematic-debugging`, `verification-before-completion`.
 
-GSD is best understood as context engineering plus spec-driven long-task execution.
+Best fit: daily Story delivery once the Story card is ready. Existing repos, teams with Git/PR/tests, mixed-seniority developers. This is the layer 2 default.
 
-It is useful when:
+Where it appears: [Superpowers Adoption](03-superpowers-adoption.md) for Tier rules; [Developer Guide](04-developer-guide.md) for the daily eight-step flow.
 
-- A feature is too large for one Story-sized implementation session.
-- The work needs multiple phases.
-- The team needs persistent state across sessions.
-- Context rot is the main risk.
-- Independent tasks can run in parallel with fresh executor context.
+Reference: https://github.com/obra/superpowers
 
-GSD-style practices worth adopting:
+### GSD — Get Shit Done
 
-- Maintain structured project state.
-- Keep requirements, roadmap, state, and phase context explicit.
-- Break long work into phases.
-- Execute independent plans with fresh context.
-- Verify before declaring a phase complete.
+What it is: a context engineering and spec-driven long-task execution system. GSD's contribution is **persistent project state** — requirements, roadmap, phase context, and task state are kept in structured files so a multi-session, multi-phase AI workflow does not lose track of where it is. Independent tasks can be executed with fresh context to avoid context rot.
 
-Enterprise caution:
+Best fit: a feature too large for one Story-sized session, multi-phase work, work that must survive context window resets, or independent tasks that benefit from being executed with fresh executor context.
 
-- Do not let a long-running execution engine bypass architecture, security, dependency, or owner review.
-- Use GSD-style execution inside the same governance gates as other tools.
+How to use in this handbook: GSD-style practices wrap Superpowers, they do not replace it. GSD owns phase state and decomposition; Superpowers owns execution discipline within a phase. The combined pattern is "GSD decomposes and preserves state → Superpowers executes each phase's tasks."
 
-## Where gstack Fits
+Enterprise caveat: a long-running execution engine must not bypass architecture, security, dependency, or owner review. Run GSD-style execution inside the same gates as any other internal work.
 
-gstack is best understood as a role-based delivery workflow: product framing, plan pressure-testing, engineering review, browser QA, release checks, and retrospective.
+Reference: https://github.com/gsd-build/get-shit-done
 
-It is useful when:
+### gstack — Role-Based Delivery Loop
 
-- The Story is not ready.
-- Product intent or UX is unclear.
-- A web product needs real browser QA.
-- A small team wants a lightweight virtual delivery team.
-- The team wants stronger pre-merge review and release discipline.
+What it is: a role-based delivery workflow that adds virtual product, architecture, QA, and release perspectives to AI-assisted work. Its loop includes product framing, plan pressure-testing, engineering review, browser QA, release checks, and retrospective.
 
-gstack-style practices worth adopting:
+Best fit: the Story is not actually ready and needs product clarification; a web product needs real browser QA; a small team wants a lightweight virtual delivery team; pre-merge review and release discipline are weak.
 
-- Product clarification before a Story becomes ready.
-- Architecture and test review before implementation.
-- Browser QA for web user journeys.
-- Release checklist before merge or deployment.
-- Retrospective after delivery.
+How to use in this handbook: gstack-style **practices** are useful upstream of Superpowers (to make a Story ready) or alongside CI/Review (browser QA, release checklist). The role personas do not replace real owners, security review, or CI/CD. Treat gstack commands as review aids, not approval authorities.
 
-Enterprise caution:
+Reference: https://gstack.lol/
 
-- Role personas do not replace real owners, architecture review, security review, or CI/CD.
-- Use gstack-style commands as review aids, not as final approval authorities.
+### BMAD — Escalation Path
+
+What it is: Breakthrough Method of Agile AI-driven Development. An AI-assisted agile framework with stronger product, architecture, and review roles.
+
+Best fit: the Story is so ambiguous, cross-domain, or high-risk that even gstack-style discovery is not enough. BMAD is **not** the default developer workflow here; it is an escalation considered before a Story card is handed to development when scope is too broad to specify.
+
+Reference: https://bmad.fr/en/bmad-method
+
+### Decision Rule
+
+```text
+Story is clear                  -> Superpowers (default)
+Story is large or multi-phase   -> GSD decomposes and preserves state → Superpowers executes each phase
+Story is unclear                -> gstack-style discovery clarifies it → Superpowers executes
+Story is too broad to specify   -> BMAD upstream → produce ready Stories → Superpowers executes
+Story is for a supplier         -> Supplier's choice of workflow; internal accepts by deliverables
+```
 
 ## Tool Comparison
 
-| Tool | Abstraction Level | Core Problem | Best Fit | Enterprise Fit |
+| Framework | Abstraction | Core problem it solves | Best fit | Enterprise role |
 | --- | --- | --- | --- | --- |
-| Superpowers | AI coding skills and workflow skills | Execute ready work with engineering discipline | Daily Story delivery, existing repos, teams with Git/PR/tests | High |
-| gstack | Role-based virtual software team and delivery loop | Add product, architecture, QA, release, and reflection pressure | Founders, product teams, web apps, early-stage workflows | Medium; use selectively |
-| GSD | Context engineering and long-task spec execution | Avoid context rot during long-running AI work | Large features, multi-phase execution, stateful AI work | Medium; wrap with governance |
-
-## How The Existing Handbook Maps To The AI SDLC
-
-### Spec / Plan Layer
-
-Purpose:
-
-- Turn business intent into a bounded, reviewable, testable plan.
-
-Primary documents:
-
-- [AI-SDD Overview](../knowledge/01-ai-sdd-overview.md)
-- [SDD Methodology](../knowledge/02-sdd-methodology.md)
-- [Developer Guide](./04-developer-guide.md)
-- [Priorities And Roadmap](./06-priorities-and-roadmap.md)
-
-Primary templates:
-
-- [SDD Story Spec](../../../templates/sdd-story-spec.md)
-- [Technical Spec](../../../templates/technical-spec.md)
-- [ADR](../../../templates/adr.md)
-- [Test Spec](../../../templates/test-spec.md)
-- [Prompt Card](../../../templates/prompt-card.md)
-
-Key rule:
-
-- A Story is not ready for AI-assisted implementation until acceptance criteria, context boundary, impacted artifacts, and verification expectations are clear.
-
-### Execution Layer
-
-Purpose:
-
-- Convert the plan into code, tests, contracts, and documentation without uncontrolled scope drift.
-
-Primary documents:
-
-- [Superpowers Adoption](./03-superpowers-adoption.md)
-- [Developer Guide](./04-developer-guide.md)
-- [Harness Engineering](../knowledge/09-harness-engineering.md)
-- [Agent Tools](../knowledge/08-agent-tools.md)
-
-Recommended default:
-
-- Tier A: lightweight workflow.
-- Tier B: Superpowers planning, TDD where practical, review, verification.
-- Tier C: full Superpowers workflow, Owner Review, full quality gates.
-- Long-running feature: GSD-style phase state plus Superpowers task execution.
-
-Key rule:
-
-- The execution tool can vary, but the required artifacts, review, and evidence do not.
-
-### Verification Layer
-
-Purpose:
-
-- Prove that the implementation matches the spec and did not introduce unacceptable risk.
-
-Primary documents:
-
-- [Quality Gates](../knowledge/05-quality-gates.md)
-- [Testing Strategy](../knowledge/06-testing-strategy.md)
-- [Harness Engineering](../knowledge/09-harness-engineering.md)
-
-Primary policies and checklists:
-
-- [Quality Gate Checklist](../../../quality-gates/checklist.md)
-- [CI Gate Policy](../../../quality-gates/ci-gate-policy.md)
-- [Testing Policy](../../../ai/testing-policy.md)
-- [Review Checklist](../../../ai/review-checklist.md)
-
-Verification practices:
-
-- Unit tests for business rules and edge cases.
-- Integration tests for cross-module behavior.
-- Contract tests for APIs and events.
-- Architecture fitness functions for structural constraints.
-- Security scans for SAST, SCA, secrets, and dependency risk.
-- gstack-style browser QA for web user journeys.
-
-Key rule:
-
-- Completion is evidence-based. Agent confidence is not verification.
-
-### Governance Layer
-
-Purpose:
-
-- Keep AI-assisted delivery accountable, auditable, and safe across teams and suppliers.
-
-Primary documents:
-
-- [Operating Model](../knowledge/04-operating-model.md)
-- [Toolchain](../knowledge/07-toolchain.md)
-- [Metrics](../knowledge/10-metrics.md)
-- [Rollout And Acceptance](./07-rollout-and-acceptance.md)
-- [Implementation Playbook](./02-implementation-playbook.md)
-- [Priorities And Roadmap](./06-priorities-and-roadmap.md)
-
-Primary controls:
-
-- Human approval gate.
-- Owner Review.
-- PR review.
-- CI quality gate.
-- Dependency policy.
-- Release checklist.
-- Supplier deliverable review.
-- Weekly AI-SDD review.
-
-Key rule:
-
-- Internal teams may use AI workflow tools differently, and suppliers may use their own methods, but acceptance evidence and quality gates must be consistent.
-
-## SDD And Superpowers Chapter Summary
-
-Use the following reading path when introducing the method to a delivery team:
-
-1. [SDD Methodology](../knowledge/02-sdd-methodology.md): explains why AI-assisted work starts from approved specs.
-2. [Superpowers Adoption](./03-superpowers-adoption.md): defines Tier A/B/C and when Superpowers is required.
-3. [Developer Guide](./04-developer-guide.md): explains Story intake, planning, TDD, artifact updates, review, verification, and MR completion.
-4. [Harness Engineering](../knowledge/09-harness-engineering.md): defines the controlled execution environment for context, tools, permissions, verification, and evidence.
-5. [Agent Tools](../knowledge/08-agent-tools.md): explains how Claude Code, Codex, Cursor, skills, MCP, plugins, memory, and hooks fit into the workflow.
-
-The short version:
-
-- SDD is the specification layer.
-- Superpowers is the default internal execution discipline after a Story is ready.
-- Harness Engineering is the execution-control layer.
-- Quality Gates and CI/CD are the merge and release control layer.
+| Superpowers | AI coding and workflow skills | Execute ready work with engineering discipline | Daily Story delivery | Default for internal Tier B/C |
+| GSD | Context engineering and long-task execution | Avoid context rot across multi-phase AI work | Large features, multi-phase | Wrap with the same gates as default work |
+| gstack | Role-based virtual delivery loop | Add product, architecture, QA, release pressure | Web apps, early-stage teams, weak discovery | Selective use upstream of Superpowers and alongside CI/Review |
+| BMAD | Agile AI-driven discovery and planning | Make ambiguous, broad work specifiable | Cross-domain or research-style work | Pre-Story escalation only |
 
 ## Default Team Workflow
 
+This is the day-to-day flow once frameworks are chosen. Each step has a more detailed treatment in another practice doc.
+
 ```text
-Story Card
-  -> Story Intake
-  -> Tier Classification
-  -> SDD / Technical Spec / ADR if required
-  -> Implementation Plan
-  -> TDD or test strategy
-  -> Implementation
-  -> Spec Compliance Review
-  -> Code Quality Review
-  -> Verification Evidence
-  -> MR Packaging
-  -> Owner / Human Review
-  -> CI Quality Gate
-  -> Merge / Release / Acceptance
+Story Card ready
+  -> Story Intake (04 Step 1)
+  -> Tier Classification (03)
+  -> SDD / Technical Spec / ADR if required (02 stages S1-S3)
+  -> Implementation Plan (04 Step 3)
+  -> TDD or test strategy (04 Step 4)
+  -> Implementation (04 Step 4)
+  -> Spec Compliance Review (04 Step 6)
+  -> Code Quality Review (04 Step 6)
+  -> Verification Evidence (04 Step 7)
+  -> MR Packaging (04 Step 8)
+  -> Owner / Human Review (05 Quality Gates in knowledge)
+  -> CI Quality Gate (05 Quality Gates in knowledge)
+  -> Merge / Release / Acceptance (02 stages S4-S7)
 ```
 
-## Recommended Adoption Policy
+## Adoption Policy By Story Type
 
-### For Daily Story Development
+### Daily Story Development
 
-Default to Superpowers.
+Default to Superpowers, weighted by [Tier A/B/C](03-superpowers-adoption.md). The full daily flow is in [Developer Guide](04-developer-guide.md).
 
-Use it for:
+### Complex Or Multi-Phase Stories
 
-- Story intake.
-- Implementation planning.
-- TDD or test-first behavior changes.
-- Subagent execution for independent tasks.
-- Spec compliance review.
-- Code quality review.
-- Verification before completion.
+Use GSD-style phase state plus Superpowers. GSD owns: long context, requirements and roadmap state, phase planning, task state, fresh executor context. Superpowers owns: TDD, task implementation, review, branch finishing.
 
-### For Complex Stories Or Technical Stories
+### Unclear Stories
 
-Use GSD-style phase execution plus Superpowers.
+Use gstack-style discovery before development: product clarification, design review, architecture and test review. Then return to Superpowers for implementation.
 
-GSD-style practices handle:
+### Cross-Domain Or Research-Style Stories
 
-- Long context.
-- Requirements and roadmap state.
-- Phase planning.
-- Task state.
-- Fresh executor context.
+Consider BMAD as an upstream escalation to produce ready Stories. Do not let BMAD-style discovery bypass Owner Review or quality gates.
 
-Superpowers handles:
+## Where Each Practice Doc Comes In
 
-- TDD.
-- Task implementation.
-- Review.
-- Branch finishing.
-
-### For Unclear Stories
-
-Use gstack-style discovery before development.
-
-Borrow:
-
-- Product clarification.
-- Design review.
-- Architecture and test review.
-- Browser QA for web flows.
-- Ship checklist.
-
-Then return to Superpowers for implementation.
+| Doc | When to read it |
+| --- | --- |
+| [02 AI Context Artifact Map](02-ai-context-artifact-map.md) | Whenever you need to know what artifact a stage or tier requires. The canonical reference. |
+| [03 Superpowers Adoption](03-superpowers-adoption.md) | Setting Tier rules; clarifying which Superpowers skills are required at which tier. |
+| [04 Developer Guide](04-developer-guide.md) | Daily Story execution — the eight-step flow. |
+| [05 Implementation Playbook](05-implementation-playbook.md) | Week 0, kickoff, RACI, repository setup, supplier review cadence. |
+| [06 Priorities And Roadmap](06-priorities-and-roadmap.md) | Deciding what to adopt first; planning P0/P1/P2 work. |
+| [07 Rollout And Acceptance](07-rollout-and-acceptance.md) | Verifying the rollout actually produced the behavior change you wanted. |
 
 ## Sources
 
-- [Superpowers subagent-driven-development](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)
+- [Superpowers — subagent-driven-development skill](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)
+- [Superpowers repository](https://github.com/obra/superpowers)
+- [GSD — Get Shit Done](https://github.com/gsd-build/get-shit-done)
 - [gstack](https://gstack.lol/)
-- [GSD: Get Shit Done](https://github.com/gsd-build/get-shit-done)
+- [BMAD method](https://bmad.fr/en/bmad-method)
+
+## Key Takeaways
+
+- The four-layer execution stack from knowledge is not re-invented here; it maps directly onto SDLC stages.
+- Superpowers is the default at layer 2; GSD wraps it for long work; gstack supports it upstream and at release; BMAD is an upstream escalation.
+- Doc 02 is the canonical artifact reference — every other doc points there for "what do I need at this stage?"
+- The default team workflow is one diagram; each step has a more detailed home in another practice doc.
+
+## Next
+
+- [AI Context Artifact Map](02-ai-context-artifact-map.md) — the central reference for which artifact each delivery stage must produce.

@@ -47,23 +47,28 @@ AI-SDD 是一种 AI 辅助软件交付治理模型：工作从经过评审的规
 
 执行真实交付工作时使用：
 
-1. [团队级 AI SDLC](practice/01-团队级ai-sdlc.md)：连接 SDD、Superpowers、agent、验证和治理的团队级架构。
-2. [实施 Playbook](practice/02-实施playbook.md)：Week 0 准备、Kickoff、复盘节奏、供应商评审、最小仓库设置和 RACI。
+0. [阅读指南](practice/00-阅读指南.md)：从这里开始。按角色的阅读顺序、四层执行栈在哪里重现、哪几篇是正典参考。
+1. [团队级 AI SDLC](practice/01-团队级ai-sdlc.md)：执行栈如何接入团队真实 SDLC 阶段，以及 Superpowers、GSD、gstack、BMAD 各放哪。
+2. [AI 上下文工件地图](practice/02-ai上下文工件地图.md)：阶段 × 工件 × Tier × 模板的正典参考，其他实践文档都指向它。
 3. [Superpowers 采用策略](practice/03-superpowers采用策略.md)：内部 Tier A/B/C 工作流规则和采用边界。
-4. [开发者指南](practice/04-开发者指南.md)：从 Story 接收 到 已验证 MR 的开发者工作流。
-5. [AI 上下文工件地图](practice/05-ai上下文工件地图.md)：按阶段说明 AI 上下文交接所需工件。
-6. [优先级与路线图](practice/06-优先级与路线图.md)：必需、应具备、可选增强、可直接落实项和基础设施 待办列表。
-7. [推广与验收](practice/07-推广与验收.md)：12 周推广模型和验收场景。
+4. [开发者指南](practice/04-开发者指南.md)：从 Story 接收到已验证 MR 的八步日常工作流。
+5. [实施 Playbook](practice/05-实施playbook.md)：Week 0 准备、Kickoff、复盘节奏、供应商评审、最小仓库设置和 RACI（含 BA 和 PO）。
+6. [优先级与路线图](practice/06-优先级与路线图.md)：5 阶段推广序列的正典——P0/P1/P2 分类与运营 Backlog。
+7. [推广与验收](practice/07-推广与验收.md)：验证 doc 06 的推广是否真的产生了你想要的行为变化的验收场景。
+8. [角色 × 阶段矩阵](practice/08-角色阶段矩阵.md)：每个阶段谁产出什么的正典参考，含各角色微流程。
+9. [BA 指南](practice/09-ba指南.md)：BA 深度工作流——需求接收 → 三道评审 → Story 拆分 → Backlog → 开发支持 → 关闭。
 
 ## 角色路径
 
 - 交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/04-运行模型.md)、[优先级与路线图](practice/06-优先级与路线图.md)、[推广与验收](practice/07-推广与验收.md)、[指标](knowledge/10-指标.md)。
-- 架构师或技术负责人：[SDD 方法论](knowledge/02-sdd方法论.md)、[质量门禁](knowledge/05-质量门禁.md)、[工具链](knowledge/07-工具链.md)、[Agent 工具](knowledge/08-agent工具.md)、[团队级 AI SDLC](practice/01-团队级ai-sdlc.md)。
+- 架构师或技术负责人：[SDD 方法论](knowledge/02-sdd方法论.md)、[质量门禁](knowledge/05-质量门禁.md)、[工具链](knowledge/07-工具链.md)、[Agent 工具](knowledge/08-agent工具.md)、[团队级 AI SDLC](practice/01-团队级ai-sdlc.md)、[角色 × 阶段矩阵](practice/08-角色阶段矩阵.md)。
+- BA / 业务分析：[BA 指南](practice/09-ba指南.md)、[AI 上下文工件地图](practice/02-ai上下文工件地图.md)、[角色 × 阶段矩阵](practice/08-角色阶段矩阵.md)、[Requirement Review Record](../../../templates/requirement-review-record.md)、[BA Handoff Checklist](../../../templates/ba-handoff-checklist.md)。
+- Product Owner：[团队级 AI SDLC](practice/01-团队级ai-sdlc.md)、[BA 指南](practice/09-ba指南.md)、[角色 × 阶段矩阵](practice/08-角色阶段矩阵.md)、[推广与验收](practice/07-推广与验收.md)。
 - 开发人员：[开发者指南](practice/04-开发者指南.md)、[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[AI 工程宪章](../../../ai/engineering-constitution.md)、[AI 上下文政策](../../../ai/context-policy.md)、[测试政策](../../../ai/testing-policy.md)。
 - QA：[测试策略](knowledge/06-测试策略.md)、[质量门禁](knowledge/05-质量门禁.md)、[测试政策](../../../ai/testing-policy.md)、[测试规格模板](../../../templates/test-spec.md)、[质量门禁检查清单](../../../quality-gates/checklist.md)。
 - 安全负责人：[工具链](knowledge/07-工具链.md)、[质量门禁](knowledge/05-质量门禁.md)、[安全政策](../../../ai/security-policy.md)、[AI 上下文政策](../../../ai/context-policy.md)、[允许工具](../../../ai/allowed-tools.md)。
 - AI Champion：[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[开发者指南](practice/04-开发者指南.md)、[Harness 工程](knowledge/09-harness工程.md)、[Prompt Card 模板](../../../templates/prompt-card.md)、[每周 AI-SDD 复盘](../../../templates/weekly-ai-sdd-review.md)。
-- 供应商交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/04-运行模型.md)、[质量门禁](knowledge/05-质量门禁.md)、[实施 Playbook](practice/02-实施playbook.md)、[供应商评分卡](../../../templates/supplier-scorecard.md)。
+- 供应商交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/04-运行模型.md)、[质量门禁](knowledge/05-质量门禁.md)、[实施 Playbook](practice/05-实施playbook.md)、[供应商评分卡](../../../templates/supplier-scorecard.md)。
 
 ## 最小可执行清单
 

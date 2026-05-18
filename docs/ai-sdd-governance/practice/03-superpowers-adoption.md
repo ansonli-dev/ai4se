@@ -131,3 +131,14 @@ Exception handling:
 
 - Emergency hotfixes may fix first and complete traceability within 24-48 hours.
 - Core business, permission, sensitive data, and security changes cannot skip Owner approval or quality gates.
+
+## Key Takeaways
+
+- Superpowers is the default internal execution workflow at the [Execution Stack](../knowledge/03-execution-stack.md)'s layer 2; not the whole delivery method.
+- Tier A / B / C are not arbitrary — they map directly to which Superpowers skills become required and which artifacts (from [Artifact Map](02-ai-context-artifact-map.md)) apply.
+- Supplier work is not held to Superpowers; it is held to deliverables and quality gates.
+- The exception rules exist; "we always need everything" is wrong, and so is "we can skip the Tier C controls because we are in a hurry."
+
+## Next
+
+- [Developer Guide](04-developer-guide.md) — the eight-step daily workflow that puts these Tier rules into practice from Story intake to verified MR.

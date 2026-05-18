@@ -82,6 +82,8 @@ Read 00 → 03 in order. They build the shared mental model and the vocabulary. 
 - **Delivery Owner:** 00 → 01 → 03 → 04 → 05 → 10 → 11.
 - **Architect / Tech Lead:** 00 → 02 → 03 → 05 → 07 → 08 → 09 → 11.
 - **Developer:** 00 → 02 → 03 → 06 → 08 → 09 → 11, then jump to [Developer Guide](../practice/04-developer-guide.md).
+- **BA:** 00 → 02 → 04 → 11, then jump to [BA Guide](../practice/09-ba-guide.md). BA work centres on layer 1 (SDD), so docs 02 and 04 are the most directly applicable.
+- **PO:** 00 → 01 → 02 → 04 → 11, then read [BA Guide](../practice/09-ba-guide.md) to know what the BA owes you and vice versa.
 - **QA:** 00 → 02 → 05 → 06 → 11, then jump to [Testing Policy](../../../ai/testing-policy.md).
 - **Security Lead:** 00 → 03 → 05 → 07 → 09 → 11, then jump to [Security Policy](../../../ai/security-policy.md).
 - **AI Champion:** 00 → 03 → 06 → 08 → 09 → 11, then jump to [Superpowers Adoption](../practice/03-superpowers-adoption.md).
@@ -96,7 +98,7 @@ Knowledge teaches the model. [Practice](../practice/) runs delivery work through
 When you finish doc 11, the natural next step is one of:
 
 1. [Team AI SDLC](../practice/01-team-ai-sdlc.md) — see the same four layers wired into a team's actual SDLC.
-2. [Implementation Playbook](../practice/02-implementation-playbook.md) — Week 0, kickoff, review cadence, minimum repo setup.
+2. [Implementation Playbook](../practice/05-implementation-playbook.md) — Week 0, kickoff, review cadence, minimum repo setup.
 3. [Developer Guide](../practice/04-developer-guide.md) — what a developer does day-to-day after a Story is ready.
 
 ## Key Takeaways

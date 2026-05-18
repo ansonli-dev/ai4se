@@ -76,9 +76,27 @@ This glossary explains abbreviations and short terms used across the handbook. R
 | Term | Full Form | Meaning In This Handbook |
 | --- | --- | --- |
 | RACI | Responsible, Accountable, Consulted, Informed | A responsibility matrix used to clarify roles in governance and delivery activities. |
-| BA | Business Analyst | A role that helps clarify requirements, business rules, and acceptance criteria. |
+| BA | Business Analyst | The role that owns the upstream **Requirement → three-reviews → Story breakdown** flow. Drafts the Feature / Requirement Spec, leads the Requirements Review, co-leads Technical and Test Reviews, runs the BA Handoff Checklist before backlog placement, and closes Requirements after acceptance. See [BA Guide](../practice/09-ba-guide.md) and [Operating Model § BA Accountability](04-operating-model.md). |
+| PO | Product Owner | Frames business intent, sets priority, accepts business outcomes; collaborates with BA on Requirement framing. |
 | Owner Review | Owner Review | Approval by the accountable module or domain owner for a change. |
 | AI Champion | AI Champion | A team member who coaches AI-SDD usage, maintains examples, and collects failure cases. |
+
+## Delivery Flow Vocabulary
+
+These terms describe the upstream client-driven flow that turns a business ask into ready Stories.
+
+| Term | Meaning In This Handbook |
+| --- | --- |
+| Requirement (需求) | A Feature-sized business unit raised by the client or business, captured in the [Feature Spec](../../../templates/feature-spec.md) (used as the Requirement Spec in this flow). One Requirement typically becomes multiple Stories. |
+| Requirements Review (需求评审) | The first of three gating reviews on a Requirement. Confirms *what*: scope, success criteria, stakeholders. Chaired by BA. Recorded in [Review Record](../../../templates/requirement-review-record.md) §1. |
+| Technical Review (技术评审) | The second of three gating reviews. Confirms *how*: feasibility, architecture impact, dependencies, risks. Chaired by Tech Lead. Recorded in Review Record §2. |
+| Test Review (测试评审) | The third of three gating reviews. Confirms *testability*: AC quality, required test layers, UAT scope. Chaired by QA. Recorded in Review Record §3. |
+| Three Reviews | Collective term for Requirements / Technical / Test Review. A Requirement cannot be broken into Stories until the overall gate decision is *Approved* or *Conditionally Approved*. |
+| BA Handoff Checklist | Pre-backlog gate per Story (one Story may not enter the backlog until this checklist's AI-readiness self-test passes). See [template](../../../templates/ba-handoff-checklist.md). |
+| Backlog | The queue of Stories that have passed the BA Handoff Checklist and are awaiting selection into a sprint. State lives in Jira / ONES / equivalent; the handbook does not template it. |
+| Sprint Selection | The act of choosing Stories from the backlog into a specific iteration. Committed scope is recorded in [Iteration Brief](../../../templates/iteration-brief.md). |
+| Sprint | One iteration of delivery. Story scope frozen at planning; mid-sprint changes go through Change Request. |
+| DoR Check | Definition of Ready check. Two-layer: BA's AI-readiness self-test on the Handoff Checklist (gate before backlog), and the developer's own DoR check (gate before AI execution). |
 
 ## Priority Labels
 

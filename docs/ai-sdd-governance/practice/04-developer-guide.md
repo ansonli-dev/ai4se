@@ -275,20 +275,15 @@ Output:
 
 ## Required Artifacts By Tier
 
-| Artifact | Tier A Lightweight | Tier B Standard | Tier C High Risk |
-| --- | --- | --- | --- |
-| Story card | Required | Required | Required |
-| SDD Story Spec | Short note acceptable | Required | Required |
-| Technical Spec | Optional | Required when technical impact exists | Required |
-| Implementation Plan | MR checklist acceptable | Required | Required |
-| Test Spec | Optional if tests are simple | Required | Required |
-| OpenAPI/Event Schema | Required if changed | Required if changed | Required if changed |
-| Data Dictionary | Required if changed | Required if changed | Required if changed |
-| Error Code Registry | Required if changed | Required if changed | Required if changed |
-| ADR | Optional | Required for architecture decisions | Required for architecture or major tradeoffs |
-| AI Usage Declaration | Required if AI used | Required if AI used | Required if AI used |
-| Owner Approval | Normal review | Required for owned modules | Required |
-| Verification Evidence | Required | Required | Required |
+For the canonical Tier × artifact reference, see [AI Context Artifact Map § Tier sections](02-ai-context-artifact-map.md). The artifact map is the single source of truth; do not maintain a separate table here.
+
+Quick orientation:
+
+- Tier A: Story Card, focused verification, AI usage declaration if AI is used, normal review.
+- Tier B: above plus SDD Story Spec, Implementation Plan, Test evidence, Owner Review for owned modules.
+- Tier C: above plus Technical Spec, Test Spec, Agent Execution Report (if AI-assisted), full quality gate evidence, mandatory Owner Review.
+
+Conditional artifacts (OpenAPI, Event Schema, Data Dictionary, Error Code Registry, ADR, Permission Model, Observability Plan, Migration Plan, Rollback Plan) are required only when their trigger applies, regardless of Tier — the artifact map lists the triggers.
 
 ## Required Steps By Tier
 
@@ -374,3 +369,13 @@ Before marking done:
 - BMAD Method overview: https://bmad.fr/en/bmad-method
 - Superpowers repository: https://github.com/obra/superpowers
 
+## Key Takeaways
+
+- The eight-step flow (Intake → DoR Check → Plan → TDD → Update Artifacts → Review → Verify → Complete MR) is the daily operationalisation of [Execution Stack](../knowledge/03-execution-stack.md) layers 1-4.
+- Spec compliance review comes **before** code quality review for Tier C and separable work — different questions, different reviewers' attention.
+- Completion is evidence-based: verification must run fresh before the completion claim, not from agent confidence.
+- "What artifact do I need?" is always answered by [AI Context Artifact Map](02-ai-context-artifact-map.md), not by this doc.
+
+## Next
+
+- [Implementation Playbook](05-implementation-playbook.md) — Week 0 preparation, kickoff agenda, supplier review cadence, RACI, and minimum repository setup that makes this daily flow possible.

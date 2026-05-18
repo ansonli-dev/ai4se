@@ -1,6 +1,6 @@
 # AI Context Artifact Map
 
-Chinese version: [../zh/practice/05-ai上下文工件地图.md](../zh/practice/05-ai上下文工件地图.md)
+Chinese version: [../zh/practice/02-ai上下文工件地图.md](../zh/practice/02-ai上下文工件地图.md)
 
 ## Purpose
 
@@ -31,8 +31,8 @@ Practical rule:
 flowchart LR
     S0["0. Project / Iteration Preparation<br/>Must: Iteration or Project Brief, AI Policies<br/>Conditional: Service Catalog, Team Agreement"]
     S1["1. Architecture And Technical Boundary Design<br/>Must: Architecture Context for affected area<br/>Conditional: ADR, API/Event/Data/Error contracts"]
-    S2["2. Epic / Feature / Story Breakdown<br/>Must: Story Breakdown<br/>Conditional: Epic Brief, Feature Spec, Dependency Map"]
-    S3["3. Story Ready For Development<br/>Must: Story Card, SDD Story Spec, AI Context Boundary<br/>Conditional: Technical Spec, Test Spec, Prompt Card"]
+    S2["2. Requirement → Three Reviews → Story Breakdown<br/>Must: Feature/Requirement Spec, Review Record (3 sections), Story Breakdown<br/>Conditional: Epic Brief, Dependency Map, Risk List"]
+    S3["3. Story Ready → Backlog → Sprint Selection<br/>Must: Story Card, BA Handoff Checklist, SDD Story Spec (B/C), Iteration Brief<br/>Conditional: Technical Spec, Test Spec, Prompt Card"]
     S4["4. Story Development And MR<br/>Must: Implementation Plan, Code, Tests, MR Evidence<br/>Conditional: Agent Report, Updated Contracts"]
     S5["5. Story Acceptance<br/>Must: Acceptance Evidence<br/>Conditional: Defect Attribution, Story Acceptance Record"]
     S6["6. System Integration And Release Preparation<br/>Must: Quality Gate Evidence<br/>Conditional: Integration Plan, Release Notes, Deployment, Rollback"]
@@ -103,18 +103,30 @@ Minimum AI handoff:
 
 - AI can tell which modules, services, data stores, APIs, events, permissions, and architectural constraints are relevant to the next Story.
 
-### 2. Epic / Feature / Story Breakdown
+### 2. Requirement → Three Reviews → Story Breakdown
 
 Goal:
 
-- Convert business goals into Stories that are small enough to implement and clear enough for AI-assisted development.
+- Turn a Feature-sized business unit ("Requirement", raised by the client or business) into ready Stories via three gating reviews, then break it into Stories that are small enough to implement and clear enough for AI-assisted development.
+
+Sub-flow (BA-owned; see [BA Guide](09-ba-guide.md) for the full micro-flow):
+
+1. **Requirement Intake** — capture the raw business ask, assign ID.
+2. **Requirement Analysis** — BA drafts the [Feature Spec](../../../templates/feature-spec.md) (used here as the **Requirement Spec**).
+3. **Requirements Review** (需求评审) — confirm *what*: scope, success criteria, stakeholders. → [Review Record](../../../templates/requirement-review-record.md) §1.
+4. **Technical Review** (技术评审) — confirm *how*: feasibility, architecture impact, risks. → Review Record §2.
+5. **Test Review** (测试评审) — confirm *testability*: AC quality, test layers, UAT. → Review Record §3.
+6. **Story Breakdown** — split into Stories with traceability table.
+
+The Requirement cannot proceed to S3 (Backlog) until the overall outcome of the Review Record is *Approved* or *Conditionally Approved*.
 
 | Artifact | Level | Trigger / Notes | Asset |
 | --- | --- | --- | --- |
+| Feature Spec / Requirement Spec | Must-have | Always required as the Requirement-level artifact in this flow. | [Feature Spec](../../../templates/feature-spec.md) |
+| Requirement Review Record | Must-have | Combined evidence for the three gating reviews. | [Requirement Review Record](../../../templates/requirement-review-record.md) |
 | Story Breakdown | Must-have | Required before multiple Stories are handed to development. | [Story Breakdown](../../../templates/story-breakdown.md) |
-| Story Package Checklist | Must-have | Required before declaring a Story ready. | [Story Package Checklist](../../../templates/story-package-checklist.md) |
-| Epic Brief | Conditional | Required for large business goals or multi-feature work. | [Epic Brief](../../../templates/epic-brief.md) |
-| Feature Spec | Conditional | Required when one capability spans multiple Stories, teams, or user flows. | [Feature Spec](../../../templates/feature-spec.md) |
+| Story Package Checklist | Must-have | Required before declaring a Story ready (see also S3). | [Story Package Checklist](../../../templates/story-package-checklist.md) |
+| Epic Brief | Conditional | Required for large business goals or multi-Requirement work. | [Epic Brief](../../../templates/epic-brief.md) |
 | Dependency Map | Conditional | Required when Stories, teams, services, environments, or suppliers depend on each other. | [Dependency Map](../../../templates/dependency-map.md) |
 | Risk List | Conditional | Required for Tier C, supplier, release-risk, data, security, or integration-heavy work. | [Risk List](../../../templates/risk-list.md) |
 | Acceptance Strategy | Conditional | Required when acceptance spans Story, integration, UAT, or release levels. | [Acceptance Strategy](../../../templates/acceptance-strategy.md) |
@@ -123,19 +135,29 @@ Minimum AI handoff:
 
 - AI can understand how a Story relates to the larger goal, what depends on it, what it must not include, and what acceptance evidence will be required.
 
-### 3. Story Ready For Development
+### 3. Story Ready → Backlog → Sprint Selection
 
 Goal:
 
-- Provide the full bounded context needed for AI-assisted code development.
+- Provide the full bounded context needed for AI-assisted code development, place ready Stories on the backlog, and select them into a sprint with explicit team and Tier signoffs.
+
+Sub-flow:
+
+1. **Story Ready** — BA completes the [BA Handoff Checklist](../../../templates/ba-handoff-checklist.md) and the SDD Story Spec (Tier B/C) for each Story produced in S2.
+2. **Backlog Placement** — Stories whose AI-readiness self-test passes go onto the backlog with priority and dependency labels.
+3. **Sprint Selection** — Stories chosen at Sprint Planning into the [Iteration Brief](../../../templates/iteration-brief.md); Tier C inclusions require Delivery Owner and Module Owner signoff.
+
+A Story does **not** enter the backlog if the handoff checklist fails. A Story does **not** enter a sprint if the parent Requirement's reviews are not Approved.
 
 | Artifact | Level | Trigger / Notes | Asset |
 | --- | --- | --- | --- |
 | Story Card | Must-have | Required for every Story. | [Story Card](../../../templates/story-card.md) |
+| BA Handoff Checklist | Must-have | Required to gate placement on the backlog. AI-readiness self-test must pass. | [BA Handoff Checklist](../../../templates/ba-handoff-checklist.md) |
 | SDD Story Spec | Must-have for Tier B/C | Tier A can use a lightweight issue description if acceptance criteria are clear. | [SDD Story Spec](../../../templates/sdd-story-spec.md) |
 | AI Context Boundary | Must-have when AI is used | Can live in Story Card, SDD Story Spec, or Story Context Package. | [Story Context Package](../../../templates/story-context-package.md) |
 | Module Owner | Must-have for owned modules | Can be captured in Story Card, SDD Spec, or CODEOWNERS. | [CODEOWNERS](../../../templates/CODEOWNERS) |
 | Workflow Tier Decision | Must-have | Tier A/B/C determines process weight. | [Superpowers Adoption](./03-superpowers-adoption.md) |
+| Iteration Brief (Sprint scope) | Must-have at Sprint Selection | Authoritative source for "what's in this sprint" once Sprint Planning commits. | [Iteration Brief](../../../templates/iteration-brief.md) |
 | Story Context Package | Conditional | Required when context is spread across many documents or AI work is Tier B/C. | [Story Context Package](../../../templates/story-context-package.md) |
 | Technical Spec | Conditional | Required when technical design, architecture, API, data, permission, or integration impact exists. | [Technical Spec](../../../templates/technical-spec.md) |
 | Test Spec | Conditional | Required for Tier B/C and non-trivial behavior; optional for tiny Tier A changes. | [Test Spec](../../../templates/test-spec.md) |
@@ -347,3 +369,14 @@ Before an AI agent starts the next stage, ask:
 7. Does the agent know which risks need human review?
 
 If the answer is no, the previous stage has not produced enough context.
+
+## Key Takeaways
+
+- This is the canonical reference for stage × artifact × tier × template — other practice docs defer to it rather than maintaining their own tables.
+- Three artifact levels (Must-have / Conditional / Optional) keep the process usable: Tier A uses the smallest useful set, Tier C uses the full applicable set.
+- The eight Context Packages name the actual handoffs between stages; missing a package is where AI agents are forced to guess.
+- Before any stage starts, the seven readiness questions test whether enough context exists for the next AI-assisted step.
+
+## Next
+
+- [Superpowers Adoption](03-superpowers-adoption.md) — the Tier A/B/C rules that decide which subset of the artifact map applies to a given Story.

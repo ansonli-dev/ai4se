@@ -1,330 +1,166 @@
-# 团队级 AI SDLC 架构
+# 团队级 AI SDLC
 
 英文版：[../../practice/01-team-ai-sdlc.md](../../practice/01-team-ai-sdlc.md)
 
 ## 目的
 
-本章用团队级 AI SDLC 重新组织手册。SDLC 是 Software Development Life Cycle，即软件开发生命周期，覆盖从想法、需求、设计、实现、测试、发布、运行到持续改进的全过程。现有文章内容仍然有效，但读者需要一套更清晰的架构，理解 SDD、Superpowers、GSD-style context engineering、gstack-style product/QA 评审、CI/CD 和治理之间的关系。
+本篇说明 [四层执行栈](../knowledge/03-执行栈.md) 如何接入团队真实的 SDLC 阶段，以及在每个阶段该用哪个 AI 辅助执行框架——Superpowers、GSD、gstack 还是 BMAD。本篇不引入新的层模型；它把已有的栈映射到真实交付的流向。
 
-推荐结构：
+SDLC 指 Software Development Life Cycle：从想法和需求出发，经过设计、实现、测试、发布、运维到改进的完整生命周期。
 
-```text
-团队级 AI SDLC
-├── 规格 / 计划层
-│   ├── Requirements
-│   ├── ADR
-│   ├── 架构约束
-│   └── 实现计划
-│
-├── 执行层
-│   ├── Superpowers: TDD / subagent / 评审
-│   └── GSD: long-running phase execution
-│
-├── 验证层
-│   ├── Unit / Integration / Contract Test
-│   ├── Architecture Fitness Function
-│   ├── Security Scan
-│   └── gstack-style Browser QA
-│
-└── 治理层
-    ├── Human approval gate
-    ├── PR 评审
-    ├── CI quality gate
-    ├── Dependency policy
-    └── Release checklist
-```
+如果还没读 [执行栈](../knowledge/03-执行栈.md)，请先读它——本篇假设你已经熟悉四层（SDD / Superpowers / Harness / CI/Review）和自底向上诊断方法。
 
-## 核心建议
+## 栈映射到 SDLC
 
-对已经领取 ready Story card 的敏捷交付团队，默认使用 Superpowers 作为 AI-assisted development 工作流。
-
-对大型、长周期、多阶段任务，使用 GSD-style 做 context engineering 和 phase execution。
-
-对产品澄清、设计 评审、browser QA、release checklist 和 sprint reflection，选择性吸收 gstack-style 实践。
-
-简化判断：
+一个团队的 SDLC 大致是：需求 → 架构 → Story 拆分 → Story Ready → 开发 → 评审与合入 → 集成 → 发布 → 运维 → 反馈。执行栈不替代任何阶段；它规定 AI 在每个阶段怎么参与。
 
 ```text
-Story 清楚 -> Superpowers
-Story 很大 -> GSD 拆解并维护状态，再由 Superpowers 执行任务
-Story 不清楚 -> gstack-style discovery 澄清，再由 Superpowers 执行
+SDLC 阶段           归属层                       落地的实践文档
+──────────────      ─────────────────────────    ─────────────────────────────────
+需求                SDD（1）                      02 工件地图 S0-S2
+架构                SDD（1）                      02 工件地图 S1
+Story 拆分          SDD（1）                      02 工件地图 S2
+Story Ready         SDD（1）                      02 工件地图 S3、03 Tier 规则
+开发                Superpowers（2）+ Harness（3）03 Tier 规则、04 开发者指南
+评审与合入          CI/Review（4）                05 质量门禁（知识）、04 Step 6-8
+集成                CI/Review（4）                02 工件地图 S6
+发布                CI/Review（4）+ 横切          02 工件地图 S6、05 实施 Playbook
+运维                横切                          10 指标（知识）
+反馈                横切                          10 指标（知识）、06 路线图
 ```
 
-## 为什么 Story 交付默认选择 Superpowers
+运行模型（knowledge/04）、测试策略（knowledge/06）、工具链（knowledge/07）、指标（knowledge/10）是横切的——它们作用于每个阶段，而不是某一个阶段。
 
-Story card ready 后，产品发现应该基本完成。交付团队需要：
+## Superpowers、GSD、gstack 各放哪
 
-1. 理解 验收标准。
-2. 分析 impact。
-3. 写 implementation plan。
-4. 新增或更新 tests。
-5. 在 范围 内实现。
-6. 按 spec 评审。
-7. 做 code quality 评审。
-8. 用 evidence 打包 MR。
+Story card ready 之后，Superpowers 是**内部默认**的开发者工作流（这是执行栈在第 2 层确立的）。GSD 和 gstack 是 Superpowers 不够用时的**专用工具**。BMAD 用于最模糊、最高风险的上游工作。
 
-这正是 Superpowers 最匹配的阶段。它是 AI development skill set，而不是完整项目管理系统。它的强项是 planning、TDD、subagent execution、code 评审、Git worktree、verification 和 finishing a branch。
+本节给出 GSD 和 gstack 的正式定义——它们在手册其他地方都不再额外解释——以及"什么时候用哪一个"的决策规则。
 
-Superpowers 的 `subagent-driven-development` 尤其相关：每个任务使用 fresh subagent，并进行两阶段 评审，先 spec compliance 评审，再 code quality 评审。
+### Superpowers（默认）
 
-## GSD 放在哪里
+是什么：为 Coding Agent 设计的可组合 skill 框架和软件开发方法论。Skill 包括 `brainstorming`、`writing-plans`、`test-driven-development`、`subagent-driven-development`、`requesting-code-review`、`receiving-code-review`、`systematic-debugging`、`verification-before-completion`。
 
-GSD 更像 context engineering + spec-driven long-task execution。
+最佳适配：Story card ready 之后的日常 Story 交付。已有仓库、有 Git/PR/测试的团队、混合资历的开发者。这是第 2 层的默认。
 
-适用：
+落地位置：[Superpowers 采用策略](03-superpowers采用策略.md) 给 Tier 规则；[开发者指南](04-开发者指南.md) 给日常八步流程。
 
-- 一个 feature 太大，超过普通 Story implementation session。
-- 工作需要多个 phase。
-- 团队需要跨 session 持久状态。
-- context rot 是主要风险。
-- 独立任务可以用 fresh executor context 并行执行。
+参考：https://github.com/obra/superpowers
 
-值得采用的 GSD-style 实践：
+### GSD——Get Shit Done
 
-- 维护结构化项目状态。
-- 明确 requirements、roadmap、state 和 phase context。
-- 将长任务拆成 phases。
-- 用 fresh context 执行独立 plans。
-- phase 完成前必须 verify。
+是什么：一种上下文工程加规格驱动长任务执行系统。GSD 的贡献是**持久化项目状态**——需求、路线图、阶段上下文、任务状态保存在结构化文件里，让一个跨会话、跨阶段的 AI 工作流不会丢失自己在哪。独立任务可以用全新上下文执行，避免上下文腐烂。
 
-企业使用注意：
+最佳适配：一个 feature 大到一次 Story 级别会话装不下；多阶段工作；需要扛住上下文窗口重置的工作；或独立任务希望用全新 executor 上下文执行。
 
-- 不允许长任务执行引擎绕过 architecture、security、dependency 或 owner 评审。
-- GSD-style execution 必须放在同一套 governance gates 内。
+在本手册里怎么用：GSD-style 实践**包裹** Superpowers，不替代它。GSD 管阶段状态和分解；Superpowers 管一个阶段内的执行纪律。组合模式是"GSD 分解并保存状态 → Superpowers 执行每个阶段的任务"。
 
-## gstack 放在哪里
+企业注意：长时运行的执行引擎不能绕过架构、安全、依赖或 Owner 评审。GSD-style 执行要走和默认工作一样的门禁。
 
-gstack 更像 role-based delivery 工作流：product framing、plan pressure-testing、engineering 评审、browser QA、release checks 和 retrospective。
+参考：https://github.com/gsd-build/get-shit-done
 
-适用：
+### gstack——角色驱动的交付循环
 
-- Story 还不 ready。
-- Product intent 或 UX 不清楚。
-- Web 产品需要真实 browser QA。
-- 小团队需要轻量 virtual delivery team。
-- 团队想加强 pre-merge 评审 和 release discipline。
+是什么：一种角色驱动的交付工作流，给 AI 辅助工作加入虚拟产品、架构、QA、发布视角。它的循环包括产品框定、计划压力测试、工程评审、浏览器 QA、发布检查、复盘。
 
-值得采用的 gstack-style 实践：
+最佳适配：Story 实际上没 ready，需要产品澄清；Web 产品需要真实浏览器 QA；小团队想要轻量虚拟交付队伍；合入前评审和发布纪律不足。
 
-- Story ready 前做 product clarification。
-- 实现前做 architecture 和 test 评审。
-- Web 用户路径做 browser QA。
-- 合入或部署前做 release checklist。
-- 交付后做 retrospective。
+在本手册里怎么用：gstack-style **实践** 对放在 Superpowers 之前（让 Story Ready）或者 CI/Review 旁边（浏览器 QA、发布清单）有用。角色 persona 不替代真实 owner、安全评审或 CI/CD。把 gstack 命令当评审辅助，不当审批权威。
 
-企业使用注意：
+参考：https://gstack.lol/
 
-- Role persona 不能替代真实 Owner、architecture 评审、security 评审 或 CI/CD。
-- gstack-style commands 是 评审 aids，不是最终审批权威。
+### BMAD——上游升级
+
+是什么：Breakthrough Method of Agile AI-driven Development。一种 AI 辅助敏捷框架，有更强的产品、架构、评审角色。
+
+最佳适配：Story 模糊、跨域或风险高到 gstack-style 发现都不够。在本手册中，BMAD **不**是默认开发者工作流；它是 Story card 交给开发之前——当范围广到难以规格化时——考虑的上游升级。
+
+参考：https://bmad.fr/en/bmad-method
+
+### 决策规则
+
+```text
+Story 清晰                       -> Superpowers（默认）
+Story 大或多阶段                 -> GSD 分解并保存状态 → Superpowers 执行每个阶段
+Story 不清晰                     -> gstack-style 发现澄清它 → Superpowers 执行
+Story 范围广到难以规格化         -> BMAD 上游 → 产出 ready 的 Story → Superpowers 执行
+Story 给供应商                   -> 供应商自己选工作流；内部按交付物验收
+```
 
 ## 工具对比
 
-| Tool | 抽象层级 | 核心问题 | 最适合 | 企业适配 |
+| 框架 | 抽象层级 | 解决的核心问题 | 最佳适配 | 企业角色 |
 | --- | --- | --- | --- | --- |
-| Superpowers | AI coding skills 和 工作流 skills | 用工程纪律执行 ready work | 日常 Story 交付、既有仓库、有 Git/PR/tests 的团队 | 高 |
-| gstack | 角色化虚拟软件团队和交付闭环 | 增加产品、架构、QA、发布和复盘压力 | Founder、产品团队、Web app、早期 工作流 | 中，选择性借鉴 |
-| GSD | Context engineering 和长任务 spec execution | 避免长时间 AI 工作中的 context rot | 大 feature、多阶段执行、有状态 AI 工作 | 中，需要治理封装 |
-
-## 现有手册如何映射到 AI SDLC
-
-### 规格 / 计划层
-
-目的：
-
-- 将业务意图转为有边界、可评审、可测试的计划。
-
-主要文档：
-
-- [AI-SDD 总览](../knowledge/01-ai-sdd总览.md)
-- [SDD 方法论](../knowledge/02-sdd方法论.md)
-- [开发者指南](./04-开发者指南.md)
-- [优先级与路线图](./06-优先级与路线图.md)
-
-主要模板：
-
-- [SDD Story 规格](../../../../templates/sdd-story-spec.md)
-- [技术规格](../../../../templates/technical-spec.md)
-- [ADR](../../../../templates/adr.md)
-- [测试规格](../../../../templates/test-spec.md)
-- [Prompt Card](../../../../templates/prompt-card.md)
-
-关键规则：
-
-- 在 验收标准、上下文边界、受影响工件 和 验证预期 清楚前，Story 不能进入 AI 辅助实现。
-
-### 执行层
-
-目的：
-
-- 将计划转为代码、测试、契约和文档，同时控制 范围漂移。
-
-主要文档：
-
-- [Superpowers 采用策略](./03-superpowers采用策略.md)
-- [开发者指南](./04-开发者指南.md)
-- [Harness 工程](../knowledge/09-harness工程.md)
-- [Agent 工具](../knowledge/08-agent工具.md)
-
-推荐默认：
-
-- Tier A：轻量工作流。
-- Tier B：Superpowers planning、可行时 TDD、评审、verification。
-- Tier C：完整 Superpowers 工作流、Owner Review、完整 quality gates。
-- Long-running feature：GSD-style phase state + Superpowers task execution。
-
-关键规则：
-
-- 执行工具可以不同，但必需工件、评审 和 evidence 不变。
-
-### 验证层
-
-目的：
-
-- 证明实现匹配 spec，且没有引入不可接受风险。
-
-主要文档：
-
-- [质量门禁](../knowledge/05-质量门禁.md)
-- [测试策略](../knowledge/06-测试策略.md)
-- [Harness 工程](../knowledge/09-harness工程.md)
-
-主要政策和清单：
-
-- [质量门禁检查清单](../../../../quality-gates/checklist.md)
-- [CI 门禁政策](../../../../quality-gates/ci-gate-policy.md)
-- [测试政策](../../../../ai/testing-policy.md)
-- [Review 检查清单](../../../../ai/review-checklist.md)
-
-验证实践：
-
-- Unit tests 验证业务规则和边界场景。
-- Integration tests 验证跨模块行为。
-- Contract tests 验证 API 和 event。
-- Architecture fitness functions 验证结构约束。
-- Security scans 覆盖 SAST、SCA、secrets 和 dependency risk。
-- Web 用户路径使用 gstack-style browser QA。
-
-关键规则：
-
-- 完成必须基于证据。Agent confidence 不是 verification。
-
-### 治理层
-
-目的：
-
-- 让 AI-assisted delivery 在多团队和供应商场景下保持责任明确、可审计、可控。
-
-主要文档：
-
-- [运行模型](../knowledge/04-运行模型.md)
-- [工具链](../knowledge/07-工具链.md)
-- [指标](../knowledge/10-指标.md)
-- [推广与验收](./07-推广与验收.md)
-- [实施 Playbook](./02-实施playbook.md)
-- [优先级与路线图](./06-优先级与路线图.md)
-
-主要控制：
-
-- Human approval gate。
-- Owner Review。
-- PR 评审。
-- CI quality gate。
-- Dependency policy。
-- Release checklist。
-- 供应商交付物评审。
-- Weekly AI-SDD 评审。
-
-关键规则：
-
-- 内部团队可以使用不同 AI 工作流 工具，供应商也可以使用自己的方法，但验收证据和质量门禁必须一致。
-
-## SDD 与 Superpowers 章节汇总
-
-给交付团队介绍方法时，建议按以下顺序阅读：
-
-1. [SDD 方法论](../knowledge/02-sdd方法论.md)：说明为什么 AI 辅助工作 从 已批准的规格 开始。
-2. [Superpowers 采用策略](./03-superpowers采用策略.md)：定义 Tier A/B/C，以及何时要求 Superpowers。
-3. [开发者指南](./04-开发者指南.md)：说明 Story 接收、planning、TDD、artifact updates、评审、verification 和 MR completion。
-4. [Harness 工程](../knowledge/09-harness工程.md)：定义 上下文、工具、权限、验证和证据 的受控执行环境。
-5. [Agent 工具](../knowledge/08-agent工具.md)：说明 Claude Code、Codex、Cursor、skills、MCP、plugins、memory 和 hooks 如何进入 工作流。
-
-简版：
-
-- SDD 是 specification layer。
-- Superpowers 是 Story ready 后内部默认 execution discipline。
-- Harness 工程 是 execution-control layer。
-- 质量门禁s 和 CI/CD 是 合入与发布控制层。
+| Superpowers | AI 编码 + 工作流 skill | 用工程纪律执行已 ready 的工作 | 日常 Story 交付 | 内部 Tier B/C 默认 |
+| GSD | 上下文工程 + 长任务执行 | 避免多阶段 AI 工作中的上下文腐烂 | 大 feature、多阶段 | 走和默认工作一样的门禁 |
+| gstack | 角色驱动的虚拟交付循环 | 加入产品、架构、QA、发布压力 | Web 应用、早期团队、发现不足 | Superpowers 之前和 CI/Review 旁边选择性使用 |
+| BMAD | 敏捷 AI 驱动的发现与计划 | 让模糊宽广的工作变得可规格化 | 跨域或研究型工作 | 仅作 Story 前的上游升级 |
 
 ## 默认团队工作流
 
+这是框架选定之后的日常流程。每一步在其他实践文档里有更详细的展开。
+
 ```text
-Story 卡片
-  -> Story Intake
-  -> Tier Classification
-  -> SDD / 技术规格 / ADR if required
-  -> 实现计划
-  -> TDD or test strategy
-  -> Implementation
-  -> Spec Compliance Review
-  -> Code Quality Review
-  -> 验证证据
-  -> MR Packaging
-  -> Owner / Human Review
-  -> CI 质量门禁
-  -> Merge / Release / Acceptance
+Story Card 已 Ready
+  -> Story Intake（04 Step 1）
+  -> Tier 分类（03）
+  -> 必要时 SDD / Technical Spec / ADR（02 阶段 S1-S3）
+  -> 实施计划（04 Step 3）
+  -> TDD 或测试策略（04 Step 4）
+  -> 实现（04 Step 4）
+  -> 规格符合性评审（04 Step 6）
+  -> 代码质量评审（04 Step 6）
+  -> 验证证据（04 Step 7）
+  -> MR 打包（04 Step 8）
+  -> Owner / 人工评审（知识 05 质量门禁）
+  -> CI 质量门禁（知识 05 质量门禁）
+  -> 合入 / 发布 / 验收（02 阶段 S4-S7）
 ```
 
-## 推荐采用政策
+## 按 Story 类型的采用策略
 
 ### 日常 Story 开发
 
-默认使用 Superpowers。
+默认 Superpowers，按 [Tier A/B/C](03-superpowers采用策略.md) 加权。完整日常流程见 [开发者指南](04-开发者指南.md)。
 
-用于：
+### 复杂或多阶段 Story
 
-- Story 接收。
-- Implementation planning。
-- TDD 或 test-first behavior changes。
-- 独立任务的 subagent execution。
-- Spec compliance 评审。
-- Code quality 评审。
-- Verification before completion。
+用 GSD-style 阶段状态加 Superpowers。GSD 管：长上下文、需求和路线图状态、阶段计划、任务状态、全新 executor 上下文。Superpowers 管：TDD、任务实现、评审、分支收尾。
 
-### 复杂 Story 或 Technical Story
+### 不清晰的 Story
 
-使用 GSD-style phase execution + Superpowers。
+开发前用 gstack-style 发现：产品澄清、设计评审、架构和测试评审。然后回到 Superpowers 实施。
 
-GSD-style practices 处理：
+### 跨域或研究型 Story
 
-- Long context。
-- Requirements and roadmap state。
-- Phase planning。
-- Task state。
-- Fresh executor context。
+把 BMAD 作为上游升级，产出 ready 的 Story。不要让 BMAD-style 发现绕过 Owner 评审或质量门禁。
 
-Superpowers 处理：
+## 每篇实践文档什么时候用
 
-- TDD。
-- Task implementation。
-- Review。
-- Branch finishing。
+| 文档 | 什么时候读 |
+| --- | --- |
+| [02 AI 上下文工件地图](02-ai上下文工件地图.md) | 任何时候需要知道某阶段或某 Tier 要哪些工件。正典参考。 |
+| [03 Superpowers 采用策略](03-superpowers采用策略.md) | 设定 Tier 规则；明确哪些 Superpowers skill 在哪个 Tier 必需。 |
+| [04 开发者指南](04-开发者指南.md) | 日常 Story 执行——八步流程。 |
+| [05 实施 Playbook](05-实施playbook.md) | Week 0、Kickoff、RACI、仓库设置、供应商评审节奏。 |
+| [06 优先级与路线图](06-优先级与路线图.md) | 决定先采用什么；规划 P0/P1/P2 工作。 |
+| [07 推广与验收](07-推广与验收.md) | 验证推广是否真的产生了你想要的行为变化。 |
 
-### 不清楚的 Story
+## 参考资料
 
-开发前使用 gstack-style discovery。
-
-借鉴：
-
-- Product clarification。
-- Design 评审。
-- Architecture and test 评审。
-- Web flow 的 Browser QA。
-- Ship checklist。
-
-然后回到 Superpowers 执行实现。
-
-## 来源
-
-- [Superpowers subagent-driven-development](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)
+- [Superpowers——subagent-driven-development skill](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)
+- [Superpowers 仓库](https://github.com/obra/superpowers)
+- [GSD——Get Shit Done](https://github.com/gsd-build/get-shit-done)
 - [gstack](https://gstack.lol/)
-- [GSD: Get Shit Done](https://github.com/gsd-build/get-shit-done)
+- [BMAD method](https://bmad.fr/en/bmad-method)
+
+## 要点回顾
+
+- 知识路径的四层执行栈在这里没有被重新发明；它直接映射到 SDLC 阶段。
+- Superpowers 是第 2 层的默认；GSD 包裹它处理长工作；gstack 在上游和发布阶段辅助它；BMAD 是上游升级。
+- 第 02 篇是工件参考的正典——其他文档关于"这个阶段我要什么"都指向那里。
+- 默认团队工作流是一张图；每一步有更详细的归属文档。
+
+## 下一篇
+
+- [AI 上下文工件地图](02-ai上下文工件地图.md)——每个交付阶段必须产出什么工件的中心参考。

@@ -47,23 +47,28 @@ Read these in order when learning the model:
 
 Use these when running real delivery work:
 
-1. [Team AI SDLC](practice/01-team-ai-sdlc.md): the team-level architecture that connects SDD, Superpowers, agents, verification, and governance.
-2. [Implementation Playbook](practice/02-implementation-playbook.md): Week 0 preparation, kickoff, review cadence, supplier review, minimum repo setup, and RACI.
+0. [Reading Guide](practice/00-reading-guide.md): start here. Role-based reading orders, where the four-layer execution stack resurfaces, and which docs are the canonical references.
+1. [Team AI SDLC](practice/01-team-ai-sdlc.md): how the execution stack lands in a team's real SDLC stages, and where Superpowers, GSD, gstack, and BMAD each fit.
+2. [AI Context Artifact Map](practice/02-ai-context-artifact-map.md): the canonical stage × artifact × tier × template reference that other practice docs defer to.
 3. [Superpowers Adoption](practice/03-superpowers-adoption.md): internal Tier A/B/C workflow rules and adoption boundaries.
-4. [Developer Guide](practice/04-developer-guide.md): developer workflow from Story intake to verified MR.
-5. [AI Context Artifact Map](practice/05-ai-context-artifact-map.md): stage-by-stage artifact map for AI context handoff.
-6. [Priorities And Roadmap](practice/06-priorities-and-roadmap.md): must-have, should-have, nice-to-have, directly actionable work, and infrastructure backlog.
-7. [Rollout And Acceptance](practice/07-rollout-and-acceptance.md): 12-week rollout model and acceptance scenarios.
+4. [Developer Guide](practice/04-developer-guide.md): the eight-step daily workflow from Story intake to verified MR.
+5. [Implementation Playbook](practice/05-implementation-playbook.md): Week 0 preparation, kickoff, review cadence, supplier review, minimum repo setup, and RACI (now including BA and PO).
+6. [Priorities And Roadmap](practice/06-priorities-and-roadmap.md): the canonical 5-phase rollout sequence — P0/P1/P2 classification and operational backlogs.
+7. [Rollout And Acceptance](practice/07-rollout-and-acceptance.md): acceptance scenarios that verify the rollout from doc 06 actually produced the behavior change you wanted.
+8. [Role × Stage Matrix](practice/08-role-stage-matrix.md): the canonical role × stage reference — who produces what at each stage, with per-role micro-flows.
+9. [BA Guide](practice/09-ba-guide.md): BA's deep workflow — Requirement intake → three-reviews → Story breakdown → backlog → support → close.
 
 ## Role Paths
 
 - Delivery Owner: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/04-operating-model.md), [Priorities And Roadmap](practice/06-priorities-and-roadmap.md), [Rollout And Acceptance](practice/07-rollout-and-acceptance.md), [Metrics](knowledge/10-metrics.md).
-- Architect or Tech Lead: [SDD Methodology](knowledge/02-sdd-methodology.md), [Quality Gates](knowledge/05-quality-gates.md), [Toolchain](knowledge/07-toolchain.md), [Agent Tools](knowledge/08-agent-tools.md), [Team AI SDLC](practice/01-team-ai-sdlc.md).
+- Architect or Tech Lead: [SDD Methodology](knowledge/02-sdd-methodology.md), [Quality Gates](knowledge/05-quality-gates.md), [Toolchain](knowledge/07-toolchain.md), [Agent Tools](knowledge/08-agent-tools.md), [Team AI SDLC](practice/01-team-ai-sdlc.md), [Role × Stage Matrix](practice/08-role-stage-matrix.md).
+- BA / Business Analyst: [BA Guide](practice/09-ba-guide.md), [AI Context Artifact Map](practice/02-ai-context-artifact-map.md), [Role × Stage Matrix](practice/08-role-stage-matrix.md), [Requirement Review Record](../../templates/requirement-review-record.md), [BA Handoff Checklist](../../templates/ba-handoff-checklist.md).
+- Product Owner: [Team AI SDLC](practice/01-team-ai-sdlc.md), [BA Guide](practice/09-ba-guide.md), [Role × Stage Matrix](practice/08-role-stage-matrix.md), [Rollout And Acceptance](practice/07-rollout-and-acceptance.md).
 - Developer: [Developer Guide](practice/04-developer-guide.md), [Superpowers Adoption](practice/03-superpowers-adoption.md), [AI Engineering Constitution](../../ai/engineering-constitution.md), [AI Context Policy](../../ai/context-policy.md), [Testing Policy](../../ai/testing-policy.md).
 - QA: [Testing Strategy](knowledge/06-testing-strategy.md), [Quality Gates](knowledge/05-quality-gates.md), [Testing Policy](../../ai/testing-policy.md), [Test Spec Template](../../templates/test-spec.md), [Quality Gate Checklist](../../quality-gates/checklist.md).
 - Security Lead: [Toolchain](knowledge/07-toolchain.md), [Quality Gates](knowledge/05-quality-gates.md), [Security Policy](../../ai/security-policy.md), [AI Context Policy](../../ai/context-policy.md), [Allowed Tools](../../ai/allowed-tools.md).
 - AI Champion: [Superpowers Adoption](practice/03-superpowers-adoption.md), [Developer Guide](practice/04-developer-guide.md), [Harness Engineering](knowledge/09-harness-engineering.md), [Prompt Card Template](../../templates/prompt-card.md), [Weekly AI-SDD Review](../../templates/weekly-ai-sdd-review.md).
-- Supplier Lead: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/04-operating-model.md), [Quality Gates](knowledge/05-quality-gates.md), [Implementation Playbook](practice/02-implementation-playbook.md), [Supplier Scorecard](../../templates/supplier-scorecard.md).
+- Supplier Lead: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/04-operating-model.md), [Quality Gates](knowledge/05-quality-gates.md), [Implementation Playbook](practice/05-implementation-playbook.md), [Supplier Scorecard](../../templates/supplier-scorecard.md).
 
 ## Minimum Executable Checklist
 

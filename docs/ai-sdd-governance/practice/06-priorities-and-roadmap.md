@@ -4,7 +4,7 @@ Chinese version: [../zh/practice/06-优先级与路线图.md](../zh/practice/06-
 
 ## Purpose
 
-This document separates governance ideas from implementation work.
+This document separates governance ideas from implementation work and is the **canonical AI-SDD rollout sequence**. When [Rollout And Acceptance](07-rollout-and-acceptance.md) talks about phases, it is verifying the phases defined here.
 
 The full AI-SDD governance model contains process rules, developer workflows, templates, quality gates, CI/CD, hooks, dashboards, and platform capabilities. They should not be treated as one all-or-nothing package.
 
@@ -13,6 +13,15 @@ The practical rollout needs three distinctions:
 - Must-have versus nice-to-have.
 - Directly actionable process changes versus infrastructure work.
 - Immediate operating rules versus medium-term platform capabilities.
+
+## How To Read This Doc
+
+This doc is long because it carries both the decision model and the operational backlogs. To stay usable it is split into two parts:
+
+- **Learn (sections "Guiding Direction" through "Practical Sequencing Rule")** — the model: how to think about priorities, the P0/P1/P2 classification, and the rule for deciding what comes first. Read on first pass.
+- **Reference (sections marked "Reference:" onward)** — the operational backlogs, the 5-phase roadmap, the decision table, and the infrastructure work lists. Skim on first pass; consult by need during rollout.
+
+If you only read one section, read **Priority Levels** plus **Practical Sequencing Rule** — they answer "what do we do first?"
 
 ## Guiding Direction
 
@@ -137,7 +146,23 @@ P2 completion rule:
 - The organization has enough stable process data to justify dashboards or platform investment.
 - Teams are no longer debating the basic workflow.
 
-## What Can Be Implemented Immediately
+## Practical Sequencing Rule
+
+Use this rule when there is disagreement about priority:
+
+1. If it prevents unclear or unsafe AI execution, do it early.
+2. If it prevents broken code from merging, put it in CI/CD as soon as possible.
+3. If it only improves reporting, wait until the source data is reliable.
+4. If it requires platform engineering, wait until the manual process has proven repeated value.
+5. If it is only nice process language and does not change behavior, simplify or remove it.
+
+---
+
+## Reference: Operational Backlogs And Roadmap
+
+Everything below is reference material — backlogs, phase plans, decision tables. It is meant to be looked up during real rollout work, not memorised on first read.
+
+## Reference: What Can Be Implemented Immediately
 
 The following can be started before CI/CD and hooks are fully built.
 
@@ -168,7 +193,7 @@ The following can be started before CI/CD and hooks are fully built.
 - Maintain a small set of approved prompt cards.
 - Record AI failure cases and common corrections.
 
-## What Requires Additional Work
+## Reference: What Requires Additional Work
 
 The following should be treated as engineering backlog items.
 
@@ -208,7 +233,7 @@ The following should be treated as engineering backlog items.
 - Build dashboards only after data capture is consistent.
 - Start with weekly manual review before investing in automation.
 
-## Recommended Roadmap
+## Reference: Recommended Roadmap
 
 ### Phase 0: Direction And Minimum Rules
 
@@ -331,7 +356,7 @@ Exit criteria:
 - Dashboard data is trusted enough for governance decisions.
 - Platform work reduces repeated manual effort or prevents known recurring failures.
 
-## Must-Have Versus Nice-To-Have Summary
+## Reference: Must-Have Versus Nice-To-Have Summary
 
 ### Must-Have
 
@@ -370,17 +395,7 @@ Exit criteria:
 - Automated supplier scorecards.
 - AI output evaluation platform.
 
-## Practical Sequencing Rule
-
-Use this rule when there is disagreement about priority:
-
-1. If it prevents unclear or unsafe AI execution, do it early.
-2. If it prevents broken code from merging, put it in CI/CD as soon as possible.
-3. If it only improves reporting, wait until the source data is reliable.
-4. If it requires platform engineering, wait until the manual process has proven repeated value.
-5. If it is only nice process language and does not change behavior, simplify or remove it.
-
-## Decision Table
+## Reference: Decision Table
 
 | Question | Recommended Decision |
 | --- | --- |
@@ -391,7 +406,7 @@ Use this rule when there is disagreement about priority:
 | Should dashboards be built early? | No. Manual weekly review comes first; dashboards come after consistent data capture. |
 | Should outsourced teams use Superpowers? | Not by default. Accept outsourced work by spec, deliverables, test evidence, quality gates, and owner approval. |
 
-## Backlog For Infrastructure Work
+## Reference: Backlog For Infrastructure Work
 
 ### CI/CD Backlog
 
@@ -436,4 +451,15 @@ Use this rule when there is disagreement about priority:
 - Capture review outcome.
 - Capture defect and rework outcome.
 - Build dashboard after two or more iterations of reliable data.
+
+## Key Takeaways
+
+- This doc is the canonical AI-SDD rollout sequence; [Rollout And Acceptance](07-rollout-and-acceptance.md) verifies the phases defined here.
+- The P0/P1/P2 split separates "must-have for a controlled pilot" from "scale and platform investment" — do not collapse them.
+- The Practical Sequencing Rule is the tie-breaker when teams disagree about what comes first.
+- The 5-phase recommended roadmap (Phase 0-4) is reference material — consult during rollout planning, not on first read.
+
+## Next
+
+- [Rollout And Acceptance](07-rollout-and-acceptance.md) — acceptance scenarios that verify the rollout this doc plans actually produced the behavior change you wanted.
 

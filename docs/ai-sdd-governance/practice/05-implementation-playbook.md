@@ -1,6 +1,6 @@
 # Implementation Playbook
 
-Chinese version: [../zh/practice/02-实施playbook.md](../zh/practice/02-实施playbook.md)
+Chinese version: [../zh/practice/05-实施playbook.md](../zh/practice/05-实施playbook.md)
 
 ## Week 0 Preparation
 
@@ -80,19 +80,40 @@ Recommended files for each application repository:
 
 ## RACI Matrix
 
-| Activity | Delivery Owner | Architect | QA Lead | Security Lead | Team Lead | AI Champion | Module Owner | Outsourced Lead |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Approve governance policy | A | R | C | C | C | C | C | C |
-| Approve SDD template | A | R | C | C | C | R | C | C |
-| Approve Story Spec | C | C | C | C | A | R | R | R |
-| Approve architecture decision | C | A | C | C | R | C | R | C |
-| Approve test strategy | C | C | A | C | R | C | C | C |
-| Approve security exception | A | C | C | A | C | C | C | C |
-| Approve core module change | C | C | C | C | R | C | A | R |
-| Review weekly metrics | A | R | R | R | R | R | C | R |
+Columns now include **BA** (Business Analyst) and **PO** (Product Owner) so the upstream Requirement → three-reviews → Story flow has explicit accountability. New rows cover the Requirement-level activities.
+
+| Activity | Delivery Owner | PO | Architect | Tech Lead | QA Lead | Security Lead | BA | AI Champion | Module Owner | Outsourced Lead |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Approve governance policy | A | C | R | C | C | C | C | C | C | C |
+| Approve SDD template | A | C | R | C | C | C | R | R | C | C |
+| Approve Requirement (Requirements Review) | C | A | C | C | C | C | R | C | C | C |
+| Approve Requirement (Technical Review) | C | C | C | A | C | C | R | C | R | C |
+| Approve Requirement (Test Review) | C | C | C | C | A | C | R | C | C | C |
+| Approve Story breakdown + backlog placement | C | C | C | C | C | C | A | C | C | C |
+| Approve Sprint scope | A | R | C | R | C | C | C | C | C | C |
+| Approve Story Spec | C | C | C | A | C | C | R | R | R | R |
+| Approve architecture decision | C | C | A | R | C | C | C | C | R | C |
+| Approve test strategy | C | C | C | R | A | C | C | C | C | C |
+| Approve security exception | A | C | C | C | C | A | C | C | C | C |
+| Approve core module change | C | C | C | R | C | C | C | C | A | R |
+| Story acceptance (business outcome) | C | A | C | C | R | C | R | C | R | C |
+| Approve release readiness | A | C | R | R | R | R | C | C | R | C |
+| Close Requirement after UAT | C | A | C | C | R | C | R | C | C | C |
+| Review weekly metrics | A | C | R | R | R | R | R | R | C | R |
 
 Legend:
 
 - R: Responsible.
 - A: Accountable.
 - C: Consulted.
+
+## Key Takeaways
+
+- Week 0 turns the abstract governance model into named owners, approved templates, and configured repositories — without it, the daily workflow has nothing to lean on.
+- The kickoff agenda is intentionally a single demonstration of one Story from spec to MR — the goal is shared mental model, not a long lecture.
+- Weekly and monthly cadences (AI-SDD review, supplier review) are the operational heartbeat that turns failure cases into process improvements.
+- RACI exists to settle "who actually decides" — disagreements about ownership become arbitration topics in [Operating Model](../knowledge/04-operating-model.md).
+
+## Next
+
+- [Priorities And Roadmap](06-priorities-and-roadmap.md) — once the playbook is operational, the roadmap sequences P0/P1/P2 work across the 5-phase rollout.

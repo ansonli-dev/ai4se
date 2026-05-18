@@ -4,7 +4,13 @@ Chinese version: [../zh/knowledge/04-运行模型.md](../zh/knowledge/04-运行�
 
 ## Governance Layers
 
-The delivery program uses four governance layers.
+The delivery program uses five governance layers:
+
+1. Project AI-SDD Governance Committee — cross-team standards.
+2. Team AI Champion — per-team enablement and feedback.
+3. Code Owner Model — per-module accountability.
+4. Business Analyst (BA) Accountability — per-Requirement upstream ownership.
+5. Quality Arbitration — dispute resolution.
 
 ## 1. Project AI-SDD Governance Committee
 
@@ -53,7 +59,34 @@ Rules:
 - Module owners approve changes that affect domain behavior, data models, interface contracts, permissions, or production risk.
 - Ownership is recorded in the service catalog and repository `CODEOWNERS` file when available.
 
-## 4. Quality Arbitration
+## 4. Business Analyst (BA) Accountability
+
+The BA is the owner of the upstream **Requirement → three-reviews → Story breakdown** flow. Without a clear BA role, the SDD layer of the [Execution Stack](03-execution-stack.md) is weak — defects later attributed to "spec ambiguity" usually trace to a missing BA step.
+
+Responsibilities:
+
+- Own each Requirement end-to-end from intake to closure.
+- Convene and lead the Requirements Review; co-lead the Technical and Test Reviews with Tech Lead and QA.
+- Drive Story Breakdown only after all three reviews are *Approved* or *Conditionally Approved*.
+- Run the [BA Handoff Checklist](../../../templates/ba-handoff-checklist.md) for every Story before backlog placement; refuse to place Stories that fail the AI-readiness self-test.
+- Support development by updating artifacts (not chat) when developers raise questions.
+- Link Story acceptance back to the parent Requirement and close Requirements with lessons learned.
+
+Authority limits:
+
+- The BA does not approve architecture decisions, security exceptions, or core module changes (those remain with Architect/Tech Lead, Security Lead, and Module Owner).
+- The BA cannot override the three-review outcomes — a Failed review must go back through rework, not be bypassed by BA judgment.
+
+Relationship to other roles:
+
+- With **PO**: PO frames business intent and accepts business outcome; BA turns intent into specifiable artifacts and runs the reviews.
+- With **Tech Lead** and **QA**: BA convenes the Technical and Test Reviews; Tech Lead and QA chair them respectively.
+- With **Module Owner**: Module Owner is consulted on Technical Review for owned modules and approves Tier C Story scope.
+- With **AI Champion**: AI Champion flags Requirement-level patterns that historically caused AI failure modes.
+
+Full BA workflow: [BA Guide](../practice/09-ba-guide.md). BA's per-stage participation: [Role × Stage Matrix](../practice/08-role-stage-matrix.md).
+
+## 5. Quality Arbitration
 
 When a team cannot resolve a dispute, the governance committee arbitrates.
 
@@ -90,7 +123,8 @@ Outsourced team:
 
 ## Key Takeaways
 
-- Four governance layers — committee, AI Champion, code owner, arbitration — divide decision-making by scope and time horizon.
+- Five governance layers — committee, AI Champion, code owner, BA, arbitration — divide decision-making by scope and time horizon.
+- BA owns the upstream Requirement → three-reviews → Story flow; without that, downstream "spec ambiguity" defect attributions have nowhere to land.
 - Old employees, new hires, contractors, and supplier teams each get rules that match their accountability and learning curve.
 - Module ownership is recorded in `CODEOWNERS`; supplier developers may write code for core modules but cannot be the final approver.
 - Arbitration exists for the predictable hard calls: did a change affect architecture, was an AI solution acceptable, was a gate exception justified, who caused a defect.

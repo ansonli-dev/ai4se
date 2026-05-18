@@ -12,7 +12,7 @@ The audience is delivery owners, architects, tech leads, developers, QA, securit
 
 The split is deliberate: prose explains the system, executable assets are kept outside the prose folder so they can be linked into and used in real delivery without dragging the handbook along.
 
-- `docs/ai-sdd-governance/` — the handbook. Two parallel paths: `knowledge/` (concepts, read in numbered order 00 → 12) and `practice/` (delivery flow, run in numbered order). `README.md` is the navigation entry point.
+- `docs/ai-sdd-governance/` — the handbook. Two parallel paths: `knowledge/` (concepts, read in numbered order 00 → 12) and `practice/` (delivery flow, read in numbered order 00 → 07). `README.md` is the navigation entry point.
 - `templates/` — delivery artifact templates (SDD story spec, ADR, technical spec, test spec, MR evidence, etc.). Referenced from handbook prose via relative links.
 - `ai/` — team-level AI policies (engineering constitution, context, security, testing, allowed tools, review checklist). These are the "non-negotiable rules" cited throughout.
 - `quality-gates/` — merge/CI/exception policies and the pre-merge checklist.
@@ -38,7 +38,28 @@ The knowledge path (`docs/ai-sdd-governance/knowledge/`) is a curated learning s
 - Every concept doc (01-11) ends with `## Key Takeaways` (3-5 bullets) and `## Next` (one-sentence hand-off to the next-numbered doc). When restructuring or renumbering, update both — `Next` text references the destination doc by title.
 - Doc 11 (Capstone) walks a single hypothetical Story (Story-1287, refund-approval permission) through every prior doc. If a stage in the Capstone no longer maps to its referenced doc, the Capstone is wrong, not the doc.
 - Doc 00 (Reading Guide) lists 7 core terms inline with one-line definitions. Adding new high-frequency vocabulary? Add it here too, then to the [Glossary](docs/ai-sdd-governance/knowledge/12-glossary.md).
-- Long docs (currently only 06 Testing) split content into a **Learn** front half and a **Reference** back half, with the back half's H2s prefixed `Reference:`. Preserve this pattern if other docs grow past ~300 lines.
+- Long docs (currently only 06 Testing and practice 06 Roadmap) split content into a **Learn** front half and a **Reference** back half, with the back half's H2s prefixed `Reference:`. Preserve this pattern if other docs grow past ~300 lines.
+
+## Practice Path Conventions
+
+The practice path (`docs/ai-sdd-governance/practice/`) is a curated operating sequence numbered 00 → 09. Each doc serves a different audience but is held together by two central references.
+
+- The numbering is the reading order: 00 Reading Guide → 01 Team AI SDLC → 02 AI Context Artifact Map → 03 Superpowers Adoption → 04 Developer Guide → 05 Implementation Playbook → 06 Priorities And Roadmap → 07 Rollout And Acceptance → 08 Role × Stage Matrix → 09 BA Guide.
+- **Doc 02 (AI Context Artifact Map) is the canonical artifact reference.** Other practice docs defer to it for "what artifact does stage/tier X require?" Do not maintain duplicate Tier × artifact tables elsewhere — link to 02 instead.
+- **Doc 08 (Role × Stage Matrix) is the canonical role reference**, sister of doc 02. It enumerates who produces what at each stage. For roles with substantial micro-flows (Developer = 04, BA = 09), doc 08 cells link to the dedicated guide. For other roles the micro-flow lives inline in doc 08. Do not duplicate role-stage tables elsewhere — link to 08.
+- **Doc 06 owns the rollout phases; doc 07 owns acceptance.** Doc 06's Phase 0-4 is the canonical 5-phase rollout sequence. Doc 07 verifies each phase via acceptance scenarios and does not maintain its own roadmap.
+- Practice docs do **not** re-invent the four-layer execution stack from knowledge/03. Practice/01 maps the stack onto SDLC stages instead of introducing a parallel "AI SDLC architecture."
+- GSD and gstack are introduced (with definitions) in practice/01. They are not assumed elsewhere. BMAD is referenced only as an upstream escalation pattern.
+- Every practice doc (00-09) ends with `## Key Takeaways` and `## Next`, same convention as knowledge.
+
+## BA Workflow And Requirement Terminology
+
+The handbook explicitly models the upstream client-driven flow: **Requirement → three reviews → Story breakdown → backlog → sprint selection**. This is owned by BA and defined in `practice/09-ba-guide.md`.
+
+- "Requirement" (需求) is a Feature-sized business unit; the [Feature Spec template](templates/feature-spec.md) is used as the Requirement Spec (alias note at the top of that file). Do not create a separate `requirement-spec.md` — reuse `feature-spec.md`.
+- The three reviews (Requirements / Technical / Test) share **one** evidence file: [Requirement Review Record](templates/requirement-review-record.md). Don't split into three separate templates.
+- Every Story leaving BA's hands passes the [BA Handoff Checklist](templates/ba-handoff-checklist.md) AI-readiness self-test before entering the backlog. The checklist's existence and pass condition is the contract for "Story is ready for AI-assisted execution."
+- BA's responsibility surfaces in: `knowledge/04-operating-model.md` § BA Accountability, `practice/02-ai-context-artifact-map.md` S2-S3 sub-flows, `practice/05-implementation-playbook.md` RACI (BA + PO columns), `practice/08-role-stage-matrix.md` BA row, and `practice/09-ba-guide.md` (full workflow).
 
 ## Tier Model (Pervasive Vocabulary)
 
@@ -55,9 +76,9 @@ Outsourced/supplier work is governed by deliverable evidence, not by the interna
 The handbook is held together by relative links. The link graph matters more than any single document.
 
 - Use relative paths (e.g. `../../templates/adr.md`, `../../../ai/security-policy.md`) — never absolute paths and never bare filenames.
-- When you add a new template under `templates/`, link it from the appropriate stage in `docs/ai-sdd-governance/practice/05-ai-context-artifact-map.md` and from any role entry point in the top-level `README.md` / `docs/ai-sdd-governance/README.md` that should surface it.
+- When you add a new template under `templates/`, link it from the appropriate stage in `docs/ai-sdd-governance/practice/02-ai-context-artifact-map.md` and from any role entry point in the top-level `README.md` / `docs/ai-sdd-governance/README.md` that should surface it.
 - When you add a new handbook doc, add it to the numbered list in both `README.md` and `docs/ai-sdd-governance/README.md` (and the `zh/` mirrors), and renumber siblings if needed.
-- The artifact map (`practice/05-...`) is the canonical index of which artifact appears at which stage with which trigger level (Must-have / Conditional / Optional). Keep it in sync when artifacts are added, removed, or change criticality.
+- The artifact map (`practice/02-ai-context-artifact-map.md`) is the canonical index of which artifact appears at which stage with which trigger level (Must-have / Conditional / Optional). Keep it in sync when artifacts are added, removed, or change criticality.
 
 ## Harness Scripts
 
