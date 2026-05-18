@@ -25,6 +25,33 @@ This is especially valuable for new hires, graduates, contractors, and mixed-sen
 
 ## Workflow Tiers
 
+```mermaid
+flowchart TD
+    Start{"Story analysis"}
+    Q1{"Affects core business,<br/>permission, customer data,<br/>fee/settlement, audit,<br/>or production risk?"}
+    Q2{"Changes API, DB,<br/>cross-module behavior,<br/>or is a meaningful<br/>business feature?"}
+    Q3{"Copy / config / low-risk<br/>internal-tool change<br/>with small blast radius?"}
+
+    TierC["Tier C<br/>Full SDD + Tech Spec + ADR<br/>+ TDD + subagents<br/>+ Owner Review<br/>+ full quality gate"]
+    TierB["Tier B<br/>SDD Story Spec + Plan<br/>+ TDD where practical<br/>+ MR template<br/>+ quality gates"]
+    TierA["Tier A<br/>Lightweight SDD note<br/>+ verification<br/>+ normal review"]
+
+    Start --> Q1
+    Q1 -- "yes" --> TierC
+    Q1 -- "no" --> Q2
+    Q2 -- "yes" --> TierB
+    Q2 -- "no" --> Q3
+    Q3 -- "yes" --> TierA
+    Q3 -- "no" --> TierB
+
+    classDef tierA fill:#cfc,stroke:#070
+    classDef tierB fill:#ffc,stroke:#a70
+    classDef tierC fill:#fcc,stroke:#a00
+    class TierA tierA
+    class TierB tierB
+    class TierC tierC
+```
+
 ### Tier A: Lightweight Changes
 
 Use for:

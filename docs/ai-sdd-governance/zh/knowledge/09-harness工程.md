@@ -12,6 +12,28 @@
 
 ## 解决的问题
 
+```mermaid
+mindmap
+  root((没有<br/>harness))
+    上下文失控
+      给太多
+      给太少
+      错误来源
+      生产数据泄漏
+    工具失控
+      改了太多文件
+      跑了危险命令
+      没人工确认
+    虚弱验证
+      "完成"=Agent 自信
+      没新鲜证据
+      测试没跑
+    归因失败
+      "Agent 不工作"
+      没分类
+      没改进目标
+```
+
 ### 上下文失控
 
 没有 harness 时，开发者可能给 AI 太多、太少或错误上下文。
@@ -86,6 +108,25 @@ Harness reporting 区分：
 - 可追踪 run records。
 
 ## 成熟度等级
+
+```mermaid
+flowchart LR
+    L0["Level 0<br/>Bare Agent<br/>临时 prompt"]
+    L1["Level 1<br/>文件级 Harness<br/>+ SDD/Test Spec、政策、<br/>评审清单"]
+    L2["Level 2<br/>脚本化 Harness<br/>+ check-story-ready.sh<br/>+ run-verification.sh<br/>+ generate-execution-report.sh"]
+    L3["Level 3<br/>平台 Harness<br/>+ context service<br/>+ tool gateway<br/>+ permission service<br/>+ trace store + policy engine"]
+
+    L0 -- "起点" --> L1
+    L1 -- "推荐<br/>首次采用" --> L2
+    L2 -- "L1+L2 稳定后<br/>再投入" --> L3
+
+    classDef bare fill:#fdd,stroke:#a00
+    classDef recommended fill:#dfd,stroke:#070
+    classDef advanced fill:#cce,stroke:#447
+    class L0 bare
+    class L1,L2 recommended
+    class L3 advanced
+```
 
 Level 0：Bare Agent。
 

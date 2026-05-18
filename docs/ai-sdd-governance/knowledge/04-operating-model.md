@@ -6,6 +6,41 @@ Chinese version: [../zh/knowledge/04-运行模型.md](../zh/knowledge/04-运行�
 
 The delivery program uses five governance layers:
 
+```mermaid
+flowchart TD
+    subgraph Committee["1 — AI-SDD Governance Committee"]
+        direction LR
+        DOwner["Delivery Owner"]
+        Arch["Chief Architect"]
+        QA["QA Lead"]
+        Sec["Security Lead"]
+        TL["Tech Leads"]
+    end
+
+    subgraph Team["2 — Team AI Champion"]
+        AIC["1-2 per team"]
+    end
+
+    subgraph CodeOwner["3 — Code Owner Model"]
+        MO["Module Owners<br/>(CODEOWNERS)"]
+    end
+
+    subgraph BA["4 — BA Accountability"]
+        BAR["BA owns Requirement →<br/>3 reviews → Story breakdown"]
+    end
+
+    subgraph Arb["5 — Quality Arbitration"]
+        Disp["Dispute resolution<br/>by Committee"]
+    end
+
+    Committee --> Team
+    Committee --> CodeOwner
+    Committee --> BA
+    Committee --> Arb
+    BA -. "spec gaps" .-> Arb
+    CodeOwner -. "ownership disputes" .-> Arb
+```
+
 1. Project AI-SDD Governance Committee — cross-team standards.
 2. Team AI Champion — per-team enablement and feedback.
 3. Code Owner Model — per-module accountability.
@@ -89,6 +124,36 @@ Full BA workflow: [BA Guide](../practice/09-ba-guide.md). BA's per-stage partici
 ## 5. Quality Arbitration
 
 When a team cannot resolve a dispute, the governance committee arbitrates.
+
+```mermaid
+flowchart TD
+    Dispute["Team-level dispute"]
+    Resolve{"Team can<br/>resolve?"}
+    Local["Resolved locally"]
+    Committee["AI-SDD Governance Committee"]
+    Topic{"Topic"}
+    Arch["Architecture impact"]
+    AI["AI solution acceptable?"]
+    Gate["Gate exception justified?"]
+    Defect["Defect attribution"]
+    Supp["Supplier acceptance"]
+    Ruling["Recorded ruling<br/>(binding)"]
+
+    Dispute --> Resolve
+    Resolve -- "yes" --> Local
+    Resolve -- "no" --> Committee
+    Committee --> Topic
+    Topic --> Arch
+    Topic --> AI
+    Topic --> Gate
+    Topic --> Defect
+    Topic --> Supp
+    Arch --> Ruling
+    AI --> Ruling
+    Gate --> Ruling
+    Defect --> Ruling
+    Supp --> Ruling
+```
 
 Common arbitration topics:
 

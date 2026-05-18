@@ -10,6 +10,18 @@ AI 辅助开发必须从经过评审的规格开始。开发者不应从自由 p
 
 ## 端到端流程
 
+```mermaid
+flowchart LR
+    BR["业务需求<br/>进入待办列表"] --> Split["拆分为<br/>Epic / Feature / Story / Task"]
+    Split --> SDD["每个 Story →<br/>SDD Story 规格"]
+    SDD --> Tech["技术风险 →<br/>Technical Spec / ADR"]
+    Tech --> AI["AI 基于批准规格<br/>草拟代码、测试、文档"]
+    AI --> Dev["开发者检查、<br/>调整、负责输出"]
+    Dev --> MR["MR 通过<br/>门禁 + 人工评审"]
+    MR --> Accept["验收反馈<br/>更新规格、测试、KB"]
+    Accept -. "下一迭代" .-> BR
+```
+
 1. 业务需求进入 待办列表。
 2. 产品负责人 和团队将其拆分为 Epic、Feature、User Story 和 Task。
 3. 每个 Story 获得 SDD Story 规格。
@@ -44,6 +56,18 @@ Story 只有满足以下条件才 done：
 - 工件可以追溯到需求、规格版本、代码变更、测试结果和发布版本。
 
 ## SDD 工件生命周期
+
+```mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> ReadyForReview: DoR 完整<br/>+ AC + AI 边界
+    ReadyForReview --> Approved: PO + 技术 Owner 签字
+    ReadyForReview --> Draft: 发现问题
+    Approved --> Implemented: MR 链接<br/>+ 测试证据
+    Implemented --> Accepted: QA / 业务验证
+    Accepted --> [*]: 经验 → 知识库
+    Approved --> Draft: 范围变更
+```
 
 Draft：
 

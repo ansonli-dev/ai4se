@@ -57,6 +57,42 @@ Security and supply chain:
 
 ## AI Platform Architecture
 
+```mermaid
+flowchart TB
+    subgraph App["Application Layer"]
+        Dev["Developer<br/>(IDE / CLI / Web)"]
+        CI["CI/CD pipeline"]
+    end
+
+    subgraph Prompt["Prompt Layer"]
+        PC["Prompt Cards<br/>(versioned)"]
+        Skills["Skills / Workflows"]
+    end
+
+    subgraph Context["Context Layer"]
+        Specs["Approved specs<br/>+ architecture docs"]
+        Code["Code, tests,<br/>contracts"]
+        KB["Historical defects<br/>(masked)"]
+    end
+
+    subgraph Model["Model Layer"]
+        Private["Private / enterprise<br/>models"]
+        Profiles["Role + risk<br/>access profiles"]
+    end
+
+    subgraph Audit["Audit Layer"]
+        Trace["User, time, tool,<br/>prompt version,<br/>context, requirement,<br/>MR link"]
+    end
+
+    Dev --> Prompt
+    CI --> Prompt
+    Prompt --> Context
+    Context --> Model
+    Model -. "all calls logged" .-> Audit
+    Prompt -. "logged" .-> Audit
+    Context -. "logged" .-> Audit
+```
+
 Model layer:
 
 - Private or enterprise-managed models for code generation, test generation, document summarization, and defect analysis.

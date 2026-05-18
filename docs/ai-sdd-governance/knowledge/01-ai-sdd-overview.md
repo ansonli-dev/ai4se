@@ -42,6 +42,25 @@ Platform-enforced controls:
 
 ## What This Governance Prevents
 
+```mermaid
+mindmap
+  root((Failures<br/>prevented))
+    Inconsistency
+      Different teams<br/>different artifacts
+      Supplier output<br/>unstable quality
+    AI Misuse
+      Code from vague<br/>requirements
+      No tests or<br/>audit trail
+    Hidden Rework
+      Implicit expectations<br/>for new hires
+      Unaccountable<br/>AI changes
+    Lost Traceability
+      Requirement → Code
+      Code → Tests
+      Tests → Release
+      Release → Acceptance
+```
+
 - Different teams producing inconsistent artifacts.
 - AI generating incorrect implementations from vague requirements.
 - Supplier output being accepted with unstable quality standards.

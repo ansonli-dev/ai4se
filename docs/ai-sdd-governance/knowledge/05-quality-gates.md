@@ -24,6 +24,28 @@ Every merge request must pass:
 - Owner approval when core modules change.
 - AI usage declaration.
 
+```mermaid
+flowchart LR
+    MR["MR opened"] --> Meta["Metadata<br/>validation"]
+    Meta --> Build["Build"]
+    Build --> Unit["Unit tests"]
+    Unit --> Static["Static analysis<br/>+ SonarQube"]
+    Static --> Contract["Contract tests<br/>(if API/event)"]
+    Contract --> Int["Integration tests<br/>(if cross-service)"]
+    Int --> Sec["SAST + SCA<br/>+ Secret Scan"]
+    Sec --> Migr["Migration check<br/>(if schema)"]
+    Migr --> Owner{"Owner Review<br/>(if core module)"}
+    Owner -- "approved" --> AIDecl{"AI usage<br/>declaration?"}
+    Owner -- "missing" --> Block["BLOCKED"]
+    AIDecl -- "present" --> Merge["Merge"]
+    AIDecl -- "missing" --> Block
+
+    classDef gate fill:#fef,stroke:#a4a
+    classDef stop fill:#fcc,stroke:#a00
+    class Meta,Build,Unit,Static,Contract,Int,Sec,Migr gate
+    class Block stop
+```
+
 ## Human Review Checklist
 
 Reviewers check:

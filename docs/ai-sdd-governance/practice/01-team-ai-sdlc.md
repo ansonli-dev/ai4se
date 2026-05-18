@@ -79,12 +79,32 @@ Reference: https://bmad.fr/en/bmad-method
 
 ### Decision Rule
 
-```text
-Story is clear                  -> Superpowers (default)
-Story is large or multi-phase   -> GSD decomposes and preserves state → Superpowers executes each phase
-Story is unclear                -> gstack-style discovery clarifies it → Superpowers executes
-Story is too broad to specify   -> BMAD upstream → produce ready Stories → Superpowers executes
-Story is for a supplier         -> Supplier's choice of workflow; internal accepts by deliverables
+```mermaid
+flowchart TD
+    Start{"Story state"}
+    Clear{"Clear?"}
+    Large{"Large or<br/>multi-phase?"}
+    Unclear{"Unclear?"}
+    Broad{"Too broad<br/>to specify?"}
+    Supp{"Supplier work?"}
+
+    SP["Superpowers (default)"]
+    GSD["GSD decomposes<br/>+ Superpowers executes phases"]
+    GS["gstack-style discovery<br/>+ Superpowers executes"]
+    BMAD["BMAD upstream<br/>→ ready Stories<br/>→ Superpowers executes"]
+    SuppFlow["Supplier's choice<br/>internal accepts deliverables"]
+
+    Start --> Clear
+    Clear -- "yes" --> SP
+    Clear -- "no" --> Large
+    Large -- "yes" --> GSD
+    Large -- "no" --> Unclear
+    Unclear -- "yes" --> GS
+    Unclear -- "no" --> Broad
+    Broad -- "yes" --> BMAD
+    Broad -- "no" --> Supp
+    Supp -- "yes" --> SuppFlow
+    Supp -- "no" --> SP
 ```
 
 ## Tool Comparison
@@ -100,21 +120,21 @@ Story is for a supplier         -> Supplier's choice of workflow; internal accep
 
 This is the day-to-day flow once frameworks are chosen. Each step has a more detailed treatment in another practice doc.
 
-```text
-Story Card ready
-  -> Story Intake (04 Step 1)
-  -> Tier Classification (03)
-  -> SDD / Technical Spec / ADR if required (02 stages S1-S3)
-  -> Implementation Plan (04 Step 3)
-  -> TDD or test strategy (04 Step 4)
-  -> Implementation (04 Step 4)
-  -> Spec Compliance Review (04 Step 6)
-  -> Code Quality Review (04 Step 6)
-  -> Verification Evidence (04 Step 7)
-  -> MR Packaging (04 Step 8)
-  -> Owner / Human Review (05 Quality Gates in knowledge)
-  -> CI Quality Gate (05 Quality Gates in knowledge)
-  -> Merge / Release / Acceptance (02 stages S4-S7)
+```mermaid
+flowchart LR
+    Ready["Story Card<br/>ready"] --> Intake["Story Intake"]
+    Intake --> Tier["Tier<br/>Classification"]
+    Tier --> Specs["SDD / Tech Spec<br/>/ ADR (if needed)"]
+    Specs --> Plan["Implementation<br/>Plan"]
+    Plan --> TDD["TDD /<br/>test strategy"]
+    TDD --> Impl["Implementation"]
+    Impl --> Spec["Spec compliance<br/>review"]
+    Spec --> Code["Code quality<br/>review"]
+    Code --> Verify["Verification<br/>evidence"]
+    Verify --> MR["MR packaging"]
+    MR --> Owner["Owner /<br/>human review"]
+    Owner --> Gate["CI quality gate"]
+    Gate --> Merge["Merge / Release<br/>/ Acceptance"]
 ```
 
 ## Adoption Policy By Story Type

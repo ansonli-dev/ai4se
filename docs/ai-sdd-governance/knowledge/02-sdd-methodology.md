@@ -11,6 +11,18 @@ not begin with free-form prompts or direct code generation.
 
 ## End-to-End Flow
 
+```mermaid
+flowchart LR
+    BR["Business requirement<br/>enters backlog"] --> Split["Split into<br/>Epic / Feature / Story / Task"]
+    Split --> SDD["Each Story →<br/>SDD Story Spec"]
+    SDD --> Tech["Technical risk →<br/>Technical Spec / ADR"]
+    Tech --> AI["AI drafts code, tests,<br/>docs from approved spec"]
+    AI --> Dev["Developer inspects,<br/>adapts, owns output"]
+    Dev --> MR["MR passes<br/>gates + human review"]
+    MR --> Accept["Acceptance feedback<br/>updates specs, tests, KB"]
+    Accept -. "next iteration" .-> BR
+```
+
 1. Business requirement enters the backlog.
 2. Product owner and team split it into Epic, Feature, User Story, and Task.
 3. Each Story receives an SDD Story Spec.
@@ -45,6 +57,18 @@ A Story is done only when:
 - Artifacts are traceable to requirement, spec version, code change, test result, and release version.
 
 ## SDD Artifact Lifecycle
+
+```mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> ReadyForReview: complete DoR<br/>+ AC + AI boundary
+    ReadyForReview --> Approved: PO + tech owner sign off
+    ReadyForReview --> Draft: questions found
+    Approved --> Implemented: MR linked<br/>+ test evidence
+    Implemented --> Accepted: QA / business verifies
+    Accepted --> [*]: lessons → KB
+    Approved --> Draft: scope change
+```
 
 Draft:
 

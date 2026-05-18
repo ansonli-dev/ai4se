@@ -12,6 +12,28 @@ A harness, in this project, is the controlled runtime environment around an AI a
 
 ## Problems Harness Engineering Solves
 
+```mermaid
+mindmap
+  root((Without<br/>harness))
+    Uncontrolled context
+      Too much
+      Too little
+      Wrong sources
+      Production data leak
+    Uncontrolled tools
+      Too many files edited
+      Risky commands
+      No human confirm
+    Weak verification
+      Completion = agent confidence
+      No fresh evidence
+      Missing test runs
+    Poor attribution
+      "Agent did not work"
+      No category
+      No fix target
+```
+
 ### Uncontrolled Context
 
 Without a harness, a developer may give an AI agent too much context, too little context, or the wrong context.
@@ -86,6 +108,25 @@ What is still missing without the new harness layer:
 - Traceable run records for improvement and audit.
 
 ## Maturity Levels
+
+```mermaid
+flowchart LR
+    L0["Level 0<br/>Bare Agent<br/>ad-hoc prompts"]
+    L1["Level 1<br/>File-level Harness<br/>+ SDD/Test Spec, policies,<br/>review checklist"]
+    L2["Level 2<br/>Scripted Harness<br/>+ check-story-ready.sh<br/>+ run-verification.sh<br/>+ generate-execution-report.sh"]
+    L3["Level 3<br/>Platform Harness<br/>+ context service<br/>+ tool gateway<br/>+ permission service<br/>+ trace store + policy engine"]
+
+    L0 -- "starting point" --> L1
+    L1 -- "recommended<br/>first adoption" --> L2
+    L2 -- "only after L1+L2<br/>are stable" --> L3
+
+    classDef bare fill:#fdd,stroke:#a00
+    classDef recommended fill:#dfd,stroke:#070
+    classDef advanced fill:#cce,stroke:#447
+    class L0 bare
+    class L1,L2 recommended
+    class L3 advanced
+```
 
 ### Level 0: Bare Agent
 

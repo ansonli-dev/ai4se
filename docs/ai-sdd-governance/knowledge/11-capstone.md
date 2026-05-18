@@ -22,6 +22,56 @@ Why this Story is a good test case:
 
 This Story is hypothetical. None of the team names, IDs, or thresholds below are claims about real artifacts — they illustrate where the model fires.
 
+```mermaid
+flowchart TD
+    R487["Requirement-487<br/>Enforce permission-based authorisation<br/>on refund approval"]
+    Rev["Three Reviews<br/>Requirements / Technical / Test<br/>→ Approved"]
+    R487 --> Rev
+    Rev --> S1287["Story-1287 (Tier C)<br/>Enforce refund.approver<br/>+ audit denied attempts"]
+    Rev --> S1288["Story-1288 (Tier A)<br/>Add refund.approver to<br/>approver onboarding runbook"]
+```
+
+The end-to-end actor handoff across stages:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Biz as Support escalation
+    participant PO
+    participant BA
+    participant TL as Tech Lead
+    participant QA
+    participant MO as Module Owner
+    participant Sec as Security Lead
+    participant Dev as Developer
+    participant Agent as AI Agent
+    participant CI
+
+    Biz->>PO: refund-approval incident
+    PO->>BA: Frame as Requirement-487
+    BA->>BA: Stage 0 — Draft Feature/Requirement Spec
+    BA->>PO: Stage 0a — Requirements Review
+    BA->>TL: Convene Technical Review
+    TL->>MO: Consult on owned module
+    TL->>Sec: Permission-sensitive — pull in
+    BA->>QA: Convene Test Review
+    BA->>BA: Stage 0b — Break into Story-1287, Story-1288
+    BA->>Dev: Place on backlog with Handoff Checklist
+    Dev->>BA: Stage 1 — DoR check, no new questions
+    Dev->>Agent: Stage 2 — Superpowers skills (plan → TDD → review)
+    Agent->>Dev: Stage 3 — Harness-bound execution + report
+    Dev->>QA: Stage 4 — Tests run
+    Dev->>CI: Stage 5 — Open MR
+    CI->>MO: Owner Review
+    CI->>Sec: Security review
+    MO->>CI: Approved
+    Sec->>CI: Approved
+    CI->>Dev: Merged
+    QA->>PO: Stage 6 — Acceptance evidence
+    PO->>BA: Story accepted
+    BA->>BA: Stage 7 — Close Requirement-487, capture lessons
+```
+
 ## Stage 0: A Requirement Arrives (BA Intake)
 
 A customer-support escalation surfaces a real incident: a junior agent approved a refund they should not have had authority to approve. The PO captures this as a business need and hands it to the BA as **Requirement-487: Enforce permission-based authorisation on refund approval**.

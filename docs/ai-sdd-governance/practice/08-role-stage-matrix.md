@@ -55,6 +55,8 @@ A "—" in the matrix means no significant work at that stage for that role (the
 
 This matrix is the index. The next two sections give the full detail by **stage** (time-walking) and by **role** (role-walking).
 
+For a visual rendering of how roles actually interact across stages — using one concrete Requirement — see the sequence diagram in [Capstone](../knowledge/11-capstone.md). The matrix here is the static reference; the capstone is the moving picture.
+
 ---
 
 ## By Stage (Time-Walking View)

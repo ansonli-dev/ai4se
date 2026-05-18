@@ -158,6 +158,28 @@ Therefore, our testing strategy emphasizes:
 
 ## Required Test Layers
 
+```mermaid
+flowchart TD
+    E2E["End-to-End / Smoke<br/>(few, stable, critical journeys)"]
+    Int["Integration<br/>(cross-service, real infra)"]
+    Cont["Contract<br/>(API + event boundaries)"]
+    Comp["Component / Module<br/>(realistic collaborators)"]
+    Unit["Unit<br/>(business rules, fast)"]
+
+    E2E -.-> Int
+    Int -.-> Cont
+    Cont -.-> Comp
+    Comp -.-> Unit
+
+    style E2E fill:#fcc
+    style Int fill:#fec
+    style Cont fill:#ffc
+    style Comp fill:#efc
+    style Unit fill:#cfc
+```
+
+The pyramid is a cost-and-feedback heuristic, not a strict shape — fast and reliable broad tests are valuable, brittle unit tests are not. Each layer below has its own purpose, AI-SDD rule, and review focus.
+
 ### Unit Tests
 
 Purpose:
@@ -256,6 +278,33 @@ Review focus:
 - Were findings converted into actionable defects or regression tests?
 
 ## AI-Specific Testing Risks
+
+```mermaid
+mindmap
+  root((AI testing<br/>risks))
+    Self-proving tests
+      Asserts internal helpers
+      Mirrors implementation
+      Passes for wrong rule
+      ::icon(fa fa-bug)
+    Over-mocking
+      Every collaborator mocked
+      No real path exercised
+      Refactor breaks tests
+    Missed boundaries
+      Happy path only
+      No permission tests
+      No edge / failure cases
+    Brittle snapshots
+      Fails on layout change
+      Hides meaningful diffs
+      Duplicates lower assertions
+    Flakiness
+      Real time / clock
+      Random data
+      Remote services
+      Async timing
+```
 
 ### Risk 1: AI Generates Tests That Only Prove Its Own Implementation
 

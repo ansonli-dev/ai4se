@@ -10,14 +10,31 @@ It deliberately does not maintain its own rollout phases. [Priorities And Roadma
 
 ## Relationship To The Roadmap
 
-```text
-Priorities And Roadmap (doc 06)         Rollout And Acceptance (doc 07)
-────────────────────────────────         ───────────────────────────────
-Phase 0: Direction And Minimum Rules     → Scenarios apply once Phase 1 begins.
-Phase 1: Manual-First Controlled Pilot   → Pilot scenarios (this doc) verify a controlled pilot.
-Phase 2: CI And Quality Baseline         → Quality-gate scenarios verify gates actually block.
-Phase 3: Multi-Team Expansion            → Cross-team scenarios verify scaled adoption.
-Phase 4: Platform And Dashboard          → Program-level criteria verify the measurable system.
+```mermaid
+flowchart LR
+    P0["Phase 0<br/>Direction + min rules"]
+    P1["Phase 1<br/>Manual-first pilot"]
+    P2["Phase 2<br/>CI + quality baseline"]
+    P3["Phase 3<br/>Multi-team expansion"]
+    P4["Phase 4<br/>Platform + dashboards"]
+
+    SC1["Same standard,<br/>different modes"]
+    SC2["AI MR audit"]
+    SC3["Core API change"]
+    SC4["Low-quality AI output"]
+    SC5["New member enablement"]
+    SC6["Defect traceability"]
+    Crit["Program-level criteria<br/>(steady state)"]
+
+    P0 --> P1
+    P1 --> P2 --> P3 --> P4
+    P1 -. "verifies" .-> SC1
+    P1 -. "verifies" .-> SC2
+    P1 -. "verifies" .-> SC5
+    P2 -. "verifies" .-> SC3
+    P2 -. "verifies" .-> SC4
+    P3 -. "verifies" .-> SC6
+    P4 -. "verifies" .-> Crit
 ```
 
 If a Phase X in doc 06 is "complete" but the corresponding scenarios in this doc do not pass, the phase is not actually complete.
@@ -97,6 +114,23 @@ Pass criterion: the layer that let the defect through can be named, and the next
 ## Program-Level Success Criteria
 
 These are the steady-state criteria once the full rollout from [Priorities And Roadmap](06-priorities-and-roadmap.md) is complete. They are not gates for any single Story; they are the program health indicators.
+
+```mermaid
+mindmap
+  root((Program health))
+    Adoption breadth
+      ≥ 3 internal teams<br/>same templates
+      Agreed Superpowers tiers
+    Coverage
+      100% CODEOWNERS<br/>on core modules
+      100% OpenAPI<br/>on new APIs
+    Gate effectiveness
+      100% MR<br/>pass auto gates
+      100% AI code<br/>has human review + audit
+    Outcome trend
+      Cycle time ↓
+      Defect escape rate flat or ↓
+```
 
 - Three or more internal teams use the same SDD artifact templates.
 - Internal teams use the agreed Superpowers workflow tiers.

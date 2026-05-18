@@ -37,6 +37,29 @@ Recommended direction:
 
 ## Classification Model
 
+```mermaid
+quadrantChart
+    title Priority Classification
+    x-axis "Nice-to-have" --> "Must-have"
+    y-axis "Directly actionable" --> "Infrastructure required"
+    quadrant-1 "P0/P1 infrastructure (CI, scans, branch protection)"
+    quadrant-2 "P2 infrastructure (dashboards, platform)"
+    quadrant-3 "P2 actionable (nice processes)"
+    quadrant-4 "P0/P1 actionable (templates, MR, Owner Review)"
+    "SDD Story Spec": [0.9, 0.15]
+    "MR template": [0.92, 0.18]
+    "Tier rules": [0.88, 0.10]
+    "Owner Review": [0.85, 0.35]
+    "Minimal CI": [0.92, 0.75]
+    "Branch protection": [0.88, 0.68]
+    "Static analysis CI": [0.65, 0.78]
+    "Secret Scan": [0.7, 0.72]
+    "AI usage dashboard": [0.30, 0.85]
+    "Context service": [0.20, 0.95]
+    "Weekly review": [0.75, 0.20]
+    "Prompt Card library": [0.40, 0.40]
+```
+
 ### Directly Actionable
 
 These can be adopted mostly through agreements, templates, reviews, and team discipline.
@@ -234,6 +257,28 @@ The following should be treated as engineering backlog items.
 - Start with weekly manual review before investing in automation.
 
 ## Reference: Recommended Roadmap
+
+```mermaid
+gantt
+    title 5-Phase AI-SDD Rollout
+    dateFormat YYYY-MM-DD
+    axisFormat W%V
+    section Phase 0
+    Direction + minimum rules                  :p0, 2026-01-05, 1w
+    section Phase 1
+    Manual-first controlled pilot              :p1, after p0, 3w
+    Pilot Story #1 (Tier B)                    :p1a, after p0, 2w
+    Pilot Story #2 (Tier C)                    :p1b, after p1a, 2w
+    section Phase 2
+    CI + quality baseline                      :p2, after p1, 5w
+    SonarQube + SCA + Secret Scan              :p2a, after p1, 3w
+    Contract tests + execution reports         :p2b, after p2a, 2w
+    section Phase 3
+    Multi-team expansion                       :p3, after p2, 4w
+    Supplier evidence acceptance flow          :p3a, after p2, 4w
+    section Phase 4
+    Platform + dashboard investment            :p4, after p3, 8w
+```
 
 ### Phase 0: Direction And Minimum Rules
 

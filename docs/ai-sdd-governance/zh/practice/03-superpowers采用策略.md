@@ -25,6 +25,33 @@ Superpowers 将自由 AI 使用转化为工程工作流：
 
 ## Workflow Tiers
 
+```mermaid
+flowchart TD
+    Start{"Story 分析"}
+    Q1{"涉及核心业务、<br/>权限、客户数据、<br/>费用/结算、审计、<br/>或生产风险？"}
+    Q2{"改 API、DB、<br/>跨模块行为、<br/>或有意义的<br/>业务功能？"}
+    Q3{"copy/配置/低风险<br/>内部工具变更<br/>影响范围小？"}
+
+    TierC["Tier C<br/>完整 SDD + Tech Spec + ADR<br/>+ TDD + subagents<br/>+ Owner Review<br/>+ 完整质量门禁"]
+    TierB["Tier B<br/>SDD Story Spec + 计划<br/>+ 可行时 TDD<br/>+ MR 模板<br/>+ 质量门禁"]
+    TierA["Tier A<br/>轻量 SDD 备忘<br/>+ 验证<br/>+ 普通评审"]
+
+    Start --> Q1
+    Q1 -- "是" --> TierC
+    Q1 -- "否" --> Q2
+    Q2 -- "是" --> TierB
+    Q2 -- "否" --> Q3
+    Q3 -- "是" --> TierA
+    Q3 -- "否" --> TierB
+
+    classDef tierA fill:#cfc,stroke:#070
+    classDef tierB fill:#ffc,stroke:#a70
+    classDef tierC fill:#fcc,stroke:#a00
+    class TierA tierA
+    class TierB tierB
+    class TierC tierC
+```
+
 ### Tier A：轻量变更
 
 适用：

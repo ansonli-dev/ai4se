@@ -4,6 +4,27 @@ Chinese version: [../zh/practice/05-实施playbook.md](../zh/practice/05-实施p
 
 ## Week 0 Preparation
 
+```mermaid
+gantt
+    title Pilot Launch Timeline
+    dateFormat YYYY-MM-DD
+    axisFormat %d %b
+    section Week 0
+    Governance roles + AI Champion       :w0a, 2026-01-05, 3d
+    Pilot domain + Stories               :w0b, 2026-01-05, 3d
+    Module Owner confirmation            :w0c, 2026-01-06, 2d
+    Template approvals (SDD/Tech/Test/MR) :w0d, 2026-01-07, 3d
+    Tier rules approval                  :w0e, 2026-01-08, 2d
+    Repo branch protection + CI baseline :w0f, 2026-01-08, 3d
+    Approved AI tools + context sources  :w0g, 2026-01-09, 2d
+    section Kickoff
+    90-min kickoff session               :kick, 2026-01-12, 1d
+    section Pilot Iteration 1
+    First Tier B Story end-to-end        :p1, 2026-01-13, 10d
+    Weekly review #1                     :rev1, 2026-01-16, 1d
+    Weekly review #2                     :rev2, 2026-01-23, 1d
+```
+
 Before the pilot starts, complete these actions:
 
 - Appoint the AI-SDD governance committee.
@@ -42,6 +63,22 @@ Every pilot Story package contains:
 For outsourced delivery, the required package contains the approved SDD Spec, interface contract, test evidence, deployment notes, rollback notes, and acceptance checklist. It does not require Prompt Cards or Superpowers records.
 
 ## Weekly AI-SDD Review Agenda
+
+```mermaid
+timeline
+    title Operational Cadence
+    Weekly : Delivery flow metrics
+           : Quality gate failures
+           : AI-generated defects / near misses
+           : Template improvement requests
+           : Action confirmations
+    Bi-weekly : Template + Prompt Card improvements
+              : Skill library updates
+    Monthly : Supplier deliverable quality
+            : Module ownership review
+            : Security posture
+            : Rollout progress
+```
 
 Use this agenda every week:
 

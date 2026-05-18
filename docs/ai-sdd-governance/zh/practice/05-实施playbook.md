@@ -4,6 +4,27 @@
 
 ## Week 0 准备
 
+```mermaid
+gantt
+    title 试点启动时间线
+    dateFormat YYYY-MM-DD
+    axisFormat %d %b
+    section Week 0
+    治理角色 + AI Champion             :w0a, 2026-01-05, 3d
+    试点领域 + Story                  :w0b, 2026-01-05, 3d
+    Module Owner 确认                 :w0c, 2026-01-06, 2d
+    模板批准（SDD/Tech/Test/MR）       :w0d, 2026-01-07, 3d
+    Tier 规则批准                     :w0e, 2026-01-08, 2d
+    仓库 branch 保护 + CI 基线          :w0f, 2026-01-08, 3d
+    批准的 AI 工具 + 上下文来源         :w0g, 2026-01-09, 2d
+    section Kickoff
+    90 分钟启动会                     :kick, 2026-01-12, 1d
+    section 试点 Iteration 1
+    首个 Tier B Story 端到端           :p1, 2026-01-13, 10d
+    周度复盘 #1                       :rev1, 2026-01-16, 1d
+    周度复盘 #2                       :rev2, 2026-01-23, 1d
+```
+
 试点开始前完成：
 
 - 任命 AI-SDD Governance Committee。
@@ -42,6 +63,22 @@
 供应商交付包包含批准的 SDD Spec、接口契约、测试证据、部署说明、回滚说明和验收清单；不要求 Prompt Card 或 Superpowers 记录。
 
 ## 每周 AI-SDD Review Agenda
+
+```mermaid
+timeline
+    title 运营节奏
+    每周 : 交付流指标
+         : 质量门禁失败
+         : AI 生成缺陷 / 险情
+         : 模板改进请求
+         : 行动确认
+    每两周 : 模板 + Prompt Card 改进
+           : skill 库更新
+    每月 : 供应商交付质量
+         : 模块所有权复盘
+         : 安全态势
+         : 推广进展
+```
 
 1. 复盘交付流指标。
 2. 复盘质量门禁失败。

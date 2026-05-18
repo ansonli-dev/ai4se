@@ -16,6 +16,20 @@ AI-SDD 治理需要一套对 agent 工具的实际理解。流程不应该绑定
 
 ## 工具定位
 
+```mermaid
+quadrantChart
+    title Agent 工具定位
+    x-axis "单一入口" --> "多入口"
+    y-axis "编辑器为中心" --> "终端 / agentic"
+    quadrant-1 "多入口 agentic"
+    quadrant-2 "编辑器多入口"
+    quadrant-3 "编辑器单入口"
+    quadrant-4 "终端聚焦"
+    "Claude Code": [0.85, 0.78]
+    "OpenAI Codex": [0.55, 0.70]
+    "Cursor": [0.40, 0.25]
+```
+
 | Tool | 适合场景 | 常见入口 | 治理重点 |
 | --- | --- | --- | --- |
 | Claude Code | 跨 terminal、app、IDE、web、CI 和集成的 agentic coding 工作流 | CLI、desktop app、web、VS Code、JetBrains、Slack、CI/CD | Context、permissions、memory、skills、MCP、plugins、hooks、verification |
@@ -92,6 +106,35 @@ Claude Code 可集成 VS Code、Cursor 兼容 extension surface 和 JetBrains ID
 - 大型 multi-file changes 仍需要 plan 和 verification evidence。
 
 ## Claude Code 能力
+
+```mermaid
+mindmap
+  root((Claude Code<br/>能力))
+    Instructions
+      CLAUDE.md
+      跨会话 Memory
+    Skills
+      可复用工作流
+      版本化
+      像代码一样评审
+    MCP
+      外部系统
+      工单系统
+      文档 / DB
+      最小权限
+    Plugins
+      捆绑 skills + MCP
+      + hooks + subagents
+      采用前批准
+    Hooks
+      确定性检查
+      Format / lint / scan
+      阻断保护路径
+    Subagents
+      并行会话
+      全新上下文评审
+      有边界所有权
+```
 
 ### Instructions And Memory
 

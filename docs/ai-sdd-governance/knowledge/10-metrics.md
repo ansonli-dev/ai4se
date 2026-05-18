@@ -8,6 +8,30 @@ Chinese version: [../zh/knowledge/10-指标.md](../zh/knowledge/10-指标.md)
 - Metrics must compare trend and team-level process health.
 - AI metrics must be interpreted with quality metrics together.
 
+```mermaid
+mindmap
+  root((AI-SDD<br/>metrics))
+    Efficiency
+      Story Cycle Time
+      Spec-Ready → MR-Ready
+      AI Code Adoption Rate
+      Stories per developer
+      Automation Reuse Rate
+    Quality
+      Defect Escape Rate
+      Rework Rate
+      MR First-Pass Rate
+      New Code Coverage
+      SonarQube Issue Density
+      Production Issue Source
+    Consistency
+      Spec Template Compliance
+      OpenAPI Coverage
+      MR Template Completion
+      Outsourced Quality Delta
+      Owner Review Coverage
+```
+
 ## Efficiency Metrics
 
 Story Cycle Time:
@@ -84,6 +108,20 @@ Owner Review Coverage:
 - Definition: core module changes approved by the correct owner divided by all core module changes.
 
 ## Review Cadence
+
+```mermaid
+timeline
+    title AI-SDD Review Cadence
+    Weekly : Delivery flow + MR health
+           : Quality gate failures
+           : AI failure cases
+    Bi-weekly : Template improvements
+              : Prompt card changes
+    Monthly : Supplier deliverable quality
+            : Module ownership review
+            : Security posture
+            : Rollout progress
+```
 
 Weekly:
 

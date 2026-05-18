@@ -90,6 +90,32 @@ Its value is not that it replaces SDD. Its value is that it turns a ready Story 
 
 The developer starts from the Story card. The Story card should already contain business goal, user role, acceptance criteria, affected module, and known constraints.
 
+```mermaid
+flowchart TD
+    S1["Step 1<br/>Story Intake<br/>(read + DoR sanity)"]
+    S2["Step 2<br/>brainstorming<br/>(DoR check)"]
+    S3["Step 3<br/>writing-plans<br/>(implementation plan)"]
+    S4["Step 4<br/>test-driven-development<br/>(write tests + impl)"]
+    S5["Step 5<br/>Update Artifacts<br/>(specs, contracts, docs)"]
+    S6["Step 6<br/>Request Review<br/>(spec compliance + code quality)"]
+    S7["Step 7<br/>verification-before-completion<br/>(fresh evidence)"]
+    S8["Step 8<br/>Complete MR<br/>(AI-SDD MR template)"]
+    Done["Story complete"]
+    Unclear{"Story<br/>unclear?"}
+
+    S1 --> Unclear
+    Unclear -- "yes" --> Return["Return for clarification<br/>or run brainstorming"]
+    Return --> S2
+    Unclear -- "no" --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5
+    S5 --> S6
+    S6 --> S7
+    S7 --> S8
+    S8 --> Done
+```
+
 ### Step 1: Do Story Intake
 
 Read the Story card and linked materials.
@@ -321,6 +347,23 @@ Tier C:
 10. Verify before completion.
 
 ## When Is A Story Card Complete
+
+```mermaid
+stateDiagram-v2
+    [*] --> Intake
+    Intake --> InPlanning: DoR check passes
+    Intake --> [*]: returned to BA<br/>(DoR fails)
+    InPlanning --> InImplementation: plan + tests defined
+    InImplementation --> InReview: code + tests ready
+    InReview --> InImplementation: review comments
+    InReview --> InVerification: review approved
+    InVerification --> InReview: verification fails
+    InVerification --> MRReady: fresh evidence linked
+    MRReady --> Merged: gates pass + Owner Review
+    MRReady --> InReview: gate or owner blocks
+    Merged --> Accepted: PO / business / QA accepts
+    Accepted --> [*]
+```
 
 A Story card is complete only when all applicable conditions are true:
 

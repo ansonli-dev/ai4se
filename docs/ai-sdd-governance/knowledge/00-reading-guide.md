@@ -17,18 +17,20 @@ This doc does not replace the others. It frames them.
 
 Everything in this handbook fits one mental model. AI-assisted delivery is built as four cooperating layers, each with its own failure mode and its own controls.
 
-```text
-Business goal / Product intent
-        ↓
-1. SDD layer            — what to build and how it will be accepted
-        ↓
-2. Superpowers layer    — disciplined execution workflow inside the agent
-        ↓
-3. Harness layer        — controlled context, tools, permissions, verification, trace
-        ↓
-4. CI/CD + Review layer — automated gates and human owner approval before merge
-        ↓
-Acceptance, metrics, retrospective → feedback into the next iteration
+```mermaid
+flowchart TD
+    Goal["Business goal / Product intent"]
+    L1["Layer 1 — SDD<br/>what to build, how it will be accepted"]
+    L2["Layer 2 — Superpowers<br/>disciplined execution workflow inside the agent"]
+    L3["Layer 3 — Harness<br/>controlled context, tools, permissions, verification, trace"]
+    L4["Layer 4 — CI/CD + Review<br/>automated gates and human owner approval before merge"]
+    Loop["Acceptance, metrics, retrospective"]
+
+    Goal --> L1 --> L2 --> L3 --> L4 --> Loop
+    Loop -. "feedback into next iteration" .-> Goal
+
+    classDef layer fill:#eef,stroke:#447
+    class L1,L2,L3,L4 layer
 ```
 
 What each layer answers:
@@ -44,20 +46,30 @@ The full layer-by-layer treatment is in [Execution Stack](03-execution-stack.md)
 
 ## How The 13 Docs Map To The Stack
 
-```text
-00 Reading Guide          ← you are here
-01 AI-SDD Overview        ← context for the whole stack
-02 SDD Methodology        ← layer 1
-03 Execution Stack        ← the stack itself
-04 Operating Model        ← cross-cutting: governance and ownership
-05 Quality Gates          ← layer 4
-06 Testing Strategy       ← cross-cutting: how tests serve every layer
-07 Toolchain              ← cross-cutting: enterprise tools that host the stack
-08 Agent Tools            ← layer 2 + layer 3, agent capability detail
-09 Harness Engineering    ← layer 3 in depth
-10 Metrics                ← feedback loop measuring the stack
-11 Capstone               ← one Story walked through all four layers
-12 Glossary               ← reference, consult anytime
+```mermaid
+mindmap
+  root((Knowledge Path))
+    Frame
+      00 Reading Guide
+      01 AI-SDD Overview
+      03 Execution Stack
+    Layer 1 SDD
+      02 SDD Methodology
+    Layer 4 CI/Review
+      05 Quality Gates
+    Layer 3 Harness
+      09 Harness Engineering
+    Layer 2 + 3 Agent
+      08 Agent Tools
+    Cross-cutting
+      04 Operating Model
+      06 Testing Strategy
+      07 Toolchain
+      10 Metrics
+    Synthesis
+      11 Capstone
+    Reference
+      12 Glossary
 ```
 
 ## Core Vocabulary You Will Meet Immediately

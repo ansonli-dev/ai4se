@@ -33,23 +33,35 @@ A Requirement is roughly **one Feature ≈ many Stories**. The three reviews gat
 
 The flow at a glance:
 
-```text
-S2 territory:
-  1. Requirement Intake
-  2. Requirement Analysis
-  3. Requirements Review (Section 1 of Review Record)
-  4. Technical Review        (Section 2 of Review Record) — co-led with Tech Lead
-  5. Test Review             (Section 3 of Review Record) — co-led with QA
-  6. Story Breakdown
+```mermaid
+flowchart TD
+    subgraph S2["S2 — Requirement → 3 Reviews → Stories"]
+        S1["1 Intake"]
+        S2s["2 Analysis"]
+        S3s["3 Requirements Review"]
+        S4s["4 Technical Review"]
+        S5s["5 Test Review"]
+        S6s["6 Story Breakdown"]
+    end
+    subgraph S3["S3 — Ready / Backlog / Sprint"]
+        S7s["7 Backlog Placement"]
+        S8s["8 Sprint Planning Support"]
+    end
+    subgraph S47["S4-S7 — Execution & Feedback"]
+        S9s["9 Development Support"]
+        S10s["10 Story Acceptance"]
+        S11s["11 Feedback Loop / Close"]
+    end
 
-S3 territory:
-  7. Backlog Placement (with Handoff Checklist)
-  8. Sprint Planning Support
-
-S4-S7 territory:
-  9. Development Support
-  10. Story Acceptance (link back to Requirement)
-  11. Feedback Loop (close Requirement, propose updates)
+    S1 --> S2s --> S3s
+    S3s -- "Pass" --> S4s
+    S3s -- "Fail" --> S2s
+    S4s -- "Pass" --> S5s
+    S4s -- "Fail" --> S2s
+    S5s -- "Pass" --> S6s
+    S5s -- "Fail / AC rewrite" --> S2s
+    S6s --> S7s --> S8s --> S9s --> S10s --> S11s
+    S11s -. "feedback" .-> S1
 ```
 
 Each step below has: **Inputs**, **Steps**, **Outputs**, **AI-readiness** (what must be true about the output for downstream AI-assisted work to proceed safely), **Pitfalls**.
@@ -364,6 +376,60 @@ Each step below has: **Inputs**, **Steps**, **Outputs**, **AI-readiness** (what 
 **Pitfalls:**
 - Letting Requirements stay "in flight" forever because nobody formally closes them — over time the queue becomes meaningless.
 - Treating defects as "the dev team's problem" rather than feeding them back through Defect Attribution to find which BA-stage gap let them through.
+
+## Requirement Lifecycle (State View)
+
+Reading the 11 steps as state transitions makes the gate semantics non-negotiable:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Intake
+    Intake --> Draft: assigned to BA
+    Draft --> ReviewsInProgress: BA submits for review
+    ReviewsInProgress --> Draft: any review Fails
+    ReviewsInProgress --> Approved: all 3 reviews Pass
+    ReviewsInProgress --> ConditionallyApproved: Pass with named conditions
+    Approved --> StoriesBrokenDown
+    ConditionallyApproved --> StoriesBrokenDown: conditions assigned
+    StoriesBrokenDown --> InBacklog: BA Handoff Checklist passes
+    InBacklog --> InSprint: Sprint Planning selects
+    InSprint --> StoriesAccepted: all child Stories accepted
+    StoriesAccepted --> Closed: lessons captured, Requirement closed
+    Closed --> [*]
+    Approved --> Draft: scope change
+```
+
+## The Three Reviews (Actor Sequence)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant BA
+    participant PO
+    participant SH as Stakeholder
+    participant TL as Tech Lead
+    participant MO as Module Owner
+    participant Sec as Security Lead
+    participant QA
+
+    Note over BA: Step 2 — Draft Requirement Spec
+    BA->>PO: Schedule Requirements Review
+    BA->>SH: Schedule Requirements Review
+    PO-->>BA: §1 Pass (scope confirmed)
+    SH-->>BA: §1 Pass
+
+    BA->>TL: Convene Technical Review
+    TL->>MO: Consult on owned module
+    TL->>Sec: If security-sensitive, pull in
+    MO-->>TL: Approve / Push back
+    Sec-->>TL: Required controls
+    TL-->>BA: §2 Pass (with conditions if any)
+
+    BA->>QA: Convene Test Review
+    QA-->>BA: §3 Pass (AC testable, test layers known)
+
+    Note over BA: Overall: Approved → Story Breakdown
+```
 
 ## Required Artifacts By BA Step
 

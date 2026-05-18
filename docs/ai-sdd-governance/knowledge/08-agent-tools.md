@@ -16,6 +16,20 @@ Claude Code is covered in more depth because its CLI, app, IDE integrations, ski
 
 ## Tool Positioning
 
+```mermaid
+quadrantChart
+    title Agent Tool Positioning
+    x-axis "Single surface" --> "Multi-surface"
+    y-axis "Editor-centric" --> "Terminal / agentic"
+    quadrant-1 "Multi-surface agentic"
+    quadrant-2 "Editor multi-surface"
+    quadrant-3 "Editor single-surface"
+    quadrant-4 "Terminal-focused"
+    "Claude Code": [0.85, 0.78]
+    "OpenAI Codex": [0.55, 0.70]
+    "Cursor": [0.40, 0.25]
+```
+
 | Tool | Best Fit | Typical Surface | Governance Focus |
 | --- | --- | --- | --- |
 | Claude Code | Agentic coding workflow across terminal, app, IDE, web, CI, and integrations | CLI, desktop app, web, VS Code, JetBrains, Slack, CI/CD | Context, permissions, memory, skills, MCP, plugins, hooks, verification |
@@ -92,6 +106,35 @@ Governance guidance:
 - Large multi-file changes should still have a plan and verification evidence.
 
 ## Claude Code Capabilities
+
+```mermaid
+mindmap
+  root((Claude Code<br/>capabilities))
+    Instructions
+      CLAUDE.md
+      Memory across sessions
+    Skills
+      Reusable workflows
+      Versioned
+      Reviewed like code
+    MCP
+      External systems
+      Issue trackers
+      Docs / DBs
+      Least privilege
+    Plugins
+      Bundle skills + MCP
+      + hooks + subagents
+      Approve before adoption
+    Hooks
+      Deterministic checks
+      Format / lint / scan
+      Block protected paths
+    Subagents
+      Parallel sessions
+      Fresh-context review
+      Bounded ownership
+```
 
 ### Instructions And Memory
 

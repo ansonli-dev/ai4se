@@ -14,18 +14,20 @@ By the end of this doc you should be able to:
 
 ## The Stack
 
-```text
-Business goal / Product intent
-        ↓
-1. SDD layer            — what to build and how it will be accepted
-        ↓
-2. Superpowers layer    — disciplined execution workflow inside the agent
-        ↓
-3. Harness layer        — controlled context, tools, permissions, verification, trace
-        ↓
-4. CI/CD + Review layer — automated gates and human owner approval before merge
-        ↓
-Acceptance, metrics, retrospective → feedback into the next iteration
+```mermaid
+flowchart TD
+    Goal["Business goal / Product intent"]
+    L1["Layer 1 — SDD<br/>what to build, how it will be accepted"]
+    L2["Layer 2 — Superpowers<br/>disciplined execution workflow inside the agent"]
+    L3["Layer 3 — Harness<br/>controlled context, tools, permissions, verification, trace"]
+    L4["Layer 4 — CI/CD + Review<br/>automated gates and human owner approval before merge"]
+    Loop["Acceptance, metrics, retrospective"]
+
+    Goal --> L1 --> L2 --> L3 --> L4 --> Loop
+    Loop -. "feedback" .-> Goal
+
+    classDef layer fill:#eef,stroke:#447
+    class L1,L2,L3,L4 layer
 ```
 
 The stack is read top-down for any new piece of work, and bottom-up when something goes wrong (a defect in production triggers a CI/Review look, then a Harness look, then a Superpowers look, then an SDD look — until the missing layer is found).
@@ -134,6 +136,25 @@ A change applied at the wrong layer can look like progress while leaving the rea
 ## Bottom-Up Diagnosis
 
 When a defect escapes to production, walk the stack bottom-up to find which layer let it through:
+
+```mermaid
+flowchart BT
+    Defect["Production defect"]
+    CI{"Layer 4 — CI/Review<br/>Gate skipped? Owner Review missing?"}
+    H{"Layer 3 — Harness<br/>Bad context? Wrong permissions?<br/>Incomplete report?"}
+    SP{"Layer 2 — Superpowers<br/>No plan? No TDD?<br/>Late code review?"}
+    SDD{"Layer 1 — SDD<br/>Missing / ambiguous AC?<br/>Stale contract?"}
+    Fix["First 'yes' = layer to invest in<br/>→ Defect Attribution"]
+
+    Defect --> CI
+    CI -- "no" --> H
+    H -- "no" --> SP
+    SP -- "no" --> SDD
+    CI -- "yes" --> Fix
+    H -- "yes" --> Fix
+    SP -- "yes" --> Fix
+    SDD -- "yes" --> Fix
+```
 
 1. CI/Review: was the gate skipped or exception-approved? Was Owner Review missing?
 2. Harness: was context wrong or missing? Did the agent run with the wrong permissions? Was the execution report incomplete?
