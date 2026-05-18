@@ -88,3 +88,15 @@ Restricted:
 - Changing architectural decisions without an ADR.
 - Bypassing CI/CD or merge request review.
 
+## Key Takeaways
+
+- SDD shifts development from code-first to spec-first; AI reads from the spec instead of inventing intent.
+- Definition of Ready and Definition of Done are not bureaucracy — they are what makes AI output reviewable by people who were not present when it was generated.
+- The spec lifecycle (Draft → Ready → Approved → Implemented → Accepted) is what gives every later layer something stable to refer to.
+- AI usage rules name what the spec layer permits and forbids — production-impacting code without human review, unmasked customer data, undocumented architecture changes are out of bounds.
+
+## Next
+
+- [Execution Stack](03-execution-stack.md) — once specs exist, the four-layer stack (SDD + Superpowers + Harness + CI/Review) is the mental model that organises everything else.
+
+

@@ -1,6 +1,6 @@
 # Metrics
 
-Chinese version: [../zh/knowledge/09-指标.md](../zh/knowledge/09-指标.md)
+Chinese version: [../zh/knowledge/10-指标.md](../zh/knowledge/10-指标.md)
 
 ## Metric Principles
 
@@ -96,3 +96,14 @@ Bi-weekly:
 Monthly:
 
 - Review supplier deliverable quality, module ownership, security posture, and rollout progress.
+
+## Key Takeaways
+
+- Metrics drive improvement, not individual blame — read them as trends, not scoreboards.
+- Efficiency, quality, and consistency metrics are interpreted together; AI Code Adoption Rate alone is misleading without Defect Escape Rate beside it.
+- Weekly / bi-weekly / monthly cadences correspond to delivery health, process tuning, and supplier or rollout review respectively.
+- The metric loop closes by feeding back into specs, prompts, harness policies, and tests — measurement without feedback is overhead.
+
+## Next
+
+- [Capstone: From Concepts To Delivery](11-capstone.md) — one Story walked through every doc you have just read, including how each metric in this doc gets recorded for that Story.

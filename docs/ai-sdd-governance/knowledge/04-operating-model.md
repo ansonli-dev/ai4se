@@ -1,6 +1,6 @@
 # Operating Model
 
-Chinese version: [../zh/knowledge/03-运行模型.md](../zh/knowledge/03-运行模型.md)
+Chinese version: [../zh/knowledge/04-运行模型.md](../zh/knowledge/04-运行模型.md)
 
 ## Governance Layers
 
@@ -87,3 +87,14 @@ Outsourced team:
 - Provide agreed delivery artifacts, test evidence, deployment notes, rollback notes, and change notes.
 - Must pass agreed quality gates before acceptance or internal merge.
 - Cannot be the final approver for core modules or production-impacting changes.
+
+## Key Takeaways
+
+- Four governance layers — committee, AI Champion, code owner, arbitration — divide decision-making by scope and time horizon.
+- Old employees, new hires, contractors, and supplier teams each get rules that match their accountability and learning curve.
+- Module ownership is recorded in `CODEOWNERS`; supplier developers may write code for core modules but cannot be the final approver.
+- Arbitration exists for the predictable hard calls: did a change affect architecture, was an AI solution acceptable, was a gate exception justified, who caused a defect.
+
+## Next
+
+- [Quality Gates](05-quality-gates.md) — the visible enforcement layer where governance, ownership, and arbitration meet a concrete merge decision.

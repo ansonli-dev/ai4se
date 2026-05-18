@@ -162,8 +162,8 @@ gstack 更像 role-based delivery 工作流：product framing、plan pressure-te
 
 - [Superpowers 采用策略](./03-superpowers采用策略.md)
 - [开发者指南](./04-开发者指南.md)
-- [Harness 工程](../knowledge/08-harness工程.md)
-- [Agent 工具](../knowledge/07-agent工具.md)
+- [Harness 工程](../knowledge/09-harness工程.md)
+- [Agent 工具](../knowledge/08-agent工具.md)
 
 推荐默认：
 
@@ -184,9 +184,9 @@ gstack 更像 role-based delivery 工作流：product framing、plan pressure-te
 
 主要文档：
 
-- [质量门禁](../knowledge/04-质量门禁.md)
-- [测试策略](../knowledge/05-测试策略.md)
-- [Harness 工程](../knowledge/08-harness工程.md)
+- [质量门禁](../knowledge/05-质量门禁.md)
+- [测试策略](../knowledge/06-测试策略.md)
+- [Harness 工程](../knowledge/09-harness工程.md)
 
 主要政策和清单：
 
@@ -216,9 +216,9 @@ gstack 更像 role-based delivery 工作流：product framing、plan pressure-te
 
 主要文档：
 
-- [运行模型](../knowledge/03-运行模型.md)
-- [工具链](../knowledge/06-工具链.md)
-- [指标](../knowledge/09-指标.md)
+- [运行模型](../knowledge/04-运行模型.md)
+- [工具链](../knowledge/07-工具链.md)
+- [指标](../knowledge/10-指标.md)
 - [推广与验收](./07-推广与验收.md)
 - [实施 Playbook](./02-实施playbook.md)
 - [优先级与路线图](./06-优先级与路线图.md)
@@ -245,8 +245,8 @@ gstack 更像 role-based delivery 工作流：product framing、plan pressure-te
 1. [SDD 方法论](../knowledge/02-sdd方法论.md)：说明为什么 AI 辅助工作 从 已批准的规格 开始。
 2. [Superpowers 采用策略](./03-superpowers采用策略.md)：定义 Tier A/B/C，以及何时要求 Superpowers。
 3. [开发者指南](./04-开发者指南.md)：说明 Story 接收、planning、TDD、artifact updates、评审、verification 和 MR completion。
-4. [Harness 工程](../knowledge/08-harness工程.md)：定义 上下文、工具、权限、验证和证据 的受控执行环境。
-5. [Agent 工具](../knowledge/07-agent工具.md)：说明 Claude Code、Codex、Cursor、skills、MCP、plugins、memory 和 hooks 如何进入 工作流。
+4. [Harness 工程](../knowledge/09-harness工程.md)：定义 上下文、工具、权限、验证和证据 的受控执行环境。
+5. [Agent 工具](../knowledge/08-agent工具.md)：说明 Claude Code、Codex、Cursor、skills、MCP、plugins、memory 和 hooks 如何进入 工作流。
 
 简版：
 

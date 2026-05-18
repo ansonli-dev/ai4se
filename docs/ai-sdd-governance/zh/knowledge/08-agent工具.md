@@ -1,6 +1,6 @@
 # Agent 工具
 
-英文版：[../../knowledge/07-agent-tools.md](../../knowledge/07-agent-tools.md)
+英文版：[../../knowledge/08-agent-tools.md](../../knowledge/08-agent-tools.md)
 
 ## 目的
 
@@ -325,3 +325,13 @@ Cursor 是 AI-native code editor。它适合开发者在编辑器中使用 codeb
 - 当开发者主要工作在 editor 中，并需要 inline AI assistance 和 agentic IDE 行为时，使用 Cursor。
 - 无论使用哪个工具，都使用相同 SDD、quality、评审 和 evidence rules。
 
+## 要点回顾
+
+- Agent 工具是执行栈第 2-3 层的运行环境，不是治理模型——SDD、MR 证据、门禁、Owner Review 保持工具中立。
+- Claude Code、Codex、Cursor 各有自己的最佳入口；按"开发者工作中心在哪"选，不按厂商偏好选。
+- 跨会话改变 Agent 行为的能力（memory、skills、MCP、plugins、hooks、subagents）需要治理，因为它们隐性扩展了 harness。
+- "已批准工具/MCP/plugin"清单是最便宜的、可以防止能力悄悄漂移的控制。
+
+## 下一篇
+
+- [Harness 工程](09-harness工程.md)——围绕选定的 Agent 工具，怎么按成熟度模型采用受控的上下文、工具、权限、验证和追溯。

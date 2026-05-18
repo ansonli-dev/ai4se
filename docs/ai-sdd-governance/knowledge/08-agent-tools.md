@@ -1,6 +1,6 @@
 # Agent Tooling
 
-Chinese version: [../zh/knowledge/07-agent工具.md](../zh/knowledge/07-agent工具.md)
+Chinese version: [../zh/knowledge/08-agent工具.md](../zh/knowledge/08-agent工具.md)
 
 ## Purpose
 
@@ -325,3 +325,13 @@ References:
 - Use Cursor when the developer's primary workflow is editor-native and benefits from inline AI assistance and agentic IDE behavior.
 - Use the same SDD, quality, review, and evidence rules regardless of tool.
 
+## Key Takeaways
+
+- Agent tools are execution environments for layers 2-3, not governance models — keep SDD, MR evidence, gates, and Owner Review tool-neutral.
+- Claude Code, Codex, and Cursor each have a best-fit surface; choose by where the developer's work centre is, not by vendor preference.
+- Capabilities that change agent behavior across sessions (memory, skills, MCP, plugins, hooks, subagents) need governance because they implicitly extend the harness.
+- Approved-tool, approved-MCP, and approved-plugin lists are the cheapest controls that prevent silent capability drift.
+
+## Next
+
+- [Harness Engineering](09-harness-engineering.md) — the maturity model for adopting controlled context, tools, permissions, verification, and trace around whichever agent tool the team picked.

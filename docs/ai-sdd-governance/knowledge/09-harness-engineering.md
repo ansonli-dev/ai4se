@@ -1,41 +1,14 @@
 # Harness Engineering
 
-Chinese version: [../zh/knowledge/08-harness工程.md](../zh/knowledge/08-harness工程.md)
+Chinese version: [../zh/knowledge/09-harness工程.md](../zh/knowledge/09-harness工程.md)
 
 ## Purpose
 
-Harness Engineering is the execution-control layer for AI agents and AI coding agents.
+This doc goes deep on the third layer of the [Execution Stack](03-execution-stack.md) — the harness. The stack diagram and the relationship between SDD, Superpowers, Harness, and CI/Review are in doc 03; here we focus on what the harness layer actually contains, the problems it solves on its own, the maturity model for adopting it, and the minimum standard internal teams must meet.
 
-It creates a controlled runtime environment for AI work: clear context, bounded tools, permissions, task state, verification, logging, review, and audit. It is broader than a test harness and more concrete than prompt engineering.
+If you have not read [Execution Stack](03-execution-stack.md), read that first — this doc assumes the four-layer model and the bottom-up diagnosis pattern are already familiar.
 
-In this project:
-
-- SDD defines what should be built and how it will be accepted.
-- Superpowers defines the internal execution discipline.
-- Harness Engineering defines the controlled operating environment for AI execution.
-- CI/CD and Review define the final quality gates before merge and release.
-
-## Relationship To SDD, Superpowers, And CI
-
-```text
-Business goal / Product intent
-        ↓
-SDD: spec, design, tasks, acceptance
-        ↓
-Superpowers: disciplined execution workflow
-        ↓
-Harness Engineering: context, tools, permissions, verification, trace
-        ↓
-AI agent execution
-        ↓
-CI/CD + Review: final quality gate
-```
-
-SDD and Harness Engineering are not competing methods.
-
-- SDD is the specification layer.
-- Harness Engineering is the execution-control layer.
-- CI/CD and Review are the verification and release gate layer.
+A harness, in this project, is the controlled runtime environment around an AI agent: explicit context boundary, allowed tools, permissions, task state, verification commands, logging, review hooks, and audit. It is broader than a test harness and more concrete than prompt engineering.
 
 ## Problems Harness Engineering Solves
 
@@ -245,3 +218,13 @@ It is complete only when:
 - Execution evidence is recorded.
 - Remaining risks are visible and accepted.
 
+## Key Takeaways
+
+- The harness is the third layer of the execution stack — it does not replace SDD, Superpowers, or CI/Review, but each of those is weaker without it.
+- A harness controls context, tools, permissions, verification, and reporting; missing any one of them is the typical failure mode it prevents.
+- Level 1 (file-level) and Level 2 (scripted) cover most internal needs; Level 3 (platform) is only worth building after Levels 1 and 2 are stable.
+- "Complete" is a property of evidence, not of agent confidence.
+
+## Next
+
+- [Metrics](10-metrics.md) — how to measure whether the four-layer stack is actually improving delivery efficiency, quality, and consistency over time.

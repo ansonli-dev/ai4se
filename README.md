@@ -26,16 +26,19 @@ Read it first as a handbook, then use it as a working kit.
 
 Use this path to understand the system in a learning-friendly order:
 
+0. [Reading Guide](docs/ai-sdd-governance/knowledge/00-reading-guide.md)
 1. [AI-SDD Overview](docs/ai-sdd-governance/knowledge/01-ai-sdd-overview.md)
 2. [SDD Methodology](docs/ai-sdd-governance/knowledge/02-sdd-methodology.md)
-3. [Operating Model](docs/ai-sdd-governance/knowledge/03-operating-model.md)
-4. [Quality Gates](docs/ai-sdd-governance/knowledge/04-quality-gates.md)
-5. [Testing Strategy](docs/ai-sdd-governance/knowledge/05-testing-strategy.md)
-6. [Toolchain](docs/ai-sdd-governance/knowledge/06-toolchain.md)
-7. [Agent Tools](docs/ai-sdd-governance/knowledge/07-agent-tools.md)
-8. [Harness Engineering](docs/ai-sdd-governance/knowledge/08-harness-engineering.md)
-9. [Metrics](docs/ai-sdd-governance/knowledge/09-metrics.md)
-10. [Glossary](docs/ai-sdd-governance/knowledge/10-glossary.md)
+3. [Execution Stack](docs/ai-sdd-governance/knowledge/03-execution-stack.md)
+4. [Operating Model](docs/ai-sdd-governance/knowledge/04-operating-model.md)
+5. [Quality Gates](docs/ai-sdd-governance/knowledge/05-quality-gates.md)
+6. [Testing Strategy](docs/ai-sdd-governance/knowledge/06-testing-strategy.md)
+7. [Toolchain](docs/ai-sdd-governance/knowledge/07-toolchain.md)
+8. [Agent Tools](docs/ai-sdd-governance/knowledge/08-agent-tools.md)
+9. [Harness Engineering](docs/ai-sdd-governance/knowledge/09-harness-engineering.md)
+10. [Metrics](docs/ai-sdd-governance/knowledge/10-metrics.md)
+11. [Capstone: From Concepts To Delivery](docs/ai-sdd-governance/knowledge/11-capstone.md)
+12. [Glossary](docs/ai-sdd-governance/knowledge/12-glossary.md)
 
 ## Practice Path
 
@@ -51,10 +54,10 @@ Use this path to run work through delivery roles and flow:
 
 ## Role Entry Points
 
-- Delivery Owner: start with [AI-SDD Overview](docs/ai-sdd-governance/knowledge/01-ai-sdd-overview.md), [Operating Model](docs/ai-sdd-governance/knowledge/03-operating-model.md), [Priorities And Roadmap](docs/ai-sdd-governance/practice/06-priorities-and-roadmap.md), and [Rollout And Acceptance](docs/ai-sdd-governance/practice/07-rollout-and-acceptance.md).
-- Architect or Tech Lead: start with [SDD Methodology](docs/ai-sdd-governance/knowledge/02-sdd-methodology.md), [Quality Gates](docs/ai-sdd-governance/knowledge/04-quality-gates.md), [Toolchain](docs/ai-sdd-governance/knowledge/06-toolchain.md), [Agent Tools](docs/ai-sdd-governance/knowledge/07-agent-tools.md), and [Team AI SDLC](docs/ai-sdd-governance/practice/01-team-ai-sdlc.md).
+- Delivery Owner: start with [AI-SDD Overview](docs/ai-sdd-governance/knowledge/01-ai-sdd-overview.md), [Operating Model](docs/ai-sdd-governance/knowledge/04-operating-model.md), [Priorities And Roadmap](docs/ai-sdd-governance/practice/06-priorities-and-roadmap.md), and [Rollout And Acceptance](docs/ai-sdd-governance/practice/07-rollout-and-acceptance.md).
+- Architect or Tech Lead: start with [SDD Methodology](docs/ai-sdd-governance/knowledge/02-sdd-methodology.md), [Quality Gates](docs/ai-sdd-governance/knowledge/05-quality-gates.md), [Toolchain](docs/ai-sdd-governance/knowledge/07-toolchain.md), [Agent Tools](docs/ai-sdd-governance/knowledge/08-agent-tools.md), and [Team AI SDLC](docs/ai-sdd-governance/practice/01-team-ai-sdlc.md).
 - Developer: start with [Developer Guide](docs/ai-sdd-governance/practice/04-developer-guide.md), [Superpowers Adoption](docs/ai-sdd-governance/practice/03-superpowers-adoption.md), [AI Engineering Constitution](ai/engineering-constitution.md), and [AI Context Policy](ai/context-policy.md).
-- QA: start with [Testing Strategy](docs/ai-sdd-governance/knowledge/05-testing-strategy.md), [Quality Gates](docs/ai-sdd-governance/knowledge/04-quality-gates.md), [Testing Policy](ai/testing-policy.md), and [Quality Gate Checklist](quality-gates/checklist.md).
-- Security Lead: start with [Toolchain](docs/ai-sdd-governance/knowledge/06-toolchain.md), [Quality Gates](docs/ai-sdd-governance/knowledge/04-quality-gates.md), [Security Policy](ai/security-policy.md), and [Allowed Tools](ai/allowed-tools.md).
-- AI Champion: start with [Superpowers Adoption](docs/ai-sdd-governance/practice/03-superpowers-adoption.md), [Developer Guide](docs/ai-sdd-governance/practice/04-developer-guide.md), [Harness Engineering](docs/ai-sdd-governance/knowledge/08-harness-engineering.md), and [Weekly AI-SDD Review](templates/weekly-ai-sdd-review.md).
-- Supplier Lead: start with [AI-SDD Overview](docs/ai-sdd-governance/knowledge/01-ai-sdd-overview.md), [Operating Model](docs/ai-sdd-governance/knowledge/03-operating-model.md), [Quality Gates](docs/ai-sdd-governance/knowledge/04-quality-gates.md), [Implementation Playbook](docs/ai-sdd-governance/practice/02-implementation-playbook.md), and [Supplier Scorecard](templates/supplier-scorecard.md).
+- QA: start with [Testing Strategy](docs/ai-sdd-governance/knowledge/06-testing-strategy.md), [Quality Gates](docs/ai-sdd-governance/knowledge/05-quality-gates.md), [Testing Policy](ai/testing-policy.md), and [Quality Gate Checklist](quality-gates/checklist.md).
+- Security Lead: start with [Toolchain](docs/ai-sdd-governance/knowledge/07-toolchain.md), [Quality Gates](docs/ai-sdd-governance/knowledge/05-quality-gates.md), [Security Policy](ai/security-policy.md), and [Allowed Tools](ai/allowed-tools.md).
+- AI Champion: start with [Superpowers Adoption](docs/ai-sdd-governance/practice/03-superpowers-adoption.md), [Developer Guide](docs/ai-sdd-governance/practice/04-developer-guide.md), [Harness Engineering](docs/ai-sdd-governance/knowledge/09-harness-engineering.md), and [Weekly AI-SDD Review](templates/weekly-ai-sdd-review.md).
+- Supplier Lead: start with [AI-SDD Overview](docs/ai-sdd-governance/knowledge/01-ai-sdd-overview.md), [Operating Model](docs/ai-sdd-governance/knowledge/04-operating-model.md), [Quality Gates](docs/ai-sdd-governance/knowledge/05-quality-gates.md), [Implementation Playbook](docs/ai-sdd-governance/practice/02-implementation-playbook.md), and [Supplier Scorecard](templates/supplier-scorecard.md).

@@ -87,3 +87,13 @@ Accepted：
 - 未经 ADR 修改架构决策。
 - 绕过 CI/CD 或 MR 评审。
 
+## 要点回顾
+
+- SDD 把开发从"代码先行"转为"规格先行"；AI 从规格读取意图，而不是自己编造。
+- Definition of Ready 和 Definition of Done 不是官僚——它们让没在现场的人也能评审 AI 的输出。
+- 规格生命周期（Draft → Ready → Approved → Implemented → Accepted）给后面每一层提供稳定的引用对象。
+- AI 使用规则界定规格层允许和禁止什么——未经人工评审的生产代码、未脱敏的客户数据、无文档的架构变更，都越界了。
+
+## 下一篇
+
+- [执行栈](03-执行栈.md)——有了规格之后，四层栈（SDD + Superpowers + Harness + CI/Review）是组织后面所有内容的心智模型。

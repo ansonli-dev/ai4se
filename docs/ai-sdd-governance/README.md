@@ -29,16 +29,19 @@ Business objective
 
 Read these in order when learning the model:
 
+0. [Reading Guide](knowledge/00-reading-guide.md): start here. Panoramic overview, the four-layer execution stack, core vocabulary, and how to navigate the rest of this path.
 1. [AI-SDD Overview](knowledge/01-ai-sdd-overview.md): delivery context, governance approach, and default policy.
 2. [SDD Methodology](knowledge/02-sdd-methodology.md): why AI-assisted delivery starts from specifications, readiness, and acceptance.
-3. [Operating Model](knowledge/03-operating-model.md): governance layers, ownership, arbitration, and team rules.
-4. [Quality Gates](knowledge/04-quality-gates.md): merge policy, human review, exceptions, and supplier acceptance.
-5. [Testing Strategy](knowledge/05-testing-strategy.md): test strategy for AI-assisted SDD work.
-6. [Toolchain](knowledge/06-toolchain.md): enterprise toolchain and AI platform architecture.
-7. [Agent Tools](knowledge/07-agent-tools.md): Claude Code, Codex, Cursor, skills, MCP, plugins, memory, hooks, and tool governance.
-8. [Harness Engineering](knowledge/08-harness-engineering.md): controlled context, tools, permissions, verification, and evidence.
-9. [Metrics](knowledge/09-metrics.md): efficiency, quality, consistency, and review cadence.
-10. [Glossary](knowledge/10-glossary.md): terms and abbreviations used across the handbook.
+3. [Execution Stack](knowledge/03-execution-stack.md): the SDD + Superpowers + Harness + CI/Review four-layer mental model that holds everything else together.
+4. [Operating Model](knowledge/04-operating-model.md): governance layers, ownership, arbitration, and team rules.
+5. [Quality Gates](knowledge/05-quality-gates.md): merge policy, human review, exceptions, and supplier acceptance.
+6. [Testing Strategy](knowledge/06-testing-strategy.md): test strategy for AI-assisted SDD work.
+7. [Toolchain](knowledge/07-toolchain.md): enterprise toolchain and AI platform architecture.
+8. [Agent Tools](knowledge/08-agent-tools.md): Claude Code, Codex, Cursor, skills, MCP, plugins, memory, hooks, and tool governance.
+9. [Harness Engineering](knowledge/09-harness-engineering.md): the harness layer in depth — maturity levels, rollout phases, and the minimum standard.
+10. [Metrics](knowledge/10-metrics.md): efficiency, quality, consistency, and review cadence.
+11. [Capstone: From Concepts To Delivery](knowledge/11-capstone.md): one Story walked through all ten concept docs, then handed to the Practice path.
+12. [Glossary](knowledge/12-glossary.md): terms and abbreviations used across the handbook.
 
 ## Practice Path
 
@@ -54,13 +57,13 @@ Use these when running real delivery work:
 
 ## Role Paths
 
-- Delivery Owner: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/03-operating-model.md), [Priorities And Roadmap](practice/06-priorities-and-roadmap.md), [Rollout And Acceptance](practice/07-rollout-and-acceptance.md), [Metrics](knowledge/09-metrics.md).
-- Architect or Tech Lead: [SDD Methodology](knowledge/02-sdd-methodology.md), [Quality Gates](knowledge/04-quality-gates.md), [Toolchain](knowledge/06-toolchain.md), [Agent Tools](knowledge/07-agent-tools.md), [Team AI SDLC](practice/01-team-ai-sdlc.md).
+- Delivery Owner: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/04-operating-model.md), [Priorities And Roadmap](practice/06-priorities-and-roadmap.md), [Rollout And Acceptance](practice/07-rollout-and-acceptance.md), [Metrics](knowledge/10-metrics.md).
+- Architect or Tech Lead: [SDD Methodology](knowledge/02-sdd-methodology.md), [Quality Gates](knowledge/05-quality-gates.md), [Toolchain](knowledge/07-toolchain.md), [Agent Tools](knowledge/08-agent-tools.md), [Team AI SDLC](practice/01-team-ai-sdlc.md).
 - Developer: [Developer Guide](practice/04-developer-guide.md), [Superpowers Adoption](practice/03-superpowers-adoption.md), [AI Engineering Constitution](../../ai/engineering-constitution.md), [AI Context Policy](../../ai/context-policy.md), [Testing Policy](../../ai/testing-policy.md).
-- QA: [Testing Strategy](knowledge/05-testing-strategy.md), [Quality Gates](knowledge/04-quality-gates.md), [Testing Policy](../../ai/testing-policy.md), [Test Spec Template](../../templates/test-spec.md), [Quality Gate Checklist](../../quality-gates/checklist.md).
-- Security Lead: [Toolchain](knowledge/06-toolchain.md), [Quality Gates](knowledge/04-quality-gates.md), [Security Policy](../../ai/security-policy.md), [AI Context Policy](../../ai/context-policy.md), [Allowed Tools](../../ai/allowed-tools.md).
-- AI Champion: [Superpowers Adoption](practice/03-superpowers-adoption.md), [Developer Guide](practice/04-developer-guide.md), [Harness Engineering](knowledge/08-harness-engineering.md), [Prompt Card Template](../../templates/prompt-card.md), [Weekly AI-SDD Review](../../templates/weekly-ai-sdd-review.md).
-- Supplier Lead: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/03-operating-model.md), [Quality Gates](knowledge/04-quality-gates.md), [Implementation Playbook](practice/02-implementation-playbook.md), [Supplier Scorecard](../../templates/supplier-scorecard.md).
+- QA: [Testing Strategy](knowledge/06-testing-strategy.md), [Quality Gates](knowledge/05-quality-gates.md), [Testing Policy](../../ai/testing-policy.md), [Test Spec Template](../../templates/test-spec.md), [Quality Gate Checklist](../../quality-gates/checklist.md).
+- Security Lead: [Toolchain](knowledge/07-toolchain.md), [Quality Gates](knowledge/05-quality-gates.md), [Security Policy](../../ai/security-policy.md), [AI Context Policy](../../ai/context-policy.md), [Allowed Tools](../../ai/allowed-tools.md).
+- AI Champion: [Superpowers Adoption](practice/03-superpowers-adoption.md), [Developer Guide](practice/04-developer-guide.md), [Harness Engineering](knowledge/09-harness-engineering.md), [Prompt Card Template](../../templates/prompt-card.md), [Weekly AI-SDD Review](../../templates/weekly-ai-sdd-review.md).
+- Supplier Lead: [AI-SDD Overview](knowledge/01-ai-sdd-overview.md), [Operating Model](knowledge/04-operating-model.md), [Quality Gates](knowledge/05-quality-gates.md), [Implementation Playbook](practice/02-implementation-playbook.md), [Supplier Scorecard](../../templates/supplier-scorecard.md).
 
 ## Minimum Executable Checklist
 

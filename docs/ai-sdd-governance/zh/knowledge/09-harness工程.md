@@ -1,41 +1,14 @@
 # Harness 工程
 
-英文版：[../../knowledge/08-harness-engineering.md](../../knowledge/08-harness-engineering.md)
+英文版：[../../knowledge/09-harness-engineering.md](../../knowledge/09-harness-engineering.md)
 
 ## 目的
 
-Harness 工程 是 AI agents 和 AI coding agents 的执行控制层。
+本篇深入展开 [执行栈](03-执行栈.md) 的第三层——Harness。栈的图示和 SDD、Superpowers、Harness、CI/Review 之间的关系在第 03 篇；本篇聚焦：Harness 这一层实际装什么、它自己解决的问题、采用它的成熟度模型、内部团队必须达到的最小标准。
 
-它为 AI 工作建立受控运行环境：清晰上下文、受限工具、权限、任务状态、验证、日志、评审和审计。它比测试 harness 更广，也比 prompt engineering 更具体。
+如果还没读 [执行栈](03-执行栈.md)，请先去读——本篇假设你已经掌握了四层模型和自底向上诊断的方法。
 
-在本项目中：
-
-- SDD 定义要构建什么，以及如何验收。
-- Superpowers 定义内部执行纪律。
-- Harness 工程 定义 AI 执行的受控运行环境。
-- CI/CD 和 Review 定义合入和发布前的最终质量门禁。
-
-## 与 SDD、Superpowers 和 CI 的关系
-
-```text
-业务目标 / 产品意图
-        ↓
-SDD：spec、design、tasks、acceptance
-        ↓
-Superpowers：有纪律的执行工作流
-        ↓
-Harness 工程：context、工具、permissions、verification、trace
-        ↓
-AI agent execution
-        ↓
-CI/CD + Review：最终质量门禁
-```
-
-SDD 和 Harness 工程 不是竞争关系：
-
-- SDD 是 specification layer。
-- Harness 工程 是 execution-control layer。
-- CI/CD 和 Review 是 verification and release gate layer。
+本项目中的 Harness，是 AI Agent 周围的受控运行环境：明确的上下文边界、允许的工具、权限、任务状态、验证命令、日志、评审钩子和审计。它比"测试 harness"更广，比"prompt engineering"更具体。
 
 ## 解决的问题
 
@@ -188,3 +161,13 @@ AI 执行后：
 
 AI 辅助任务不是 agent 说完成就完成。只有实现匹配批准 spec、工件已更新、验证通过、评审 完成、证据记录、剩余风险可见并被接受，才算完成。
 
+## 要点回顾
+
+- Harness 是执行栈的第三层——它不替代 SDD、Superpowers 或 CI/Review，但缺了它，每一层都会变弱。
+- Harness 控制上下文、工具、权限、验证、报告；这五个里任何一个缺失都是它要防的失败模式。
+- Level 1（文件级）和 Level 2（脚本化）覆盖内部团队的大多数需要；Level 3（平台级）只有在 Level 1、2 稳定后才值得建。
+- "完成"是证据的属性，不是 Agent 自信的属性。
+
+## 下一篇
+
+- [指标](10-指标.md)——怎么衡量这四层栈是否真的随时间改进了交付的效率、质量和一致性。

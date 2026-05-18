@@ -61,3 +61,15 @@ Platform-enforced controls:
 - Cross-team data objects must have data dictionary entries.
 - Asynchronous events must have event schemas.
 - Error codes must be recorded in a shared error-code registry.
+
+## Key Takeaways
+
+- AI-SDD is a governance model, not a tool — the goal is bringing AI output into a controlled delivery loop, not handing developers free AI.
+- Centralized governance + team autonomy + platform-enforced controls is the chosen balance.
+- Suppliers are accepted by deliverables and quality evidence, not by being forced into the internal AI workflow.
+- The default policy is intentionally strict: enterprise-private AI, human review on every AI-assisted change, contracts and registries for cross-team artifacts.
+
+## Next
+
+- [SDD Methodology](02-sdd-methodology.md) — why this governance model insists work starts from a reviewed specification, and what "ready" and "done" mean in that frame.
+

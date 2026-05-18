@@ -1,6 +1,6 @@
 # Toolchain
 
-Chinese version: [../zh/knowledge/06-工具链.md](../zh/knowledge/06-工具链.md)
+Chinese version: [../zh/knowledge/07-工具链.md](../zh/knowledge/07-工具链.md)
 
 ## Toolchain Principles
 
@@ -77,3 +77,14 @@ Audit layer:
 
 - Record user, time, tool, prompt card version, referenced context, related requirement ID, and related merge request.
 - Audit records must be queryable for internal defect analysis and process improvement.
+
+## Key Takeaways
+
+- The toolchain is cross-cutting — it hosts every layer of the [Execution Stack](03-execution-stack.md) rather than being a layer of its own.
+- Enterprise-private by default and audit-before-convenience are the design constraints that distinguish this stack from a default developer setup.
+- The AI platform sits on four sub-layers (model, context, prompt, audit) so failures can be diagnosed at the right layer instead of "the AI didn't work."
+- Tool choices must support tool-neutral SDD templates and tool-neutral MR evidence — teams may pick different tools as long as the artifacts and gates match.
+
+## Next
+
+- [Agent Tools](08-agent-tools.md) — within this toolchain, what Claude Code, Codex, and Cursor each do well, and which capabilities (skills, MCP, plugins, hooks, subagents) need governance.

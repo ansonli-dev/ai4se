@@ -101,7 +101,7 @@ Check:
 - Are permissions, audit, data, and exception flows clear?
 - Are affected APIs, events, database fields, or integrations identified?
 - Is the module owner known?
-- Is this Tier A, Tier B, or Tier C work according to `08-superpowers-adoption.md`?
+- Is this Tier A, Tier B, or Tier C work according to [Superpowers Adoption](./03-superpowers-adoption.md)?
 
 If the Story is unclear, do not start implementation. Return it for clarification or use `brainstorming` to produce specific questions.
 

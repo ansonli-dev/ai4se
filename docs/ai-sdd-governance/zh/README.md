@@ -29,16 +29,19 @@ AI-SDD 是一种 AI 辅助软件交付治理模型：工作从经过评审的规
 
 学习模型时建议按顺序阅读：
 
+0. [阅读指南](knowledge/00-阅读指南.md)：从这里开始。全景概览、四层执行栈、核心术语、阅读顺序建议。
 1. [AI-SDD 总览](knowledge/01-ai-sdd总览.md)：交付背景、治理方式和默认政策。
 2. [SDD 方法论](knowledge/02-sdd方法论.md)：为什么 AI 辅助交付要从规格、就绪条件和验收开始。
-3. [运行模型](knowledge/03-运行模型.md)：治理层级、责任归属、仲裁和团队规则。
-4. [质量门禁](knowledge/04-质量门禁.md)：合入政策、人工评审、例外和供应商验收。
-5. [测试策略](knowledge/05-测试策略.md)：AI-SDD 工作的测试策略。
-6. [工具链](knowledge/06-工具链.md)：企业工具链和 AI 平台架构。
-7. [Agent 工具](knowledge/07-agent工具.md)：Claude Code、Codex、Cursor、skills、MCP、plugins、memory、hooks 和工具治理。
-8. [Harness 工程](knowledge/08-harness工程.md)：受控上下文、工具、权限、验证和证据。
-9. [指标](knowledge/09-指标.md)：效率、质量、一致性和复盘节奏。
-10. [术语表](knowledge/10-术语表.md)：手册中的术语和缩写。
+3. [执行栈](knowledge/03-执行栈.md)：SDD + Superpowers + Harness + CI/Review 四层心智模型，把后面所有章节串起来。
+4. [运行模型](knowledge/04-运行模型.md)：治理层级、责任归属、仲裁和团队规则。
+5. [质量门禁](knowledge/05-质量门禁.md)：合入政策、人工评审、例外和供应商验收。
+6. [测试策略](knowledge/06-测试策略.md)：AI-SDD 工作的测试策略。
+7. [工具链](knowledge/07-工具链.md)：企业工具链和 AI 平台架构。
+8. [Agent 工具](knowledge/08-agent工具.md)：Claude Code、Codex、Cursor、skills、MCP、plugins、memory、hooks 和工具治理。
+9. [Harness 工程](knowledge/09-harness工程.md)：Harness 这一层的成熟度模型、推广阶段和最小标准。
+10. [指标](knowledge/10-指标.md)：效率、质量、一致性和复盘节奏。
+11. [总结：从概念到交付](knowledge/11-概念到交付.md)：用一个 Story 走完十篇概念，再交给实践路径。
+12. [术语表](knowledge/12-术语表.md)：手册中的术语和缩写。
 
 ## 实践路径
 
@@ -54,13 +57,13 @@ AI-SDD 是一种 AI 辅助软件交付治理模型：工作从经过评审的规
 
 ## 角色路径
 
-- 交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/03-运行模型.md)、[优先级与路线图](practice/06-优先级与路线图.md)、[推广与验收](practice/07-推广与验收.md)、[指标](knowledge/09-指标.md)。
-- 架构师或技术负责人：[SDD 方法论](knowledge/02-sdd方法论.md)、[质量门禁](knowledge/04-质量门禁.md)、[工具链](knowledge/06-工具链.md)、[Agent 工具](knowledge/07-agent工具.md)、[团队级 AI SDLC](practice/01-团队级ai-sdlc.md)。
+- 交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/04-运行模型.md)、[优先级与路线图](practice/06-优先级与路线图.md)、[推广与验收](practice/07-推广与验收.md)、[指标](knowledge/10-指标.md)。
+- 架构师或技术负责人：[SDD 方法论](knowledge/02-sdd方法论.md)、[质量门禁](knowledge/05-质量门禁.md)、[工具链](knowledge/07-工具链.md)、[Agent 工具](knowledge/08-agent工具.md)、[团队级 AI SDLC](practice/01-团队级ai-sdlc.md)。
 - 开发人员：[开发者指南](practice/04-开发者指南.md)、[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[AI 工程宪章](../../../ai/engineering-constitution.md)、[AI 上下文政策](../../../ai/context-policy.md)、[测试政策](../../../ai/testing-policy.md)。
-- QA：[测试策略](knowledge/05-测试策略.md)、[质量门禁](knowledge/04-质量门禁.md)、[测试政策](../../../ai/testing-policy.md)、[测试规格模板](../../../templates/test-spec.md)、[质量门禁检查清单](../../../quality-gates/checklist.md)。
-- 安全负责人：[工具链](knowledge/06-工具链.md)、[质量门禁](knowledge/04-质量门禁.md)、[安全政策](../../../ai/security-policy.md)、[AI 上下文政策](../../../ai/context-policy.md)、[允许工具](../../../ai/allowed-tools.md)。
-- AI Champion：[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[开发者指南](practice/04-开发者指南.md)、[Harness 工程](knowledge/08-harness工程.md)、[Prompt Card 模板](../../../templates/prompt-card.md)、[每周 AI-SDD 复盘](../../../templates/weekly-ai-sdd-review.md)。
-- 供应商交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/03-运行模型.md)、[质量门禁](knowledge/04-质量门禁.md)、[实施 Playbook](practice/02-实施playbook.md)、[供应商评分卡](../../../templates/supplier-scorecard.md)。
+- QA：[测试策略](knowledge/06-测试策略.md)、[质量门禁](knowledge/05-质量门禁.md)、[测试政策](../../../ai/testing-policy.md)、[测试规格模板](../../../templates/test-spec.md)、[质量门禁检查清单](../../../quality-gates/checklist.md)。
+- 安全负责人：[工具链](knowledge/07-工具链.md)、[质量门禁](knowledge/05-质量门禁.md)、[安全政策](../../../ai/security-policy.md)、[AI 上下文政策](../../../ai/context-policy.md)、[允许工具](../../../ai/allowed-tools.md)。
+- AI Champion：[Superpowers 采用策略](practice/03-superpowers采用策略.md)、[开发者指南](practice/04-开发者指南.md)、[Harness 工程](knowledge/09-harness工程.md)、[Prompt Card 模板](../../../templates/prompt-card.md)、[每周 AI-SDD 复盘](../../../templates/weekly-ai-sdd-review.md)。
+- 供应商交付负责人：[AI-SDD 总览](knowledge/01-ai-sdd总览.md)、[运行模型](knowledge/04-运行模型.md)、[质量门禁](knowledge/05-质量门禁.md)、[实施 Playbook](practice/02-实施playbook.md)、[供应商评分卡](../../../templates/supplier-scorecard.md)。
 
 ## 最小可执行清单
 

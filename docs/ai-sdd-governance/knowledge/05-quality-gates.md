@@ -1,12 +1,12 @@
 # Quality Gates
 
-Chinese version: [../zh/knowledge/04-质量门禁.md](../zh/knowledge/04-质量门禁.md)
+Chinese version: [../zh/knowledge/05-质量门禁.md](../zh/knowledge/05-质量门禁.md)
 
 ## Merge Policy
 
 AI-generated or AI-assisted code must not enter the main branch directly.
 
-For internal teams, AI-assisted merge requests follow the Superpowers-based workflow level defined in `08-superpowers-adoption.md`.
+For internal teams, AI-assisted merge requests follow the Superpowers-based workflow level defined in [Superpowers Adoption](../practice/03-superpowers-adoption.md).
 
 For outsourced work, the supplier's internal workflow is not governed here. Acceptance is based on required deliverables, test evidence, quality gates, and internal owner approval when the work is merged into internal repositories.
 
@@ -66,3 +66,14 @@ Acceptance rules:
 - Cannot be the final approver for core modules.
 - Cannot change quality gate configuration.
 - Cannot access production data unless explicitly approved and masked.
+
+## Key Takeaways
+
+- The merge gate is layer 4 of the [Execution Stack](03-execution-stack.md) — it is the safety net regardless of which source produced the code (internal, AI-assisted, or supplier).
+- Some failures are exception-eligible (with risk, owner, and due date); others — secret leakage, broken build, missing core-module Owner Review, missing spec traceability — are not.
+- Supplier work is gated by the same merge controls but is not required to use the internal AI workflow to produce the evidence.
+- Human review and automated gates complement each other; neither replaces the other.
+
+## Next
+
+- [Testing Strategy](06-testing-strategy.md) — what tests must exist so the gate has something meaningful to check, and how AI changes the test economics.

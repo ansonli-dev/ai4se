@@ -162,8 +162,8 @@ Primary documents:
 
 - [Superpowers Adoption](./03-superpowers-adoption.md)
 - [Developer Guide](./04-developer-guide.md)
-- [Harness Engineering](../knowledge/08-harness-engineering.md)
-- [Agent Tools](../knowledge/07-agent-tools.md)
+- [Harness Engineering](../knowledge/09-harness-engineering.md)
+- [Agent Tools](../knowledge/08-agent-tools.md)
 
 Recommended default:
 
@@ -184,9 +184,9 @@ Purpose:
 
 Primary documents:
 
-- [Quality Gates](../knowledge/04-quality-gates.md)
-- [Testing Strategy](../knowledge/05-testing-strategy.md)
-- [Harness Engineering](../knowledge/08-harness-engineering.md)
+- [Quality Gates](../knowledge/05-quality-gates.md)
+- [Testing Strategy](../knowledge/06-testing-strategy.md)
+- [Harness Engineering](../knowledge/09-harness-engineering.md)
 
 Primary policies and checklists:
 
@@ -216,9 +216,9 @@ Purpose:
 
 Primary documents:
 
-- [Operating Model](../knowledge/03-operating-model.md)
-- [Toolchain](../knowledge/06-toolchain.md)
-- [Metrics](../knowledge/09-metrics.md)
+- [Operating Model](../knowledge/04-operating-model.md)
+- [Toolchain](../knowledge/07-toolchain.md)
+- [Metrics](../knowledge/10-metrics.md)
 - [Rollout And Acceptance](./07-rollout-and-acceptance.md)
 - [Implementation Playbook](./02-implementation-playbook.md)
 - [Priorities And Roadmap](./06-priorities-and-roadmap.md)
@@ -245,8 +245,8 @@ Use the following reading path when introducing the method to a delivery team:
 1. [SDD Methodology](../knowledge/02-sdd-methodology.md): explains why AI-assisted work starts from approved specs.
 2. [Superpowers Adoption](./03-superpowers-adoption.md): defines Tier A/B/C and when Superpowers is required.
 3. [Developer Guide](./04-developer-guide.md): explains Story intake, planning, TDD, artifact updates, review, verification, and MR completion.
-4. [Harness Engineering](../knowledge/08-harness-engineering.md): defines the controlled execution environment for context, tools, permissions, verification, and evidence.
-5. [Agent Tools](../knowledge/07-agent-tools.md): explains how Claude Code, Codex, Cursor, skills, MCP, plugins, memory, and hooks fit into the workflow.
+4. [Harness Engineering](../knowledge/09-harness-engineering.md): defines the controlled execution environment for context, tools, permissions, verification, and evidence.
+5. [Agent Tools](../knowledge/08-agent-tools.md): explains how Claude Code, Codex, Cursor, skills, MCP, plugins, memory, and hooks fit into the workflow.
 
 The short version:
 

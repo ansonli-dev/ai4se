@@ -1,6 +1,6 @@
 # Testing Strategy For AI-Assisted SDD
 
-Chinese version: [../zh/knowledge/05-测试策略.md](../zh/knowledge/05-测试策略.md)
+Chinese version: [../zh/knowledge/06-测试策略.md](../zh/knowledge/06-测试策略.md)
 
 ## Purpose
 
@@ -9,6 +9,17 @@ This article summarizes important testing ideas from Martin Fowler's testing gui
 The central point is simple:
 
 > AI can generate code faster than teams can safely understand it. Testing must become the team's executable understanding of the system, not just a post-coding safety net.
+
+Testing is not its own layer in the [Execution Stack](03-execution-stack.md) — it is a cross-cutting concern that serves every layer. Specs (layer 1) declare what tests must exist; Superpowers (layer 2) sequences when they get written; the Harness (layer 3) controls how they run and what counts as completion evidence; CI/Review (layer 4) blocks merge when the required tests are missing or shallow.
+
+## How To Read This Doc
+
+This doc is longer than the others because testing carries the most AI-specific risk. To stay usable, it is split into two parts:
+
+- **Learn (sections "Key Ideas From Martin Fowler's Testing Materials" through "Required Test Layers")** — the conceptual foundation. Read on first pass.
+- **Reference (sections marked "Reference:" onward)** — the matrices, checklists, gate policies, and rollout phases. Skim on first pass, consult by need during real delivery.
+
+If you only read one section, read **AI-Specific Testing Risks** plus the **Test Requirements By Story Type** table — they cover the highest-leverage decisions.
 
 ## Key Ideas From Martin Fowler's Testing Materials
 
@@ -329,7 +340,13 @@ Mitigation:
 | UI workflow | Component/UI tests, limited E2E, exploratory testing | Assert behavior and accessibility |
 | Production defect | Regression test at the narrowest useful level | Add before or with the fix |
 
-## Test Design Checklist For Developers
+---
+
+## Reference: Operational Rules
+
+Everything below is reference material — checklists, gate wiring, and rollout phases. It is meant to be looked up during real delivery work, not memorised on first read.
+
+## Reference: Test Design Checklist For Developers
 
 Before implementation:
 
@@ -357,7 +374,7 @@ Before merge:
 - [ ] Coverage gaps in important behavior are explained.
 - [ ] Test evidence is linked in the merge request.
 
-## Test Review Checklist For AI-Generated Tests
+## Reference: Test Review Checklist For AI-Generated Tests
 
 Reviewers should challenge AI-generated tests:
 
@@ -371,7 +388,7 @@ Reviewers should challenge AI-generated tests:
 - Is the test deterministic?
 - Is the test readable enough for future maintainers?
 
-## How Testing Fits Superpowers
+## Reference: How Testing Fits Superpowers
 
 In the internal Superpowers workflow:
 
@@ -382,7 +399,7 @@ In the internal Superpowers workflow:
 - `requesting-code-review` should include test quality review, not only production code review.
 - `verification-before-completion` requires fresh test evidence before completion is claimed.
 
-## How Testing Fits Harness Engineering
+## Reference: How Testing Fits Harness Engineering
 
 Harness Engineering makes testing part of the controlled AI runtime:
 
@@ -391,7 +408,7 @@ Harness Engineering makes testing part of the controlled AI runtime:
 - The execution report records which tests ran, what failed, what was fixed, and what remains risky.
 - Failure attribution separates bad specs, bad context, environment failure, agent error, and test weakness.
 
-## Quality Gate Policy
+## Reference: Quality Gate Policy
 
 The merge gate should block when:
 
@@ -403,7 +420,7 @@ The merge gate should block when:
 - AI-generated tests are shallow and no meaningful behavior evidence exists.
 - A production defect fix lacks a regression test unless an explicit exception is approved.
 
-## Practical Rollout
+## Reference: Practical Rollout
 
 Phase 1:
 
@@ -432,3 +449,15 @@ Phase 3:
 - Martin Fowler, Eradicating Non-Determinism in Tests: https://martinfowler.com/articles/nonDeterminism.html
 - Martin Fowler, Test Coverage: https://martinfowler.com/bliki/TestCoverage.html
 - Martin Fowler, Testing Strategies in a Microservice Architecture: https://martinfowler.com/articles/microservice-testing/
+
+## Key Takeaways
+
+- Testing is cross-cutting: it serves every layer of the execution stack rather than being a layer of its own.
+- The eight Fowler ideas are the conceptual foundation; the five AI-specific risks are what change because AI is in the loop.
+- Pick the test layer intentionally — over-mocking and shallow tests are the dominant AI failure modes.
+- Coverage is a signal, not a goal. Ask whether a test would fail for a plausible wrong implementation.
+
+## Next
+
+- [Toolchain](07-toolchain.md) — the enterprise tools that host the four-layer stack and run the tests this doc just specified.
+

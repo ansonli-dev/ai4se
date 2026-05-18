@@ -1,6 +1,6 @@
 # Glossary
 
-Chinese version: [../zh/knowledge/10-术语表.md](../zh/knowledge/10-术语表.md)
+Chinese version: [../zh/knowledge/12-术语表.md](../zh/knowledge/12-术语表.md)
 
 ## Purpose
 

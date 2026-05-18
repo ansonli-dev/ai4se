@@ -223,7 +223,7 @@ Goal:
 | UAT Defect List | Conditional | Required when UAT finds defects. | [Defect Attribution](../../../templates/defect-attribution.md) |
 | Change Request List | Conditional | Required when UAT or users introduce scope changes. | [Change Request](../../../templates/change-request.md) |
 | Knowledge Base Update | Conditional | Required when new business rules, support notes, defect patterns, or prompt lessons are discovered. | [Knowledge Base Update](../../../templates/knowledge-base-update.md) |
-| Metrics Update | Optional | Useful for governance review and continuous improvement. | [Metrics](../knowledge/09-metrics.md), [Weekly AI-SDD Review](../../../templates/weekly-ai-sdd-review.md) |
+| Metrics Update | Optional | Useful for governance review and continuous improvement. | [Metrics](../knowledge/10-metrics.md), [Weekly AI-SDD Review](../../../templates/weekly-ai-sdd-review.md) |
 
 Minimum AI handoff:
 
